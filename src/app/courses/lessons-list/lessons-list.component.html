@@ -1,0 +1,20 @@
+
+<h3>All Lessons</h3>
+
+@if (lessons && lessons.length) {
+  <table class="lessons-table mat-elevation-z7">
+    <thead>
+      <th>#</th>
+      <th>Description</th>
+      <th>Duration</th>
+    </thead>
+    @for (lesson of lessons; track lesson) {
+      <tr class="lesson-row"
+        [routerLink]="['lessons', lesson.seqNo]">
+        <td class="seqno-cell">{{lesson.seqNo}}</td>
+        <td class="description-cell">{{lesson.description}}</td>
+        <td class="duration-cell">{{lesson.duration}}</td>
+      </tr>
+    }
+  </table>
+}
