@@ -3,12 +3,12 @@ export const COURSES: any = {
 
   18: {
     id: 18,
-    description: 'Angular Router In Depth',
-    longDescription: 'Build large-scale Single Page Applications with the powerful Angular Router',
-    iconUrl: 'https://angular-university.s3-us-west-1.amazonaws.com/course-images/angular-router-course.jpg',
+    description: 'Angular Router In Depth (Signals Edition)',
+    longDescription: 'Build large-scale Single Page Applications with the powerful Angular Router, using modern signals, standalone components and zoneless change detection.',
+    iconUrl: 'https://d3vigmphadbn9b.cloudfront.net/course-images/large-images/angular-router-in-depth.jpg',
     courseListIcon: 'https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png',
     category: 'BEGINNER',
-    lessonsCount: 10,
+    lessonsCount: 22,
     seqNo: 0,
     url: 'angular-router-course',
     price: 50
@@ -192,6 +192,102 @@ export const COURSES: any = {
     category: 'BEGINNER',
     seqNo: 14,
     url: 'angular-material-course',
+    price: 50
+  },
+
+  19: {
+    id: 19,
+    description: 'Angular AI In Depth (with Cursor and Claude Code)',
+    longDescription: 'Build modern full-stack Angular applications with signals, standalone components, zoneless architecture, and OpenAI integration using Claude Code.',
+    iconUrl: 'https://d3vigmphadbn9b.cloudfront.net/course-images/large-images/angular-ai-in-depth.jpg',
+    category: 'ADVANCED',
+    lessonsCount: 10,
+    seqNo: 15,
+    url: 'angular-ai-in-depth-course',
+    price: 50
+  },
+
+  20: {
+    id: 20,
+    description: 'Angular Testing In Depth (Signals Edition)',
+    longDescription: 'Write robust, maintainable tests for modern signal-based Angular applications.',
+    iconUrl: 'https://d3vigmphadbn9b.cloudfront.net/course-images/large-images/angular-testing-In-depth.jpg',
+    category: 'BEGINNER',
+    lessonsCount: 10,
+    seqNo: 16,
+    url: 'angular-testing-in-depth',
+    price: 50
+  },
+
+  21: {
+    id: 21,
+    description: 'Modern Angular With Signals',
+    longDescription: 'Learn signals in depth. Build a modern signal-based application with async/await, standalone components and optional RxJs.',
+    iconUrl: 'https://d3vigmphadbn9b.cloudfront.net/course-images/large-images/angular-signals-course.jpg',
+    category: 'BEGINNER',
+    lessonsCount: 10,
+    seqNo: 17,
+    url: 'angular-signals-course',
+    price: 50
+  },
+
+  22: {
+    id: 22,
+    description: 'Angular Forms In Depth',
+    longDescription: 'Build complex enterprise data forms with the powerful Angular Forms module.',
+    iconUrl: 'https://angular-university.s3-us-west-1.amazonaws.com/course-images/angular-forms-course-small.jpg',
+    category: 'BEGINNER',
+    lessonsCount: 10,
+    seqNo: 18,
+    url: 'angular-forms-course',
+    price: 50
+  },
+
+  23: {
+    id: 23,
+    description: 'Angular Material In Depth',
+    longDescription: 'Learn in depth some of the most advanced components of the Angular Material UI widget library.',
+    iconUrl: 'https://angular-university.s3-us-west-1.amazonaws.com/course-images/angular-material-course-1.jpg',
+    category: 'BEGINNER',
+    lessonsCount: 10,
+    seqNo: 19,
+    url: 'angular-material-in-depth-course',
+    price: 50
+  },
+
+  24: {
+    id: 24,
+    description: 'Angular SSR In Depth',
+    longDescription: 'Use Angular on the server too! Learn Angular Server-Side Rendering.',
+    iconUrl: 'https://angular-university.s3-us-west-1.amazonaws.com/course-images/angular-universal-course.jpg',
+    category: 'ADVANCED',
+    lessonsCount: 10,
+    seqNo: 20,
+    url: 'angular-universal-course',
+    price: 50
+  },
+
+  25: {
+    id: 25,
+    description: 'Firebase & AngularFire In Depth',
+    longDescription: 'Full stack Development with Angular, Firestore, Firebase Storage & Hosting, Firebase Cloud Functions & AngularFire.',
+    iconUrl: 'https://angular-university.s3-us-west-1.amazonaws.com/course-images/firebase-course-1.jpg',
+    category: 'BEGINNER',
+    lessonsCount: 10,
+    seqNo: 21,
+    url: 'angularfire-course',
+    price: 50
+  },
+
+  26: {
+    id: 26,
+    description: 'Typescript: The Ultimate Bootcamp',
+    longDescription: 'Learn in-depth all the language fundamentals. Practice by building practical projects in Node, React and Angular.',
+    iconUrl: 'https://angular-university.s3-us-west-1.amazonaws.com/course-images/typescript-bootcamp-2.jpg',
+    category: 'BEGINNER',
+    lessonsCount: 10,
+    seqNo: 22,
+    url: 'typescript-bootcamp',
     price: 50
   }
 
@@ -1067,6 +1163,598 @@ export const LESSONS = {
     'seqNo': 22,
     courseId: 18,
     videoId: '0Qsg8fyKwO4'
+  },
+
+
+  // Angular AI In Depth Course
+
+  112: {
+    id: 112,
+    description: 'Course Introduction - Building AI-Powered Angular Apps',
+    'duration': '05:00',
+    'seqNo': 1,
+    courseId: 19
+  },
+  113: {
+    id: 113,
+    description: 'Setting Up Claude Code and Cursor for Angular Development',
+    'duration': '08:00',
+    'seqNo': 2,
+    courseId: 19
+  },
+  114: {
+    id: 114,
+    description: 'Integrating OpenAI with Angular Services',
+    'duration': '10:00',
+    'seqNo': 3,
+    courseId: 19
+  },
+  115: {
+    id: 115,
+    description: 'Streaming AI Responses with Angular Signals',
+    'duration': '09:00',
+    'seqNo': 4,
+    courseId: 19
+  },
+  116: {
+    id: 116,
+    description: 'Building a Chat Interface with Angular Material',
+    'duration': '11:00',
+    'seqNo': 5,
+    courseId: 19
+  },
+  117: {
+    id: 117,
+    description: 'AI-Assisted Code Generation Workflows',
+    'duration': '07:00',
+    'seqNo': 6,
+    courseId: 19
+  },
+  118: {
+    id: 118,
+    description: 'Prompt Engineering for Angular Developers',
+    'duration': '08:00',
+    'seqNo': 7,
+    courseId: 19
+  },
+  119: {
+    id: 119,
+    description: 'Securing AI API Keys in Full-Stack Angular Apps',
+    'duration': '06:00',
+    'seqNo': 8,
+    courseId: 19
+  },
+  120: {
+    id: 120,
+    description: 'Testing AI-Powered Components',
+    'duration': '09:00',
+    'seqNo': 9,
+    courseId: 19
+  },
+  121: {
+    id: 121,
+    description: 'Deploying the Full-Stack AI Application',
+    'duration': '07:00',
+    'seqNo': 10,
+    courseId: 19
+  },
+
+
+  // Angular Testing In Depth (Signals Edition)
+
+  122: {
+    id: 122,
+    description: 'Testing Angular Signals - Introduction',
+    'duration': '05:30',
+    'seqNo': 1,
+    courseId: 20
+  },
+  123: {
+    id: 123,
+    description: 'Setting Up Vitest for Angular',
+    'duration': '07:00',
+    'seqNo': 2,
+    courseId: 20
+  },
+  124: {
+    id: 124,
+    description: 'Unit Testing Signal-Based Services',
+    'duration': '09:00',
+    'seqNo': 3,
+    courseId: 20
+  },
+  125: {
+    id: 125,
+    description: 'Testing Computed Signals and Effects',
+    'duration': '08:00',
+    'seqNo': 4,
+    courseId: 20
+  },
+  126: {
+    id: 126,
+    description: 'Component Testing with Signal Inputs',
+    'duration': '10:00',
+    'seqNo': 5,
+    courseId: 20
+  },
+  127: {
+    id: 127,
+    description: 'Testing Signal Forms',
+    'duration': '08:00',
+    'seqNo': 6,
+    courseId: 20
+  },
+  128: {
+    id: 128,
+    description: 'Router Testing with RouterTestingHarness',
+    'duration': '09:00',
+    'seqNo': 7,
+    courseId: 20
+  },
+  129: {
+    id: 129,
+    description: 'Mocking HTTP with provideHttpClientTesting',
+    'duration': '07:00',
+    'seqNo': 8,
+    courseId: 20
+  },
+  130: {
+    id: 130,
+    description: 'E2E Testing with Cypress and Angular',
+    'duration': '11:00',
+    'seqNo': 9,
+    courseId: 20
+  },
+  131: {
+    id: 131,
+    description: 'Continuous Integration and Coverage Reports',
+    'duration': '06:00',
+    'seqNo': 10,
+    courseId: 20
+  },
+
+
+  // Modern Angular With Signals
+
+  132: {
+    id: 132,
+    description: 'Why Signals? The Problem With RxJs State',
+    'duration': '06:00',
+    'seqNo': 1,
+    courseId: 21
+  },
+  133: {
+    id: 133,
+    description: 'Creating Writable Signals',
+    'duration': '07:00',
+    'seqNo': 2,
+    courseId: 21
+  },
+  134: {
+    id: 134,
+    description: 'Derived State with computed()',
+    'duration': '08:00',
+    'seqNo': 3,
+    courseId: 21
+  },
+  135: {
+    id: 135,
+    description: 'Reacting to Changes with effect()',
+    'duration': '07:00',
+    'seqNo': 4,
+    courseId: 21
+  },
+  136: {
+    id: 136,
+    description: 'Signal Inputs and Outputs',
+    'duration': '09:00',
+    'seqNo': 5,
+    courseId: 21
+  },
+  137: {
+    id: 137,
+    description: 'Async Data with resource() and httpResource()',
+    'duration': '10:00',
+    'seqNo': 6,
+    courseId: 21
+  },
+  138: {
+    id: 138,
+    description: 'Zoneless Change Detection',
+    'duration': '08:00',
+    'seqNo': 7,
+    courseId: 21
+  },
+  139: {
+    id: 139,
+    description: 'Bridging RxJs and Signals with toSignal()',
+    'duration': '07:00',
+    'seqNo': 8,
+    courseId: 21
+  },
+  140: {
+    id: 140,
+    description: 'linkedSignal() for Dependent State',
+    'duration': '08:00',
+    'seqNo': 9,
+    courseId: 21
+  },
+  141: {
+    id: 141,
+    description: 'Building a Complete Signal-Based Application',
+    'duration': '12:00',
+    'seqNo': 10,
+    courseId: 21
+  },
+
+
+  // Angular Forms In Depth
+
+  142: {
+    id: 142,
+    description: 'Angular Forms Overview - Template vs Reactive vs Signal',
+    'duration': '06:00',
+    'seqNo': 1,
+    courseId: 22
+  },
+  143: {
+    id: 143,
+    description: 'Signal Forms - form() and FormField',
+    'duration': '08:00',
+    'seqNo': 2,
+    courseId: 22
+  },
+  144: {
+    id: 144,
+    description: 'Built-In Validators with Signal Forms',
+    'duration': '07:00',
+    'seqNo': 3,
+    courseId: 22
+  },
+  145: {
+    id: 145,
+    description: 'Custom Validators',
+    'duration': '09:00',
+    'seqNo': 4,
+    courseId: 22
+  },
+  146: {
+    id: 146,
+    description: 'Form Submission and Error Handling',
+    'duration': '08:00',
+    'seqNo': 5,
+    courseId: 22
+  },
+  147: {
+    id: 147,
+    description: 'Dynamic Forms',
+    'duration': '10:00',
+    'seqNo': 6,
+    courseId: 22
+  },
+  148: {
+    id: 148,
+    description: 'Multi-Step Wizard Forms',
+    'duration': '11:00',
+    'seqNo': 7,
+    courseId: 22
+  },
+  149: {
+    id: 149,
+    description: 'Form Arrays and Nested Forms',
+    'duration': '09:00',
+    'seqNo': 8,
+    courseId: 22
+  },
+  150: {
+    id: 150,
+    description: 'Testing Angular Forms',
+    'duration': '08:00',
+    'seqNo': 9,
+    courseId: 22
+  },
+  151: {
+    id: 151,
+    description: 'Form Performance Optimization',
+    'duration': '07:00',
+    'seqNo': 10,
+    courseId: 22
+  },
+
+
+  // Angular Material In Depth
+
+  152: {
+    id: 152,
+    description: 'Angular Material Setup and Theming',
+    'duration': '07:00',
+    'seqNo': 1,
+    courseId: 23
+  },
+  153: {
+    id: 153,
+    description: 'Material Design Tokens and CSS Custom Properties',
+    'duration': '08:00',
+    'seqNo': 2,
+    courseId: 23
+  },
+  154: {
+    id: 154,
+    description: 'Data Tables with MatTable and Signals',
+    'duration': '10:00',
+    'seqNo': 3,
+    courseId: 23
+  },
+  155: {
+    id: 155,
+    description: 'Dialogs, Drawers and Overlays',
+    'duration': '09:00',
+    'seqNo': 4,
+    courseId: 23
+  },
+  156: {
+    id: 156,
+    description: 'Form Controls - Autocomplete, Chips, Datepicker',
+    'duration': '11:00',
+    'seqNo': 5,
+    courseId: 23
+  },
+  157: {
+    id: 157,
+    description: 'Navigation Components - Sidenav, Toolbar, Tabs',
+    'duration': '08:00',
+    'seqNo': 6,
+    courseId: 23
+  },
+  158: {
+    id: 158,
+    description: 'Building Custom Material Components',
+    'duration': '12:00',
+    'seqNo': 7,
+    courseId: 23
+  },
+  159: {
+    id: 159,
+    description: 'Accessibility with Angular CDK',
+    'duration': '09:00',
+    'seqNo': 8,
+    courseId: 23
+  },
+  160: {
+    id: 160,
+    description: 'Angular CDK Virtual Scrolling and Drag & Drop',
+    'duration': '10:00',
+    'seqNo': 9,
+    courseId: 23
+  },
+  161: {
+    id: 161,
+    description: 'Testing Material Components with Component Harnesses',
+    'duration': '08:00',
+    'seqNo': 10,
+    courseId: 23
+  },
+
+
+  // Angular SSR In Depth
+
+  162: {
+    id: 162,
+    description: 'Introduction to Angular SSR',
+    'duration': '06:00',
+    'seqNo': 1,
+    courseId: 24
+  },
+  163: {
+    id: 163,
+    description: 'Setting Up SSR with Angular CLI',
+    'duration': '07:00',
+    'seqNo': 2,
+    courseId: 24
+  },
+  164: {
+    id: 164,
+    description: 'Understanding Hydration',
+    'duration': '09:00',
+    'seqNo': 3,
+    courseId: 24
+  },
+  165: {
+    id: 165,
+    description: 'Static Site Generation (SSG) and Prerendering',
+    'duration': '08:00',
+    'seqNo': 4,
+    courseId: 24
+  },
+  166: {
+    id: 166,
+    description: 'Defer and Partial Hydration',
+    'duration': '10:00',
+    'seqNo': 5,
+    courseId: 24
+  },
+  167: {
+    id: 167,
+    description: 'Server-Side Data Fetching with httpResource',
+    'duration': '09:00',
+    'seqNo': 6,
+    courseId: 24
+  },
+  168: {
+    id: 168,
+    description: 'SEO Optimization with Angular SSR',
+    'duration': '07:00',
+    'seqNo': 7,
+    courseId: 24
+  },
+  169: {
+    id: 169,
+    description: 'Deploying Angular SSR to Node and Edge',
+    'duration': '08:00',
+    'seqNo': 8,
+    courseId: 24
+  },
+  170: {
+    id: 170,
+    description: 'Performance Profiling and Core Web Vitals',
+    'duration': '09:00',
+    'seqNo': 9,
+    courseId: 24
+  },
+  171: {
+    id: 171,
+    description: 'SSR Security Considerations',
+    'duration': '06:00',
+    'seqNo': 10,
+    courseId: 24
+  },
+
+
+  // Firebase & AngularFire In Depth
+
+  172: {
+    id: 172,
+    description: 'Firebase and AngularFire Introduction',
+    'duration': '05:00',
+    'seqNo': 1,
+    courseId: 25
+  },
+  173: {
+    id: 173,
+    description: 'Firestore Real-Time Queries with Signals',
+    'duration': '09:00',
+    'seqNo': 2,
+    courseId: 25
+  },
+  174: {
+    id: 174,
+    description: 'Authentication with Firebase Auth and Angular Guards',
+    'duration': '10:00',
+    'seqNo': 3,
+    courseId: 25
+  },
+  175: {
+    id: 175,
+    description: 'Firebase Storage - Upload and Download Files',
+    'duration': '08:00',
+    'seqNo': 4,
+    courseId: 25
+  },
+  176: {
+    id: 176,
+    description: 'Cloud Functions and HTTP Triggers',
+    'duration': '11:00',
+    'seqNo': 5,
+    courseId: 25
+  },
+  177: {
+    id: 177,
+    description: 'Firebase Security Rules In Depth',
+    'duration': '09:00',
+    'seqNo': 6,
+    courseId: 25
+  },
+  178: {
+    id: 178,
+    description: 'Offline Support with Firestore Persistence',
+    'duration': '07:00',
+    'seqNo': 7,
+    courseId: 25
+  },
+  179: {
+    id: 179,
+    description: 'Firebase Performance Monitoring',
+    'duration': '06:00',
+    'seqNo': 8,
+    courseId: 25
+  },
+  180: {
+    id: 180,
+    description: 'Firebase Hosting and Deployment',
+    'duration': '07:00',
+    'seqNo': 9,
+    courseId: 25
+  },
+  181: {
+    id: 181,
+    description: 'Building a Full-Stack App with Firebase and Angular',
+    'duration': '12:00',
+    'seqNo': 10,
+    courseId: 25
+  },
+
+
+  // Typescript: The Ultimate Bootcamp
+
+  182: {
+    id: 182,
+    description: 'TypeScript Fundamentals - Types, Interfaces, Enums',
+    'duration': '07:00',
+    'seqNo': 1,
+    courseId: 26
+  },
+  183: {
+    id: 183,
+    description: 'Generics In Depth',
+    'duration': '09:00',
+    'seqNo': 2,
+    courseId: 26
+  },
+  184: {
+    id: 184,
+    description: 'Advanced Types - Union, Intersection, Conditional',
+    'duration': '10:00',
+    'seqNo': 3,
+    courseId: 26
+  },
+  185: {
+    id: 185,
+    description: 'Decorators and Metadata',
+    'duration': '08:00',
+    'seqNo': 4,
+    courseId: 26
+  },
+  186: {
+    id: 186,
+    description: 'TypeScript with Node - Building a REST API',
+    'duration': '11:00',
+    'seqNo': 5,
+    courseId: 26
+  },
+  187: {
+    id: 187,
+    description: 'TypeScript with React',
+    'duration': '09:00',
+    'seqNo': 6,
+    courseId: 26
+  },
+  188: {
+    id: 188,
+    description: 'TypeScript with Angular',
+    'duration': '08:00',
+    'seqNo': 7,
+    courseId: 26
+  },
+  189: {
+    id: 189,
+    description: 'Type-Safe Design Patterns',
+    'duration': '10:00',
+    'seqNo': 8,
+    courseId: 26
+  },
+  190: {
+    id: 190,
+    description: 'TypeScript Compiler Configuration and Project References',
+    'duration': '07:00',
+    'seqNo': 9,
+    courseId: 26
+  },
+  191: {
+    id: 191,
+    description: 'TypeScript Testing Best Practices',
+    'duration': '08:00',
+    'seqNo': 10,
+    courseId: 26
   }
 
 
