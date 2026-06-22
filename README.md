@@ -1,11 +1,13 @@
 
-## Angular Router In Depth Course
+## Angular Router In Depth (Signals Edition)
 
 This repository contains the code of the course [Angular Router In Depth](https://angular-university.io/course/angular-router-course).
 
-This course repository is updated to Angular v22.
+This course repository is updated to Angular v22, using standalone components, signals, zoneless change detection and Signal Forms.
 
-![Angular Router In Depth](https://angular-university.s3-us-west-1.amazonaws.com/course-images/angular-router-course.jpg)
+The `main` branch contains the final code, and the `1-start` branch contains the starting point of the course.
+
+![Angular Router In Depth](https://d3vigmphadbn9b.cloudfront.net/course-images/large-images/angular-router-in-depth.jpg)
 
 
 # Installation pre-requisites
@@ -21,20 +23,12 @@ With the following command the angular-cli will be installed globally in your ma
 
 # How To install this repository
 
-We can install the master branch using the following commands:
+We can install the main branch using the following commands:
 
-    git clone https://github.com/angular-university/angular-router-course.git
+    git clone https://github.com/angular-university/angular-router-signals-course.git
     
-This repository is made of several separate npm modules, that are installable separately. For example, to run the au-input module, we can do the following:
-    
-    cd angular-router-course
+    cd angular-router-signals-course
     npm install
-
-Its also possible to install the modules as usual using npm:
-
-    npm install 
-
-NPM 5 or above has the big advantage that if you use it you will be installing the exact same dependencies than I installed in my machine, so you wont run into issues caused by semantic versioning updates.
 
 This should take a couple of minutes. If there are issues, please post the complete error message in the Questions section of the course.
 
@@ -56,21 +50,22 @@ The application is visible at port 4200: [http://localhost:4200](http://localhos
 
 
 
-# Important 
+# Branch Structure
 
-This repository has multiple branches, have a look at the beginning of each section to see the name of the branch.
+This repository has two main branches:
 
-At certain points along the course, you will be asked to checkout other remote branches other than master. You can view all branches that you have available remotely using the following command:
+- **`main`** — contains the final, fully migrated code for the course (standalone components, signals, zoneless, Signal Forms)
+- **`1-start`** — contains the starting point of the course, before the migrations are applied
+
+To follow along from the beginning, checkout the starting branch:
+
+    git checkout 1-start
+
+You can view all available branches with:
 
     git branch -a
 
-  The remote branches have their starting in origin, such as for example 1-navigation-and-containers.
-
-We can checkout the remote branch and start tracking it with a local branch that has the same name, by using the following command:
-
-      git checkout -b section-1 origin/1-navigation-and-containers
-
-It's also possible to download a ZIP file for a given branch,  using the branch dropdown on this page on the top left, and then selecting the Clone or Download / Download as ZIP button.
+It's also possible to download a ZIP file for a given branch using the branch dropdown on this page, then selecting Code / Download ZIP.
 
 # Angular University Courses
 
@@ -124,11 +119,11 @@ Here is a list of all the courses of the Angular University.
 
 <img src="https://angular-university.s3-us-west-1.amazonaws.com/course-images/angular-forms-course-small.jpg" width="400" alt="Angular Forms In Depth">
 
-## Angular Router In Depth
+## Angular Router In Depth (Signals Edition)
 
-[Angular Router In Depth](https://angular-university.io/course/angular-router-course) — Build large-scale Single Page Applications with the powerful Angular Router.
+[Angular Router In Depth](https://angular-university.io/course/angular-router-course) — Build large-scale Single Page Applications with the powerful Angular Router, using modern signals and standalone architecture.
 
-<img src="https://angular-university.s3-us-west-1.amazonaws.com/course-images/angular-router-course.jpg" width="400" alt="Angular Router In Depth">
+<img src="https://d3vigmphadbn9b.cloudfront.net/course-images/large-images/angular-router-in-depth.jpg" width="400" alt="Angular Router In Depth">
 
 ## Reactive Angular Course
 
