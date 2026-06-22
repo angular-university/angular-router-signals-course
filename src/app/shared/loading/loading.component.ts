@@ -1,5 +1,4 @@
-import {Component, Input, OnInit, ChangeDetectionStrategy} from '@angular/core';
-import {Observable} from 'rxjs';
+import {Component, OnInit, ChangeDetectionStrategy, inject, input} from '@angular/core';
 import {LoadingService} from './loading.service';
 import {
     NavigationCancel,
@@ -10,51 +9,37 @@ import {
     RouteConfigLoadStart,
     Router
 } from '@angular/router';
+import {MatProgressSpinner} from '@angular/material/progress-spinner';
 
 @Component({
     selector: 'loading',
     templateUrl: './loading.component.html',
     styleUrls: ['./loading.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [MatProgressSpinner]
 })
 export class LoadingComponent implements OnInit {
+    private loadingService = inject(LoadingService);
+    private router = inject(Router);
 
-  @Input()
-  routing: boolean = false;
+    readonly detectRoutingOngoing = input(false);
 
-  @Input()
-  detectRoutingOngoing = false;
+    readonly loading = this.loadingService.loading;
 
-  constructor(
-      public loadingService: LoadingService,
-      private router: Router) {
-
-  }
-
-  ngOnInit() {
-
-      if (this.detectRoutingOngoing) {
-          this.router.events
-              .subscribe(
-                  event => {
-                      if (event instanceof NavigationStart
-                       || event instanceof RouteConfigLoadStart) {
-                        this.loadingService.loadingOn();
-                      }
-                      else if (
-                          event instanceof NavigationEnd ||
-                          event instanceof NavigationError ||
-                            event instanceof NavigationCancel ||
-                            event instanceof RouteConfigLoadEnd) {
-                          this.loadingService.loadingOff();
-
-                      }
-
-                  }
-              );
-      }
-  }
-
-
+    ngOnInit() {
+        if (this.detectRoutingOngoing()) {
+            this.router.events.subscribe(event => {
+                if (event instanceof NavigationStart || event instanceof RouteConfigLoadStart) {
+                    this.loadingService.loadingOn();
+                } else if (
+                    event instanceof NavigationEnd ||
+                    event instanceof NavigationError ||
+                    event instanceof NavigationCancel ||
+                    event instanceof RouteConfigLoadEnd
+                ) {
+                    this.loadingService.loadingOff();
+                }
+            });
+        }
+    }
 }

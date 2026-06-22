@@ -1,27 +1,26 @@
-import { Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject, input, output } from '@angular/core';
 import {Course} from '../model/course';
 import {MatDialog,  MatDialogConfig} from '@angular/material/dialog';
 import {CourseDialogComponent} from '../course-dialog/course-dialog.component';
-import {filter, tap} from 'rxjs/operators';
+import {filter, tap} from 'rxjs';
+import { MatCard, MatCardHeader, MatCardTitle, MatCardImage, MatCardContent, MatCardActions } from '@angular/material/card';
+import { MatButton } from '@angular/material/button';
+import { RouterLink } from '@angular/router';
 
 @Component({
     selector: 'courses-card-list',
     templateUrl: './courses-card-list.component.html',
     styleUrls: ['./courses-card-list.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [MatCard, MatCardHeader, MatCardTitle, MatCardImage, MatCardContent, MatCardActions, MatButton, RouterLink]
 })
 export class CoursesCardListComponent implements OnInit {
+  private dialog = inject(MatDialog);
 
-  @Input()
-  courses: Course[] = [];
 
-  @Output()
-  private coursesChanged = new EventEmitter();
+  readonly courses = input<Course[]>([]);
 
-  constructor(private dialog: MatDialog) {
-
-  }
+  readonly coursesChanged = output();
 
   ngOnInit() {
 

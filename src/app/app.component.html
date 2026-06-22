@@ -15,7 +15,7 @@
         <span>About</span>
       </a>
 
-      @if (auth.isLoggedOut$ | async) {
+      @if (auth.isLoggedOut()) {
         <a mat-button class="menu-item"
           routerLink="/login"
           routerLinkActive="menu-item-active">
@@ -26,14 +26,14 @@
 
     </div>
 
-    @if (auth.isLoggedIn$ | async) {
+    @if (auth.isLoggedIn()) {
       <a mat-button class="menu-item"
         [routerLink]="[{outlets: {chat: ['helpdesk-chat']}}]">
         <mat-icon>help</mat-icon>
       </a>
     }
 
-    @if (auth.isLoggedIn$ | async) {
+    @if (auth.isLoggedIn()) {
       <a mat-button class="menu-item" (click)="logout()">
         <mat-icon>exit_to_app</mat-icon>
         <span>Logout</span>
@@ -43,7 +43,7 @@
 
     <div class="filler"></div>
 
-    @if ((auth.user$ | async); as user) {
+    @if (auth.user(); as user) {
       <img class="profile-picture" [src]="user.pictureUrl">
     }
 
@@ -51,20 +51,12 @@
 
   </mat-toolbar>
 
-  <messages></messages>
+  <messages />
 
-  <loading [detectRoutingOngoing]="true"></loading>
+  <loading [detectRoutingOngoing]="true" />
 
-  <router-outlet></router-outlet>
+  <router-outlet />
 
 </mat-sidenav-container>
 
-<router-outlet name="chat"></router-outlet>
-
-
-
-
-
-
-
-
+<router-outlet name="chat" />

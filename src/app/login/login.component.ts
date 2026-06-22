@@ -1,53 +1,41 @@
-import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
-
-
+import {Component, ChangeDetectionStrategy, inject, signal} from '@angular/core';
+import {form, FormField, submit, required, email} from '@angular/forms/signals';
 import {Router} from '@angular/router';
 import {AuthStore} from '../services/auth.store';
+import {firstValueFrom} from 'rxjs';
+import {MatCard, MatCardTitle, MatCardContent} from '@angular/material/card';
+import {MatFormField, MatLabel, MatError} from '@angular/material/form-field';
+import {MatInput} from '@angular/material/input';
+import {MatButton} from '@angular/material/button';
 
 @Component({
     selector: 'login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [MatCard, MatCardTitle, MatCardContent, FormField, MatFormField, MatLabel, MatError, MatInput, MatButton]
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
+    private router = inject(Router);
+    private auth = inject(AuthStore);
 
-  form: UntypedFormGroup;
-
-  constructor(
-    private fb: UntypedFormBuilder,
-    private router: Router,
-    private auth: AuthStore) {
-
-    this.form = fb.group({
-      email: ['test@angular-university.io', [Validators.required]],
-      password: ['test', [Validators.required]]
+    protected readonly model = signal({
+        email: 'test@angular-university.io',
+        password: 'test'
     });
 
-  }
+    protected readonly loginForm = form(this.model, (s) => {
+        required(s.email, {message: 'Email is required'});
+        email(s.email, {message: 'Invalid email'});
+        required(s.password, {message: 'Password is required'});
+    });
 
-  ngOnInit() {
-
-  }
-
-  login() {
-
-    const val = this.form.value;
-
-    this.auth.login(val.email, val.password)
-        .subscribe(
-            () => {
-                this.router.navigateByUrl('/courses');
-            },
-            err => {
-                alert("Login failed!");
-            }
-        );
-
-
-
-  }
-
+    login() {
+        submit(this.loginForm, async () => {
+            await firstValueFrom(
+                this.auth.login(this.model().email, this.model().password)
+            );
+            this.router.navigateByUrl('/courses');
+        });
+    }
 }

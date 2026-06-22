@@ -14,7 +14,7 @@ import {
   AsyncSubject,
   ReplaySubject, from
 } from 'rxjs';
-import {delayWhen, filter, map, take, timeout} from 'rxjs/operators';
+import {delayWhen, filter, map, take, timeout} from 'rxjs';
 
 
 
@@ -22,8 +22,7 @@ import {delayWhen, filter, map, take, timeout} from 'rxjs/operators';
     selector: 'about',
     templateUrl: './about.component.html',
     styleUrls: ['./about.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AboutComponent implements OnInit {
 

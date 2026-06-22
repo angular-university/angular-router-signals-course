@@ -1,18 +1,16 @@
-import {Injectable} from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Observable,of} from 'rxjs';
-import {map, shareReplay} from 'rxjs/operators';
+import {map, shareReplay} from 'rxjs';
 import {Course} from "../model/course";
 import {LessonDetail} from "../model/lesson-detail";
 import {LessonSummary} from "../model/lesson-summary";
 
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class CoursesService {
+    private http = inject(HttpClient);
 
-    constructor(private http:HttpClient) {
-
-    }
 
     loadCourseByUrl(courseUrl:string) {
        return this.http.get<Course>(`/api/courses/${courseUrl}`)

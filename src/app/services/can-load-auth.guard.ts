@@ -1,30 +1,9 @@
-import {Injectable} from '@angular/core';
+import {inject} from '@angular/core';
+import {CanMatchFn, Router} from '@angular/router';
 import {AuthStore} from './auth.store';
-import {CanLoad, Route, Router, UrlSegment} from '@angular/router';
-import {Observable} from 'rxjs';
-import {first, tap} from 'rxjs/operators';
 
-
-@Injectable()
-export class CanLoadAuthGuard implements CanLoad {
-
-
-    constructor(private auth: AuthStore, private router: Router) {
-
-    }
-
-    canLoad(route: Route, segments: UrlSegment[]): Observable<boolean>  {
-
-        return this.auth.isLoggedIn$
-            .pipe(
-                first(),
-                tap(loggedIn => {
-                    if (!loggedIn) {
-                        this.router.navigateByUrl('/login');
-                    }
-                })
-            );
-
-    }
-
-}
+export const canMatchAuth: CanMatchFn = () => {
+    const auth = inject(AuthStore);
+    const router = inject(Router);
+    return auth.isLoggedIn() ? true : router.parseUrl('/login');
+};

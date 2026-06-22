@@ -1,42 +1,12 @@
-import {Injectable} from '@angular/core';
+import {inject} from '@angular/core';
+import {CanActivateFn, CanActivateChildFn, Router} from '@angular/router';
 import {AuthStore} from './auth.store';
-import {ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
 
+const checkAuthenticated = () => {
+    const auth = inject(AuthStore);
+    const router = inject(Router);
+    return auth.isLoggedIn() ? true : router.parseUrl('/login');
+};
 
-@Injectable()
-export class AuthGuard implements CanActivate, CanActivateChild {
-
-    constructor(private auth:AuthStore,
-                private router:Router) {
-
-    }
-
-
-    canActivate(route: ActivatedRouteSnapshot,
-                state: RouterStateSnapshot):
-        Observable<boolean | UrlTree>  {
-
-        return this.checkIfAuthenticated();
-
-    }
-
-
-    canActivateChild(childRoute: ActivatedRouteSnapshot,
-                     state: RouterStateSnapshot):
-        Observable<boolean | UrlTree>   {
-
-        return this.checkIfAuthenticated();
-    }
-
-
-    private checkIfAuthenticated() {
-        return this.auth.isLoggedIn$
-            .pipe(
-                map(loggedIn =>
-                    loggedIn? true: this.router.parseUrl('/login') )
-            );
-    }
-
-}
+export const authGuard: CanActivateFn = () => checkAuthenticated();
+export const authGuardChild: CanActivateChildFn = () => checkAuthenticated();

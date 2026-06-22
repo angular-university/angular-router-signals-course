@@ -1,53 +1,36 @@
-import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy, inject, signal, DestroyRef} from '@angular/core';
 import {Course, sortCoursesBySeqNo} from '../model/course';
-import {Observable} from 'rxjs';
-import {CoursesService} from "../services/courses.service";
-import {map} from "rxjs/operators";
-import {LoadingService} from "../../shared/loading/loading.service";
-
+import {CoursesService} from '../services/courses.service';
+import {LoadingService} from '../../shared/loading/loading.service';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {MatTabGroup, MatTab} from '@angular/material/tabs';
+import {CoursesCardListComponent} from '../courses-card-list/courses-card-list.component';
 
 @Component({
     selector: 'home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [MatTabGroup, MatTab, CoursesCardListComponent]
 })
 export class HomeComponent implements OnInit {
+    private coursesService = inject(CoursesService);
+    private loadingService = inject(LoadingService);
+    private destroyRef = inject(DestroyRef);
 
-  beginnerCourses$: Observable<Course[]>;
+    readonly beginnerCourses = signal<Course[]>([]);
+    readonly advancedCourses = signal<Course[]>([]);
 
-  advancedCourses$: Observable<Course[]>;
+    ngOnInit() {
+        this.reloadCourses();
+    }
 
-  constructor(
-    private courses: CoursesService,
-    private loading: LoadingService) {
-
-  }
-
-  ngOnInit() {
-
-      this.reloadCourses();
-
-  }
-
-  reloadCourses() {
-
-    const courses$ = this.courses.loadAllCourses();
-
-      this.beginnerCourses$ = this.filterByCategory(courses$, "BEGINNER");
-
-      this.advancedCourses$ = this.filterByCategory(courses$, "ADVANCED");
-
-  }
-
-  filterByCategory(courses$: Observable<Course[]>, category:string) {
-    return this.loading.showLoaderUntilCompleted(courses$)
-      .pipe(
-        map(courses => courses.filter(course => course.category == category).sort(sortCoursesBySeqNo))
-      );
-  }
-
+    reloadCourses() {
+        this.loadingService.showLoaderUntilCompleted(this.coursesService.loadAllCourses())
+            .pipe(takeUntilDestroyed(this.destroyRef))
+            .subscribe(courses => {
+                this.beginnerCourses.set(courses.filter(c => c.category === 'BEGINNER').sort(sortCoursesBySeqNo));
+                this.advancedCourses.set(courses.filter(c => c.category === 'ADVANCED').sort(sortCoursesBySeqNo));
+            });
+    }
 }
-
-

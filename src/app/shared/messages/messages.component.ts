@@ -1,40 +1,29 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import {Observable} from 'rxjs';
-import {tap} from 'rxjs/operators';
+import {Component, ChangeDetectionStrategy, inject, signal, effect} from '@angular/core';
 import {MessagesService} from './messages.service';
+import {MatIcon} from '@angular/material/icon';
 
 @Component({
     selector: 'messages',
     templateUrl: './messages.component.html',
     styleUrls: ['./messages.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [MatIcon]
 })
-export class MessagesComponent implements OnInit {
+export class MessagesComponent {
+    private messagesService = inject(MessagesService);
 
-  showMessages = false;
+    readonly showMessages = signal(false);
+    readonly errors = this.messagesService.errors;
 
-  errors$: Observable<string[]>;
+    constructor() {
+        effect(() => {
+            if (this.errors().length > 0) {
+                this.showMessages.set(true);
+            }
+        });
+    }
 
-
-  constructor(public messagesService: MessagesService) {
-
-      console.log("Created messages component");
-
-  }
-
-  ngOnInit() {
-      this.errors$ = this.messagesService.errors$
-          .pipe(
-              tap(() => this.showMessages = true)
-          );
-
-  }
-
-
-  onClose() {
-      this.showMessages = false;
-
-  }
-
+    onClose() {
+        this.showMessages.set(false);
+    }
 }

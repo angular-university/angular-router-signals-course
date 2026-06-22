@@ -1,22 +1,11 @@
-import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable} from 'rxjs';
-import {filter} from 'rxjs/operators';
+import {Injectable, signal, computed} from '@angular/core';
 
-
-@Injectable({
-  providedIn: "root"
-})
+@Injectable({providedIn: 'root'})
 export class MessagesService {
-
-    private subject = new BehaviorSubject<string[]>([]);
-
-    errors$: Observable<string[]> = this.subject.asObservable()
-        .pipe(
-            filter(messages => messages && messages.length > 0)
-        );
+    private readonly _errors = signal<string[]>([]);
+    readonly errors = computed(() => this._errors().filter(e => e && e.length > 0));
 
     showErrors(...errors: string[]) {
-        this.subject.next(errors);
+        this._errors.set(errors);
     }
-
 }

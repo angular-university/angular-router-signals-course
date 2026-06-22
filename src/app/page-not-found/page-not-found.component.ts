@@ -14,7 +14,8 @@ import {
   AsyncSubject,
   ReplaySubject, from
 } from 'rxjs';
-import {delayWhen, filter, map, take, timeout} from 'rxjs/operators';
+import {delayWhen, filter, map, take, timeout} from 'rxjs';
+import { RouterLink } from '@angular/router';
 
 
 
@@ -22,8 +23,8 @@ import {delayWhen, filter, map, take, timeout} from 'rxjs/operators';
     selector: 'about',
     templateUrl: './page-not-found.component.html',
     styleUrls: ['./page-not-found.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [RouterLink]
 })
 export class PageNotFoundComponent implements OnInit {
 
