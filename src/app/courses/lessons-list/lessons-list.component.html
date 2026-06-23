@@ -4,7 +4,7 @@
         <h2>Course Lessons</h2>
     </div>
 
-    @if (lessons && lessons.length) {
+    @if (lessons().length) {
         <div class="lessons-table-wrap">
             <table class="lessons-table">
                 <thead>
@@ -15,7 +15,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @for (lesson of lessons; track lesson.seqNo) {
+                    @for (lesson of lessons(); track lesson.seqNo) {
                         <tr class="lesson-row" [routerLink]="['lessons', lesson.seqNo]">
                             <td class="col-seq">{{ lesson.seqNo }}</td>
                             <td class="col-desc">{{ lesson.description }}</td>

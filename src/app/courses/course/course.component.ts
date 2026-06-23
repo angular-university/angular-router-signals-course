@@ -1,45 +1,18 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { ActivatedRoute, RouterOutlet } from '@angular/router';
+import {Component, input} from '@angular/core';
+import {RouterOutlet} from '@angular/router';
 import {Course} from '../model/course';
-
 
 @Component({
     selector: 'course',
     templateUrl: './course.component.html',
     styleUrls: ['./course.component.css'],
-    imports: [RouterOutlet]
+    imports: [RouterOutlet],
 })
-export class CourseComponent implements OnInit {
-  private route = inject(ActivatedRoute);
+export class CourseComponent {
+    readonly course = input.required<Course>();
+    readonly couponCode = input<string>();
 
-
-  course:Course;
-
-  couponCode:string;
-
-
-  ngOnInit() {
-
-      this.course = this.route.snapshot.data["course"];
-
-      this.couponCode = this.route.snapshot.queryParamMap.get("couponCode");
-
-  }
-
-  confirmExit() {
-      return confirm(`Are you sure you want to exit ${this.course.description}?`)
-  }
-
-
+    confirmExit() {
+        return confirm(`Are you sure you want to exit ${this.course().description}?`);
+    }
 }
-
-
-
-
-
-
-
-
-
-
-

@@ -3,13 +3,11 @@
 
         <aside class="course-sidebar">
             <div class="course-hero">
-                @if (course) {
-                    <img class="course-image" [src]="course.iconUrl" [alt]="course.description">
-                }
-                <h1 class="course-title">{{ course?.description }}</h1>
-                @if (couponCode) {
+                <img class="course-image" [src]="course().iconUrl" [alt]="course().description">
+                <h1 class="course-title">{{ course().description }}</h1>
+                @if (couponCode()) {
                     <div class="coupon-badge">
-                        🎉 Use code <strong>{{ couponCode }}</strong> for a discount!
+                        🎉 Use code <strong>{{ couponCode() }}</strong> for a discount!
                     </div>
                 }
             </div>
