@@ -1,6 +1,6 @@
 import {inject} from '@angular/core';
 import {CanActivateFn, CanActivateChildFn, Router} from '@angular/router';
-import {AuthService} from './auth.store';
+import {AuthService} from './auth.service';
 
 const checkAuthenticated = () => {
     const auth = inject(AuthService);

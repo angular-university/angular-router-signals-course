@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {AuthService} from './services/auth.store';
+import {AuthService} from './services/auth.service';
 import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {MessagesComponent} from './shared/messages/messages.component';
 import {LoadingComponent} from './shared/loading/loading.component';

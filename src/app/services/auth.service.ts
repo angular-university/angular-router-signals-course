@@ -1,7 +1,7 @@
 import {Service, inject, signal, computed} from '@angular/core';
-import {User} from '../model/user';
 import {HttpClient} from '@angular/common/http';
-import {tap, shareReplay} from 'rxjs';
+import {firstValueFrom} from 'rxjs';
+import {User} from '../model/user';
 
 const AUTH_DATA = 'auth_data';
 
@@ -22,14 +22,12 @@ export class AuthService {
         }
     }
 
-    login(email: string, password: string) {
-        return this.http.post<User>('/api/login', {email, password}).pipe(
-            tap(user => {
-                this._user.set(user);
-                localStorage.setItem(AUTH_DATA, JSON.stringify(user));
-            }),
-            shareReplay()
+    async login(email: string, password: string) {
+        const user = await firstValueFrom(
+            this.http.post<User>('/api/login', {email, password})
         );
+        this._user.set(user);
+        localStorage.setItem(AUTH_DATA, JSON.stringify(user));
     }
 
     logout() {

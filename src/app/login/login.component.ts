@@ -1,8 +1,7 @@
 import {Component, inject, signal} from '@angular/core';
 import {form, FormField, submit, required, email} from '@angular/forms/signals';
 import {Router} from '@angular/router';
-import {AuthService} from '../services/auth.store';
-import {firstValueFrom} from 'rxjs';
+import {AuthService} from '../services/auth.service';
 
 @Component({
     selector: 'login',
@@ -27,9 +26,7 @@ export class LoginComponent {
 
     login() {
         submit(this.loginForm, async () => {
-            await firstValueFrom(
-                this.auth.login(this.model().email, this.model().password),
-            );
+            await this.auth.login(this.model().email, this.model().password);
             this.router.navigateByUrl('/courses');
         });
     }
