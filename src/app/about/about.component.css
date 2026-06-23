@@ -1,19 +1,55 @@
-
-.course-image {
-  max-width: 300px;
-  border-radius: 4px;
+.about-card {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    overflow: hidden;
 }
 
-
-.not-found {
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  font-family: "Roboto";
+@media (max-width: 640px) {
+    .about-card {
+        grid-template-columns: 1fr;
+    }
 }
 
+.about-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
 
-.about button {
-  max-width: 100px;
-  margin-top: 30px;
+.about-content {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+}
+
+.about-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--color-primary);
+    letter-spacing: -0.5px;
+    line-height: 1.25;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.edition-badge {
+    font-size: 13px;
+    font-weight: 700;
+    background: var(--color-accent);
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+}
+
+.about-description {
+    font-size: 16px;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    max-width: 560px;
 }

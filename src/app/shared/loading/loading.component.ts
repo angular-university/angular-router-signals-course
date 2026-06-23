@@ -7,23 +7,21 @@ import {
     NavigationStart,
     RouteConfigLoadEnd,
     RouteConfigLoadStart,
-    Router
+    Router,
 } from '@angular/router';
-import {MatProgressSpinner} from '@angular/material/progress-spinner';
 
 @Component({
     selector: 'loading',
     templateUrl: './loading.component.html',
     styleUrls: ['./loading.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [MatProgressSpinner]
+    imports: [],
 })
 export class LoadingComponent implements OnInit {
     private loadingService = inject(LoadingService);
     private router = inject(Router);
 
     readonly detectRoutingOngoing = input(false);
-
     readonly loading = this.loadingService.loading;
 
     ngOnInit() {

@@ -1,41 +1,95 @@
-
-body {
-    margin: 0;
+.top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--color-primary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
-main {
-    margin: 30px;
+.nav-inner {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 24px;
+    height: var(--nav-height);
+    display: flex;
+    align-items: center;
+    gap: 32px;
 }
 
-.user-avatar {
-  max-height: 35px;
-  border-radius: 4px;
-
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    flex-shrink: 0;
 }
 
-.toolbar-tools {
-  display: flex;
+.nav-brand:hover {
+    text-decoration: none;
 }
 
-
-.filler {
-  flex: 1 1 auto;
-  width: 100%;
+.brand-icon {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
 }
 
-.menu-item {
-  text-transform: uppercase;
-  cursor:pointer;
-}
-.menu-item.mdc-button {
-  min-width: max-content;
-}
-
-.menu-item.menu-item-active {
-  text-decoration: underline;
+.brand-text {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.2px;
 }
 
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 4px;
+    flex: 1;
+}
 
-.profile-picture {
-  max-height: 40px;
+.nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    letter-spacing: 0.2px;
+    transition: background var(--transition), color var(--transition);
+}
+
+.nav-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-link.active {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.15);
+    font-weight: 600;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.nav-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.app-main {
+    min-height: calc(100vh - var(--nav-height));
 }

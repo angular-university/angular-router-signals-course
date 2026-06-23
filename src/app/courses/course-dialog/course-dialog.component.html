@@ -1,55 +1,75 @@
-<h2 mat-dialog-title>{{course.description}}</h2>
+<div class="dialog-header">
+    <h2 class="dialog-title">{{ course.description }}</h2>
+    <button class="dialog-close" (click)="close()" title="Close" type="button">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+        </svg>
+    </button>
+</div>
 
 <loading />
-
 <messages />
 
-<mat-dialog-content>
+<div class="dialog-body">
 
-  <mat-form-field>
-    <mat-label>Course Description</mat-label>
-    <input matInput [formField]="courseForm.description">
-    @if (courseForm.description().touched() && courseForm.description().errors().length) {
-      <mat-error>{{ courseForm.description().errors()[0].message }}</mat-error>
-    }
-  </mat-form-field>
+    <div class="form-group">
+        <label for="desc">Course Description</label>
+        <input
+            id="desc"
+            type="text"
+            class="form-control"
+            [class.error]="courseForm.description().touched() && courseForm.description().errors().length"
+            [formField]="courseForm.description">
+        @if (courseForm.description().touched() && courseForm.description().errors().length) {
+            <span class="field-error">{{ courseForm.description().errors()[0].message }}</span>
+        }
+    </div>
 
-  <mat-form-field>
-    <mat-label>Category</mat-label>
-    <mat-select [formField]="courseForm.category">
-      <mat-option value="BEGINNER">Beginner</mat-option>
-      <mat-option value="INTERMEDIATE">Intermediate</mat-option>
-      <mat-option value="ADVANCED">Advanced</mat-option>
-    </mat-select>
-    @if (courseForm.category().touched() && courseForm.category().errors().length) {
-      <mat-error>{{ courseForm.category().errors()[0].message }}</mat-error>
-    }
-  </mat-form-field>
+    <div class="form-group">
+        <label for="category">Category</label>
+        <select
+            id="category"
+            class="form-control"
+            [class.error]="courseForm.category().touched() && courseForm.category().errors().length"
+            [formField]="courseForm.category">
+            <option value="">Select a category</option>
+            <option value="BEGINNER">Beginner</option>
+            <option value="INTERMEDIATE">Intermediate</option>
+            <option value="ADVANCED">Advanced</option>
+        </select>
+        @if (courseForm.category().touched() && courseForm.category().errors().length) {
+            <span class="field-error">{{ courseForm.category().errors()[0].message }}</span>
+        }
+    </div>
 
-  <mat-form-field>
-    <mat-label>Released At</mat-label>
-    <input matInput type="date" [formField]="courseForm.releasedAt">
-  </mat-form-field>
+    <div class="form-group">
+        <label for="released">Released At</label>
+        <input
+            id="released"
+            type="date"
+            class="form-control"
+            [formField]="courseForm.releasedAt">
+    </div>
 
-  <mat-form-field>
-    <mat-label>Description</mat-label>
-    <textarea matInput [formField]="courseForm.longDescription"></textarea>
-    @if (courseForm.longDescription().touched() && courseForm.longDescription().errors().length) {
-      <mat-error>{{ courseForm.longDescription().errors()[0].message }}</mat-error>
-    }
-  </mat-form-field>
+    <div class="form-group">
+        <label for="longDesc">Long Description</label>
+        <textarea
+            id="longDesc"
+            class="form-control"
+            rows="4"
+            [class.error]="courseForm.longDescription().touched() && courseForm.longDescription().errors().length"
+            [formField]="courseForm.longDescription"></textarea>
+        @if (courseForm.longDescription().touched() && courseForm.longDescription().errors().length) {
+            <span class="field-error">{{ courseForm.longDescription().errors()[0].message }}</span>
+        }
+    </div>
 
-</mat-dialog-content>
+</div>
 
-<mat-dialog-actions>
-
-  <button mat-raised-button (click)="close()">
-    Close
-  </button>
-
-  <button mat-raised-button color="primary" (click)="save()"
-          [disabled]="courseForm().invalid()">
-    Save
-  </button>
-
-</mat-dialog-actions>
+<div class="dialog-footer">
+    <button type="button" class="btn btn-secondary" (click)="close()">Cancel</button>
+    <button type="button" class="btn btn-primary" (click)="save()"
+            [disabled]="courseForm().invalid()">
+        Save Changes
+    </button>
+</div>

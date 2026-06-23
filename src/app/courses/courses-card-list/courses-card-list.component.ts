@@ -1,52 +1,36 @@
-import { Component, OnInit, ChangeDetectionStrategy, inject, input, output } from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy, inject, input, output} from '@angular/core';
 import {Course} from '../model/course';
-import {MatDialog,  MatDialogConfig} from '@angular/material/dialog';
+import {DialogService} from '../../shared/dialog/dialog.service';
 import {CourseDialogComponent} from '../course-dialog/course-dialog.component';
 import {filter, tap} from 'rxjs';
-import { MatCard, MatCardHeader, MatCardTitle, MatCardImage, MatCardContent, MatCardActions } from '@angular/material/card';
-import { MatButton } from '@angular/material/button';
-import { RouterLink } from '@angular/router';
+import {RouterLink} from '@angular/router';
 
 @Component({
     selector: 'courses-card-list',
     templateUrl: './courses-card-list.component.html',
     styleUrls: ['./courses-card-list.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [MatCard, MatCardHeader, MatCardTitle, MatCardImage, MatCardContent, MatCardActions, MatButton, RouterLink]
+    imports: [RouterLink],
 })
 export class CoursesCardListComponent implements OnInit {
-  private dialog = inject(MatDialog);
+    private dialog = inject(DialogService);
 
+    readonly courses = input<Course[]>([]);
+    readonly coursesChanged = output();
 
-  readonly courses = input<Course[]>([]);
-
-  readonly coursesChanged = output();
-
-  ngOnInit() {
-
-  }
+    ngOnInit() {}
 
     editCourse(course: Course) {
-
-        const dialogConfig = new MatDialogConfig();
-
-        dialogConfig.disableClose = true;
-        dialogConfig.autoFocus = true;
-        dialogConfig.width = "400px";
-
-        dialogConfig.data = course;
-
-        const dialogRef = this.dialog.open(CourseDialogComponent, dialogConfig);
+        const dialogRef = this.dialog.open(CourseDialogComponent, {
+            data: course,
+            width: '480px',
+        });
 
         dialogRef.afterClosed()
             .pipe(
                 filter(val => !!val),
-                tap(() => this.coursesChanged.emit())
-
+                tap(() => this.coursesChanged.emit()),
             )
             .subscribe();
-
-
     }
-
 }

@@ -3,17 +3,13 @@ import {form, FormField, submit, required, email} from '@angular/forms/signals';
 import {Router} from '@angular/router';
 import {AuthStore} from '../services/auth.store';
 import {firstValueFrom} from 'rxjs';
-import {MatCard, MatCardTitle, MatCardContent} from '@angular/material/card';
-import {MatFormField, MatLabel, MatError} from '@angular/material/form-field';
-import {MatInput} from '@angular/material/input';
-import {MatButton} from '@angular/material/button';
 
 @Component({
     selector: 'login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [MatCard, MatCardTitle, MatCardContent, FormField, MatFormField, MatLabel, MatError, MatInput, MatButton]
+    imports: [FormField],
 })
 export class LoginComponent {
     private router = inject(Router);
@@ -21,7 +17,7 @@ export class LoginComponent {
 
     protected readonly model = signal({
         email: 'test@angular-university.io',
-        password: 'test'
+        password: 'test',
     });
 
     protected readonly loginForm = form(this.model, (s) => {
@@ -33,7 +29,7 @@ export class LoginComponent {
     login() {
         submit(this.loginForm, async () => {
             await firstValueFrom(
-                this.auth.login(this.model().email, this.model().password)
+                this.auth.login(this.model().email, this.model().password),
             );
             this.router.navigateByUrl('/courses');
         });

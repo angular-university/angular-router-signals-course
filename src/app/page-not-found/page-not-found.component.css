@@ -1,19 +1,49 @@
-
-.course-image {
-  max-width: 300px;
-  border-radius: 4px;
+.not-found-card {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding: 60px;
+    max-width: 700px;
+    margin: 60px auto;
 }
 
-
-.not-found {
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  font-family: "Roboto";
+@media (max-width: 600px) {
+    .not-found-card {
+        flex-direction: column;
+        padding: 40px 24px;
+        text-align: center;
+    }
 }
 
+.not-found-img {
+    width: 180px;
+    flex-shrink: 0;
+}
 
-.about button {
-  max-width: 100px;
-  margin-top: 30px;
+.not-found-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.not-found-code {
+    font-size: 64px;
+    font-weight: 900;
+    color: var(--color-accent);
+    line-height: 1;
+    letter-spacing: -2px;
+}
+
+.not-found-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-primary);
+    letter-spacing: -0.3px;
+}
+
+.not-found-desc {
+    font-size: 15px;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: 8px;
 }

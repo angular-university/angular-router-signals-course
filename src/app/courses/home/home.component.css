@@ -1,11 +1,26 @@
-
-
-.courses-panel {
-    max-width: 400px;
-    margin: 0 auto;
+.hero {
+    margin-bottom: 48px;
+    text-align: center;
+    padding: 40px 0 20px;
 }
 
+.hero-title {
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--color-primary);
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
 
-.page-title {
-  font-family: "Roboto";
+.hero-subtitle {
+    font-size: 17px;
+    color: var(--color-text-muted);
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.course-section {
+    margin-bottom: 56px;
 }

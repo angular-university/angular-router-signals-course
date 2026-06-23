@@ -1,33 +1,23 @@
 import {Component, ChangeDetectionStrategy, inject, signal} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions} from '@angular/material/dialog';
+import {DIALOG_DATA, DialogRef} from '../../shared/dialog/dialog-tokens';
 import {Course} from '../model/course';
 import {form, FormField, submit, required} from '@angular/forms/signals';
 import {CoursesService} from '../services/courses.service';
 import {firstValueFrom} from 'rxjs';
 import {LoadingComponent} from '../../shared/loading/loading.component';
 import {MessagesComponent} from '../../shared/messages/messages.component';
-import {CdkScrollable} from '@angular/cdk/scrolling';
-import {MatFormField, MatLabel} from '@angular/material/form-field';
-import {MatInput} from '@angular/material/input';
-import {MatSelect, MatOption} from '@angular/material/select';
-import {MatButton} from '@angular/material/button';
 
 @Component({
     selector: 'course-dialog',
     templateUrl: './course-dialog.component.html',
     styleUrls: ['./course-dialog.component.css'],
-    providers: [],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        MatDialogTitle, LoadingComponent, MessagesComponent, CdkScrollable,
-        MatDialogContent, FormField, MatFormField, MatLabel, MatInput,
-        MatSelect, MatOption, MatDialogActions, MatButton
-    ]
+    imports: [LoadingComponent, MessagesComponent, FormField],
 })
 export class CourseDialogComponent {
-    private dialogRef = inject<MatDialogRef<CourseDialogComponent>>(MatDialogRef);
+    private dialogRef = inject(DialogRef);
     private coursesService = inject(CoursesService);
-    protected readonly course = inject<Course>(MAT_DIALOG_DATA);
+    protected readonly course = inject<Course>(DIALOG_DATA);
 
     protected readonly model = signal({
         description: this.course.description || '',

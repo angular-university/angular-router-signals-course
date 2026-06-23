@@ -1,22 +1,26 @@
-@for (course of courses(); track course) {
-  <mat-card
-    class="course-card mat-elevation-z10">
-    <mat-card-header>
-      <mat-card-title>{{course.description}}</mat-card-title>
-    </mat-card-header>
-    <img mat-card-image [src]="course.iconUrl">
-    <mat-card-content>
-      <p>{{course.longDescription}}</p>
-    </mat-card-content>
-    <mat-card-actions class="course-actions">
-      <button  mat-raised-button color="primary"
-        [routerLink]="[course.url]" [queryParams]="{couponCode: 'NEW_YEAR'}">
-        VIEW COURSE
-      </button>
-      <button mat-button mat-raised-button color="accent"
-        (click)="editCourse(course)">
-        EDIT
-      </button>
-    </mat-card-actions>
-  </mat-card>
-}
+<div class="courses-grid">
+    @for (course of courses(); track course.id) {
+        <article class="course-card">
+            <a [routerLink]="[course.url]" [queryParams]="{couponCode: 'NEW_YEAR'}" class="card-image-link">
+                <img class="card-image" [src]="course.iconUrl" [alt]="course.description">
+                <span class="card-category" [class.advanced]="course.category === 'ADVANCED'">
+                    {{ course.category === 'ADVANCED' ? 'Advanced' : 'Beginner' }}
+                </span>
+            </a>
+            <div class="card-body">
+                <h3 class="card-title">{{ course.description }}</h3>
+                <p class="card-description">{{ course.longDescription }}</p>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-primary btn-sm"
+                   [routerLink]="[course.url]"
+                   [queryParams]="{couponCode: 'NEW_YEAR'}">
+                    View Course
+                </a>
+                <button class="btn btn-secondary btn-sm" (click)="editCourse(course)">
+                    Edit
+                </button>
+            </div>
+        </article>
+    }
+</div>

@@ -1,13 +1,12 @@
 import {Component, ChangeDetectionStrategy, inject, signal, effect} from '@angular/core';
 import {MessagesService} from './messages.service';
-import {MatIcon} from '@angular/material/icon';
 
 @Component({
     selector: 'messages',
     templateUrl: './messages.component.html',
     styleUrls: ['./messages.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [MatIcon]
+    imports: [],
 })
 export class MessagesComponent {
     private messagesService = inject(MessagesService);

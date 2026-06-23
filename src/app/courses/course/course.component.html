@@ -1,31 +1,23 @@
-<ng-container>
+<div class="page-container">
+    <div class="course-layout">
 
-  <div class="course">
+        <aside class="course-sidebar">
+            <div class="course-hero">
+                @if (course) {
+                    <img class="course-image" [src]="course.iconUrl" [alt]="course.description">
+                }
+                <h1 class="course-title">{{ course?.description }}</h1>
+                @if (couponCode) {
+                    <div class="coupon-badge">
+                        🎉 Use code <strong>{{ couponCode }}</strong> for a discount!
+                    </div>
+                }
+            </div>
+        </aside>
 
-    <h2>{{course.description}}</h2>
+        <div class="course-content">
+            <router-outlet />
+        </div>
 
-    @if (couponCode) {
-      <h3 class="discount">
-        Use {{couponCode}} for a huge discount!
-      </h3>
-    }
-
-    @if (course) {
-      <img class="course-thumbnail" [src]="course.iconUrl">
-    }
-
-    <router-outlet />
-
-  </div>
-
-</ng-container>
-
-
-
-
-
-
-
-
-
-
+    </div>
+</div>

@@ -1,28 +1,55 @@
-<mat-card class="login-page">
-  <mat-card-title>Login</mat-card-title>
-  <mat-card-content>
-    <form class="login-form" (submit)="login(); $event.preventDefault()">
+<div class="login-page">
+    <div class="login-card">
 
-      <mat-form-field>
-        <mat-label>Email</mat-label>
-        <input matInput type="email" [formField]="loginForm.email">
-        @if (loginForm.email().touched() && loginForm.email().errors().length) {
-          <mat-error>{{ loginForm.email().errors()[0].message }}</mat-error>
-        }
-      </mat-form-field>
+        <div class="login-header">
+            <svg class="login-logo" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M18 2L3 7.5l2.5 22L18 34l12.5-4.5L33 7.5 18 2z" fill="#e43369"/>
+                <path d="M18 6.5l-9 18h3.4l1.8-4.5h7.6l1.8 4.5H27L18 6.5zm0 6l2.7 6h-5.4L18 12.5z" fill="white"/>
+            </svg>
+            <h1 class="login-title">Welcome back</h1>
+            <p class="login-subtitle">Sign in to your Angular University account</p>
+        </div>
 
-      <mat-form-field>
-        <mat-label>Password</mat-label>
-        <input matInput type="password" [formField]="loginForm.password">
-        @if (loginForm.password().touched() && loginForm.password().errors().length) {
-          <mat-error>{{ loginForm.password().errors()[0].message }}</mat-error>
-        }
-      </mat-form-field>
+        <form class="login-form" (submit)="login(); $event.preventDefault()">
 
-      <button mat-raised-button color="primary"
-              type="submit"
-              [disabled]="loginForm().invalid()">Login</button>
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input
+                    id="email"
+                    type="email"
+                    class="form-control"
+                    [class.error]="loginForm.email().touched() && loginForm.email().errors().length"
+                    [formField]="loginForm.email"
+                    placeholder="you@example.com"
+                    autocomplete="email">
+                @if (loginForm.email().touched() && loginForm.email().errors().length) {
+                    <span class="field-error">{{ loginForm.email().errors()[0].message }}</span>
+                }
+            </div>
 
-    </form>
-  </mat-card-content>
-</mat-card>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input
+                    id="password"
+                    type="password"
+                    class="form-control"
+                    [class.error]="loginForm.password().touched() && loginForm.password().errors().length"
+                    [formField]="loginForm.password"
+                    placeholder="••••••••"
+                    autocomplete="current-password">
+                @if (loginForm.password().touched() && loginForm.password().errors().length) {
+                    <span class="field-error">{{ loginForm.password().errors()[0].message }}</span>
+                }
+            </div>
+
+            <button
+                type="submit"
+                class="btn btn-primary login-btn"
+                [disabled]="loginForm().invalid()">
+                Sign in
+            </button>
+
+        </form>
+
+    </div>
+</div>

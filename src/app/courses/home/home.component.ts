@@ -3,7 +3,6 @@ import {Course, sortCoursesBySeqNo} from '../model/course';
 import {CoursesService} from '../services/courses.service';
 import {LoadingService} from '../../shared/loading/loading.service';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {MatTabGroup, MatTab} from '@angular/material/tabs';
 import {CoursesCardListComponent} from '../courses-card-list/courses-card-list.component';
 
 @Component({
@@ -11,7 +10,7 @@ import {CoursesCardListComponent} from '../courses-card-list/courses-card-list.c
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [MatTabGroup, MatTab, CoursesCardListComponent]
+    imports: [CoursesCardListComponent],
 })
 export class HomeComponent implements OnInit {
     private coursesService = inject(CoursesService);
@@ -29,8 +28,12 @@ export class HomeComponent implements OnInit {
         this.loadingService.showLoaderUntilCompleted(this.coursesService.loadAllCourses())
             .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe(courses => {
-                this.beginnerCourses.set(courses.filter(c => c.category === 'BEGINNER').sort(sortCoursesBySeqNo));
-                this.advancedCourses.set(courses.filter(c => c.category === 'ADVANCED').sort(sortCoursesBySeqNo));
+                this.beginnerCourses.set(
+                    courses.filter(c => c.category === 'BEGINNER').sort(sortCoursesBySeqNo),
+                );
+                this.advancedCourses.set(
+                    courses.filter(c => c.category === 'ADVANCED').sort(sortCoursesBySeqNo),
+                );
             });
     }
 }

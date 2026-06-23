@@ -1,20 +1,29 @@
+<div class="lessons-container">
+    <div class="section-heading">
+        <span class="heading-accent"></span>
+        <h2>Course Lessons</h2>
+    </div>
 
-<h3>All Lessons</h3>
-
-@if (lessons && lessons.length) {
-  <table class="lessons-table mat-elevation-z7">
-    <thead>
-      <th>#</th>
-      <th>Description</th>
-      <th>Duration</th>
-    </thead>
-    @for (lesson of lessons; track lesson) {
-      <tr class="lesson-row"
-        [routerLink]="['lessons', lesson.seqNo]">
-        <td class="seqno-cell">{{lesson.seqNo}}</td>
-        <td class="description-cell">{{lesson.description}}</td>
-        <td class="duration-cell">{{lesson.duration}}</td>
-      </tr>
+    @if (lessons && lessons.length) {
+        <div class="lessons-table-wrap">
+            <table class="lessons-table">
+                <thead>
+                    <tr>
+                        <th class="col-seq">#</th>
+                        <th class="col-desc">Lesson</th>
+                        <th class="col-dur">Duration</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (lesson of lessons; track lesson.seqNo) {
+                        <tr class="lesson-row" [routerLink]="['lessons', lesson.seqNo]">
+                            <td class="col-seq">{{ lesson.seqNo }}</td>
+                            <td class="col-desc">{{ lesson.description }}</td>
+                            <td class="col-dur">{{ lesson.duration }}</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     }
-  </table>
-}
+</div>

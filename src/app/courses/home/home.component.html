@@ -1,22 +1,32 @@
+<div class="page-container">
 
-<div class="courses-panel">
+    <div class="hero">
+        <h1 class="hero-title">All Courses</h1>
+        <p class="hero-subtitle">Learn modern Angular with signals, standalone components and zoneless architecture</p>
+    </div>
 
-    <h3 class="page-title">All Courses</h3>
+    @if (beginnerCourses().length > 0) {
+        <section class="course-section">
+            <div class="section-heading">
+                <span class="heading-accent"></span>
+                <h2>Beginner Courses</h2>
+            </div>
+            <courses-card-list
+                [courses]="beginnerCourses()"
+                (coursesChanged)="reloadCourses()" />
+        </section>
+    }
 
-    <mat-tab-group>
-
-        <mat-tab label="Beginners">
-
-            <courses-card-list [courses]="beginnerCourses()" (coursesChanged)="reloadCourses()" />
-
-        </mat-tab>
-
-        <mat-tab label="Advanced">
-
-            <courses-card-list [courses]="advancedCourses()" (coursesChanged)="reloadCourses()" />
-
-        </mat-tab>
-
-    </mat-tab-group>
+    @if (advancedCourses().length > 0) {
+        <section class="course-section">
+            <div class="section-heading">
+                <span class="heading-accent"></span>
+                <h2>Advanced Courses</h2>
+            </div>
+            <courses-card-list
+                [courses]="advancedCourses()"
+                (coursesChanged)="reloadCourses()" />
+        </section>
+    }
 
 </div>
