@@ -24,19 +24,7 @@ import {delayWhen, filter, map, take, timeout} from 'rxjs';
     styleUrls: ['./about.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AboutComponent implements OnInit {
-
-    ngOnInit() {
-
-
-    }
-
-
-  run() {
-
-
-
-  }
+export class AboutComponent  {
 
 
 }
