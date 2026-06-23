@@ -1,16 +1,19 @@
 .top-nav {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 100;
-    background: var(--color-primary);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    height: var(--nav-height);
+    background: #0f0f0f;
+    border-bottom: 1px solid #1d1d1d;
 }
 
 .nav-inner {
     max-width: var(--container-max);
     margin: 0 auto;
     padding: 0 24px;
-    height: var(--nav-height);
+    height: 100%;
     display: flex;
     align-items: center;
     gap: 32px;
@@ -46,6 +49,8 @@
     list-style: none;
     gap: 4px;
     flex: 1;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-link {
@@ -56,22 +61,23 @@
     border-radius: var(--radius-sm);
     font-size: 14px;
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.8);
+    color: #a0aab4;
     text-decoration: none;
-    letter-spacing: 0.2px;
-    transition: background var(--transition), color var(--transition);
+    transition: color var(--transition), background var(--transition);
+}
+
+.nav-link .material-icons {
+    font-size: 18px;
 }
 
 .nav-link:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: #1a1a1a;
     color: #fff;
     text-decoration: none;
 }
 
 .nav-link.active {
     color: #fff;
-    background: rgba(255, 255, 255, 0.15);
-    font-weight: 600;
 }
 
 .nav-actions {
@@ -87,9 +93,10 @@
     height: 36px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid rgba(255, 255, 255, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .app-main {
+    margin-top: var(--nav-height);
     min-height: calc(100vh - var(--nav-height));
 }

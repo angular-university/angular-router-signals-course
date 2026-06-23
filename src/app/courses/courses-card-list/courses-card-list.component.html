@@ -15,9 +15,11 @@
                 <a class="btn btn-primary btn-sm"
                    [routerLink]="[course.url]"
                    [queryParams]="{couponCode: 'NEW_YEAR'}">
+                    <span class="material-icons">play_arrow</span>
                     View Course
                 </a>
-                <button class="btn btn-secondary btn-sm" (click)="editCourse(course)">
+                <button class="btn btn-ghost btn-sm" (click)="editCourse(course)">
+                    <span class="material-icons">edit</span>
                     Edit
                 </button>
             </div>

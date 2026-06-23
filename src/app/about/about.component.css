@@ -1,55 +1,48 @@
 .about-card {
-    display: grid;
-    grid-template-columns: 300px 1fr;
+    max-width: 680px;
+    margin: 0 auto;
     overflow: hidden;
 }
 
-@media (max-width: 640px) {
-    .about-card {
-        grid-template-columns: 1fr;
-    }
-}
-
-.about-image {
+.course-hero {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
     display: block;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
 }
 
-.about-content {
-    padding: 40px;
+.about-body {
+    padding: 32px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
 }
 
 .about-title {
     font-size: 28px;
-    font-weight: 800;
-    color: var(--color-primary);
-    letter-spacing: -0.5px;
-    line-height: 1.25;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 10px;
+    font-weight: 700;
+    margin: 0;
+    color: var(--color-text);
 }
 
-.edition-badge {
+.about-subtitle {
     font-size: 13px;
-    font-weight: 700;
-    background: var(--color-accent);
-    color: #fff;
-    padding: 3px 10px;
-    border-radius: 20px;
-    letter-spacing: 0.3px;
+    color: var(--color-accent);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0;
 }
 
 .about-description {
-    font-size: 16px;
     color: var(--color-text-muted);
     line-height: 1.7;
-    max-width: 560px;
+    max-width: 480px;
+    margin: 8px 0 16px;
+}
+
+.about-body .material-icons {
+    font-size: 16px;
 }
