@@ -1,5 +1,5 @@
-import {Component, inject, input} from '@angular/core';
-import {Router, RouterLink} from '@angular/router';
+import {Component, input, computed} from '@angular/core';
+import {RouterLink} from '@angular/router';
 import {LessonDetail} from '../model/lesson-detail';
 import {SafeUrlPipe} from '../../shared/pipes/safe-url.pipe';
 
@@ -10,22 +10,20 @@ import {SafeUrlPipe} from '../../shared/pipes/safe-url.pipe';
     imports: [RouterLink, SafeUrlPipe],
 })
 export class LessonDetailComponent {
-    private router = inject(Router);
-
     readonly lesson = input<LessonDetail>();
     readonly courseUrl = input<string>();
 
-    previous() {
+    readonly prevLessonLink = computed(() => {
         const lesson = this.lesson();
-        if (lesson) {
-            this.router.navigate(['/courses', this.courseUrl(), 'lessons', lesson.seqNo - 1]);
-        }
-    }
+        return lesson && !lesson.first
+            ? ['/courses', this.courseUrl(), 'lessons', lesson.seqNo - 1]
+            : null;
+    });
 
-    next() {
+    readonly nextLessonLink = computed(() => {
         const lesson = this.lesson();
-        if (lesson) {
-            this.router.navigate(['/courses', this.courseUrl(), 'lessons', lesson.seqNo + 1]);
-        }
-    }
+        return lesson && !lesson.last
+            ? ['/courses', this.courseUrl(), 'lessons', lesson.seqNo + 1]
+            : null;
+    });
 }

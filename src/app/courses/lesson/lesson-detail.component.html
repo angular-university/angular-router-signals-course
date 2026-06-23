@@ -21,12 +21,12 @@
             </div>
 
             <div class="video-wrapper">
-                @if (!lesson.first) {
-                    <button class="nav-btn prev" (click)="previous()" title="Previous lesson" type="button">
+                @if (prevLessonLink(); as prevLink) {
+                    <a class="nav-btn prev" [routerLink]="prevLink" title="Previous lesson">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                             <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
                         </svg>
-                    </button>
+                    </a>
                 }
 
                 <div class="video-container">
@@ -39,12 +39,12 @@
                     </iframe>
                 </div>
 
-                @if (!lesson.last) {
-                    <button class="nav-btn next" (click)="next()" title="Next lesson" type="button">
+                @if (nextLessonLink(); as nextLink) {
+                    <a class="nav-btn next" [routerLink]="nextLink" title="Next lesson">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                             <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
                         </svg>
-                    </button>
+                    </a>
                 }
             </div>
         </div>
