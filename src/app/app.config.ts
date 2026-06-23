@@ -15,6 +15,5 @@ export const appConfig: ApplicationConfig = {
             withInMemoryScrolling({scrollPositionRestoration: 'enabled'})
         ),
         provideHttpClient(withInterceptorsFromDi()),
-        CustomPreloadingStrategy,
     ]
 };
