@@ -26,3 +26,12 @@
         </article>
     }
 </div>
+
+@if (editingCourse(); as course) {
+    <div class="au-dialog-overlay" (click)="onDialogClosed(false)">
+        <course-dialog
+            [course]="course"
+            (closed)="onDialogClosed($event)"
+            (click)="$event.stopPropagation()" />
+    </div>
+}

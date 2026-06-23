@@ -1,6 +1,5 @@
-import {Component, inject, input, output} from '@angular/core';
+import {Component, inject, input, output, signal} from '@angular/core';
 import {Course} from '../model/course';
-import {DialogService} from '../../shared/dialog/dialog.service';
 import {CourseDialogComponent} from '../course-dialog/course-dialog.component';
 import {RouterLink} from '@angular/router';
 
@@ -8,21 +7,20 @@ import {RouterLink} from '@angular/router';
     selector: 'courses-card-list',
     templateUrl: './courses-card-list.component.html',
     styleUrls: ['./courses-card-list.component.css'],
-    imports: [RouterLink],
+    imports: [RouterLink, CourseDialogComponent],
 })
 export class CoursesCardListComponent {
-    private dialog = inject(DialogService);
-
     readonly courses = input<Course[]>([]);
     readonly coursesChanged = output();
 
-    async editCourse(course: Course) {
-        const result = await this.dialog.open(CourseDialogComponent, {
-            data: course,
-            width: '480px',
-        });
-        if (result) {
-            this.coursesChanged.emit();
-        }
+    readonly editingCourse = signal<Course | null>(null);
+
+    editCourse(course: Course) {
+        this.editingCourse.set(course);
+    }
+
+    onDialogClosed(saved: boolean) {
+        this.editingCourse.set(null);
+        if (saved) this.coursesChanged.emit();
     }
 }

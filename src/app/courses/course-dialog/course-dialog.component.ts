@@ -1,5 +1,4 @@
-import {Component, inject, signal} from '@angular/core';
-import {DIALOG_DATA, DialogRef} from '../../shared/dialog/dialog-tokens';
+import {Component, inject, input, output, signal} from '@angular/core';
 import {Course} from '../model/course';
 import {form, FormField, submit, required} from '@angular/forms/signals';
 import {CoursesService} from '../services/courses.service';
@@ -13,15 +12,16 @@ import {MessagesComponent} from '../../shared/messages/messages.component';
     imports: [LoadingComponent, MessagesComponent, FormField],
 })
 export class CourseDialogComponent {
-    private dialogRef = inject(DialogRef);
     private coursesService = inject(CoursesService);
-    protected readonly course = inject<Course>(DIALOG_DATA);
+
+    readonly course = input.required<Course>();
+    readonly closed = output<boolean>();
 
     protected readonly model = signal({
-        description: this.course.description || '',
-        category: this.course.category || '',
+        description: '',
+        category: '',
         releasedAt: new Date().toISOString().split('T')[0],
-        longDescription: this.course.longDescription || '',
+        longDescription: '',
     });
 
     protected readonly courseForm = form(this.model, (s) => {
@@ -30,15 +30,24 @@ export class CourseDialogComponent {
         required(s.longDescription, {message: 'Long description is required'});
     });
 
+    constructor() {
+        const c = this.course();
+        this.model.set({
+            description: c.description || '',
+            category: c.category || '',
+            releasedAt: new Date().toISOString().split('T')[0],
+            longDescription: c.longDescription || '',
+        });
+    }
+
     save() {
         submit(this.courseForm, async () => {
-            const changes = this.model();
-            await this.coursesService.saveCourse(this.course.id, changes);
-            this.dialogRef.close(changes);
+            await this.coursesService.saveCourse(this.course().id, this.model());
+            this.closed.emit(true);
         });
     }
 
     close() {
-        this.dialogRef.close();
+        this.closed.emit(false);
     }
 }
