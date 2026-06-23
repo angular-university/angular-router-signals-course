@@ -3,7 +3,6 @@ import {DIALOG_DATA, DialogRef} from '../../shared/dialog/dialog-tokens';
 import {Course} from '../model/course';
 import {form, FormField, submit, required} from '@angular/forms/signals';
 import {CoursesService} from '../services/courses.service';
-import {firstValueFrom} from 'rxjs';
 import {LoadingComponent} from '../../shared/loading/loading.component';
 import {MessagesComponent} from '../../shared/messages/messages.component';
 
@@ -34,7 +33,7 @@ export class CourseDialogComponent {
     save() {
         submit(this.courseForm, async () => {
             const changes = this.model();
-            await firstValueFrom(this.coursesService.saveCourse(this.course.id, changes));
+            await this.coursesService.saveCourse(this.course.id, changes);
             this.dialogRef.close(changes);
         });
     }

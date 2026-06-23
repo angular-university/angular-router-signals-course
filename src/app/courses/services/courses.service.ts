@@ -1,6 +1,6 @@
 import {Service, inject, Signal} from '@angular/core';
 import {HttpClient, httpResource} from '@angular/common/http';
-import {map} from 'rxjs';
+import {firstValueFrom, map} from 'rxjs';
 import {Course} from '../model/course';
 import {LessonDetail} from '../model/lesson-detail';
 import {LessonSummary} from '../model/lesson-summary';
@@ -61,7 +61,7 @@ export class CoursesService {
         });
     }
 
-    saveCourse(courseId: string, changes: Partial<Course>) {
-        return this.http.put(`/api/courses/${courseId}`, changes);
+    async saveCourse(courseId: string, changes: Partial<Course>) {
+        await firstValueFrom(this.http.put(`/api/courses/${courseId}`, changes));
     }
 }
