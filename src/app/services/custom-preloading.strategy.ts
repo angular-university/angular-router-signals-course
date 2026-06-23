@@ -12,7 +12,7 @@ export class CustomPreloadingStrategy implements PreloadingStrategy {
             return load();
         }
         else {
-            of(null);
+            return of(null);
         }
     }
 
