@@ -1,6 +1,6 @@
 import {Service, inject, Signal} from '@angular/core';
 import {HttpClient, httpResource} from '@angular/common/http';
-import {firstValueFrom, map} from 'rxjs';
+import {firstValueFrom} from 'rxjs';
 import {Course} from '../model/course';
 import {LessonDetail} from '../model/lesson-detail';
 import {LessonSummary} from '../model/lesson-summary';
@@ -44,21 +44,24 @@ export class CoursesService {
         });
     }
 
-    // Observable versions for use in resolvers (one-shot, not reactive)
-    loadCourseByUrl(courseUrl: string) {
-        return this.http.get<Course>(`/api/courses/${courseUrl}`);
+    // Async versions for use in resolvers (one-shot, not reactive)
+    async loadCourseByUrl(courseUrl: string) {
+        return firstValueFrom(this.http.get<Course>(`/api/courses/${courseUrl}`));
     }
 
-    loadAllCourseLessonsSummary(courseUrl: string) {
-        return this.http.get<{payload: LessonSummary[]}>('/api/lessons', {
-            params: {pageSize: '10000', courseUrl},
-        }).pipe(map(res => res.payload));
+    async loadAllCourseLessonsSummary(courseUrl: string) {
+        const res = await firstValueFrom(
+            this.http.get<{payload: LessonSummary[]}>('/api/lessons', {
+                params: {pageSize: '10000', courseUrl},
+            })
+        );
+        return res.payload;
     }
 
-    loadLessonDetail(courseUrl: string, lessonSeqNo: string) {
-        return this.http.get<LessonDetail>('/api/lesson-details', {
+    async loadLessonDetail(courseUrl: string, lessonSeqNo: string) {
+        return firstValueFrom(this.http.get<LessonDetail>('/api/lesson-details', {
             params: {courseUrl, lessonSeqNo},
-        });
+        }));
     }
 
     async saveCourse(courseId: string, changes: Partial<Course>) {
