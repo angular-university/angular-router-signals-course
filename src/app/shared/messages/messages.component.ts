@@ -1,11 +1,10 @@
-import {Component, ChangeDetectionStrategy, inject, signal, effect} from '@angular/core';
+import {Component, inject, signal, effect} from '@angular/core';
 import {MessagesService} from './messages.service';
 
 @Component({
     selector: 'messages',
     templateUrl: './messages.component.html',
     styleUrls: ['./messages.component.css'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [],
 })
 export class MessagesComponent {

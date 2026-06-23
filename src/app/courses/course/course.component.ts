@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import {Course} from '../model/course';
 
@@ -7,7 +7,6 @@ import {Course} from '../model/course';
     selector: 'course',
     templateUrl: './course.component.html',
     styleUrls: ['./course.component.css'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [RouterOutlet]
 })
 export class CourseComponent implements OnInit {

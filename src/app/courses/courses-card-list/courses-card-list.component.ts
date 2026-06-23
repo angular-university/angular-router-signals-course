@@ -1,4 +1,4 @@
-import {Component, OnInit, ChangeDetectionStrategy, inject, input, output} from '@angular/core';
+import {Component, OnInit, inject, input, output} from '@angular/core';
 import {Course} from '../model/course';
 import {DialogService} from '../../shared/dialog/dialog.service';
 import {CourseDialogComponent} from '../course-dialog/course-dialog.component';
@@ -9,7 +9,6 @@ import {RouterLink} from '@angular/router';
     selector: 'courses-card-list',
     templateUrl: './courses-card-list.component.html',
     styleUrls: ['./courses-card-list.component.css'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [RouterLink],
 })
 export class CoursesCardListComponent implements OnInit {

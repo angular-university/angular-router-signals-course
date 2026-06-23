@@ -1,4 +1,4 @@
-import {Component, OnInit, ChangeDetectionStrategy, inject, input} from '@angular/core';
+import {Component, OnInit, inject, input} from '@angular/core';
 import {LoadingService} from './loading.service';
 import {
     NavigationCancel,
@@ -14,7 +14,6 @@ import {
     selector: 'loading',
     templateUrl: './loading.component.html',
     styleUrls: ['./loading.component.css'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [],
 })
 export class LoadingComponent implements OnInit {

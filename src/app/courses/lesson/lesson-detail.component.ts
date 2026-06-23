@@ -1,4 +1,4 @@
-import {Component, ChangeDetectionStrategy, inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {LessonDetail} from '../model/lesson-detail';
 import {toSignal} from '@angular/core/rxjs-interop';
@@ -9,7 +9,6 @@ import {SafeUrlPipe} from '../../shared/pipes/safe-url.pipe';
     selector: 'lesson',
     templateUrl: './lesson-detail.component.html',
     styleUrls: ['./lesson-detail.component.css'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [RouterLink, SafeUrlPipe],
 })
 export class LessonDetailComponent {

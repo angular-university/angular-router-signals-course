@@ -1,4 +1,4 @@
-import {Component, OnInit, ChangeDetectionStrategy, inject, signal, DestroyRef} from '@angular/core';
+import {Component, OnInit, inject, signal, DestroyRef} from '@angular/core';
 import {Course, sortCoursesBySeqNo} from '../model/course';
 import {CoursesService} from '../services/courses.service';
 import {LoadingService} from '../../shared/loading/loading.service';
@@ -9,7 +9,6 @@ import {CoursesCardListComponent} from '../courses-card-list/courses-card-list.c
     selector: 'home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.css'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [CoursesCardListComponent],
 })
 export class HomeComponent implements OnInit {

@@ -1,4 +1,4 @@
-import {Component, ChangeDetectionStrategy, inject, signal} from '@angular/core';
+import {Component, inject, signal} from '@angular/core';
 import {DIALOG_DATA, DialogRef} from '../../shared/dialog/dialog-tokens';
 import {Course} from '../model/course';
 import {form, FormField, submit, required} from '@angular/forms/signals';
@@ -11,7 +11,6 @@ import {MessagesComponent} from '../../shared/messages/messages.component';
     selector: 'course-dialog',
     templateUrl: './course-dialog.component.html',
     styleUrls: ['./course-dialog.component.css'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [LoadingComponent, MessagesComponent, FormField],
 })
 export class CourseDialogComponent {

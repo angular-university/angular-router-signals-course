@@ -1,4 +1,4 @@
-import {Component, ChangeDetectionStrategy, inject, signal} from '@angular/core';
+import {Component, inject, signal} from '@angular/core';
 import {form, FormField, submit, required, email} from '@angular/forms/signals';
 import {Router} from '@angular/router';
 import {AuthStore} from '../services/auth.store';
@@ -8,7 +8,6 @@ import {firstValueFrom} from 'rxjs';
     selector: 'login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [FormField],
 })
 export class LoginComponent {
