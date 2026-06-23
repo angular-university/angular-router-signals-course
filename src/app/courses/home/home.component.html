@@ -9,28 +9,8 @@
         </div>
     </div>
 
-    @if (beginnerCourses().length > 0) {
-        <section class="course-section">
-            <div class="section-heading">
-                <span class="heading-accent"></span>
-                <h2>Beginner Courses</h2>
-            </div>
-            <courses-card-list
-                [courses]="beginnerCourses()"
-                (coursesChanged)="reloadCourses()" />
-        </section>
-    }
-
-    @if (advancedCourses().length > 0) {
-        <section class="course-section">
-            <div class="section-heading">
-                <span class="heading-accent"></span>
-                <h2>Advanced Courses</h2>
-            </div>
-            <courses-card-list
-                [courses]="advancedCourses()"
-                (coursesChanged)="reloadCourses()" />
-        </section>
-    }
+    <courses-card-list
+        [courses]="courses()"
+        (coursesChanged)="reloadCourses()" />
 
 </div>

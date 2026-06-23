@@ -16,8 +16,7 @@ export class HomeComponent implements OnInit {
     private loadingService = inject(LoadingService);
     private destroyRef = inject(DestroyRef);
 
-    readonly beginnerCourses = signal<Course[]>([]);
-    readonly advancedCourses = signal<Course[]>([]);
+    readonly courses = signal<Course[]>([]);
 
     ngOnInit() {
         this.reloadCourses();
@@ -27,12 +26,7 @@ export class HomeComponent implements OnInit {
         this.loadingService.showLoaderUntilCompleted(this.coursesService.loadAllCourses())
             .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe(courses => {
-                this.beginnerCourses.set(
-                    courses.filter(c => c.category === 'BEGINNER').sort(sortCoursesBySeqNo),
-                );
-                this.advancedCourses.set(
-                    courses.filter(c => c.category === 'ADVANCED').sort(sortCoursesBySeqNo),
-                );
+                this.courses.set(courses.sort(sortCoursesBySeqNo));
             });
     }
 }
