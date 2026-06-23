@@ -77,6 +77,12 @@ Here is a list of all the courses of the Angular University.
 
 <img src="https://angular-academy.s3.amazonaws.com/thumbnails/angular2-for-beginners-small-v2.png" width="400" alt="Angular For Beginners">
 
+## Angular Forms In Depth (Signals Edition)
+
+[Angular Forms In Depth - Signals Edition](https://angular-university.io/course/angular-signal-forms-course) — Build complex enterprise data forms with Angular Signal Forms.
+
+<img src="https://d3vigmphadbn9b.cloudfront.net/course-images/large-images/angular-forms-in-depth.jpg" width="400" alt="Angular Forms In Depth - Signals Edition">
+
 ## Angular AI In Depth (with Cursor and Claude Code)
 
 [Angular AI In Depth](https://angular-university.io/course/angular-ai-in-depth-course) — Build modern full-stack Angular applications with signals, standalone components, zoneless architecture, and OpenAI integration using Claude Code.
@@ -115,15 +121,15 @@ Here is a list of all the courses of the Angular University.
 
 ## Angular Forms In Depth
 
-[Angular Forms In Depth](https://angular-university.io/course/angular-forms-course) — Build complex enterprise data forms with the powerful Angular Forms module.
+[Angular Forms In Depth](https://angular-university.io/course/angular-forms-course) — Build complex enterprise data forms with template-driven and reactive forms.
 
 <img src="https://angular-university.s3-us-west-1.amazonaws.com/course-images/angular-forms-course-small.jpg" width="400" alt="Angular Forms In Depth">
 
-## Angular Router In Depth (Signals Edition)
+## Angular Router In Depth
 
-[Angular Router In Depth](https://angular-university.io/course/angular-router-course) — Build large-scale Single Page Applications with the powerful Angular Router, using modern signals and standalone architecture.
+[Angular Router In Depth](https://angular-university.io/course/angular-router-course) — Build large-scale Single Page Applications with the powerful Angular Router.
 
-<img src="https://d3vigmphadbn9b.cloudfront.net/course-images/large-images/angular-router-in-depth.jpg" width="400" alt="Angular Router In Depth">
+<img src="https://angular-university.s3-us-west-1.amazonaws.com/course-images/angular-router-course.jpg" width="400" alt="Angular Router In Depth">
 
 ## Reactive Angular Course
 
@@ -266,4 +272,3 @@ These courses are archived and replaced with newer versions, but are still acces
 [The Complete Typescript Course](https://angular-university.io/course/typescript-2-tutorial) — Complete Guide to Typescript From Scratch: Learn the language in-depth and use it to build a Node REST API.
 
 <img src="https://angular-academy.s3.amazonaws.com/thumbnails/typescript-2-small.png" width="400" alt="The Complete Typescript Course">
-
