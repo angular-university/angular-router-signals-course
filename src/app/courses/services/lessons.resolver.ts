@@ -1,8 +1,12 @@
 import {inject} from '@angular/core';
 import {ResolveFn, ActivatedRouteSnapshot} from '@angular/router';
+import {HttpClient} from '@angular/common/http';
+import {map} from 'rxjs';
 import {LessonSummary} from '../model/lesson-summary';
-import {CoursesService} from './courses.service';
 
-export const lessonsResolver: ResolveFn<LessonSummary[]> = (route: ActivatedRouteSnapshot) => {
-    return inject(CoursesService).loadAllCourseLessonsSummary(route.paramMap.get('courseUrl'));
+export const lessonsResolver: ResolveFn<LessonSummary[]> = (route) => {
+    const courseUrl = route.paramMap.get('courseUrl');
+    return inject(HttpClient).get<{payload: LessonSummary[]}>('/api/lessons', {
+        params: {pageSize: '10000', courseUrl},
+    }).pipe(map(res => res.payload));
 };

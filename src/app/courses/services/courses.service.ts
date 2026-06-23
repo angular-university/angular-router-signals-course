@@ -44,26 +44,6 @@ export class CoursesService {
         });
     }
 
-    // Async versions for use in resolvers (one-shot, not reactive)
-    async loadCourseByUrl(courseUrl: string) {
-        return firstValueFrom(this.http.get<Course>(`/api/courses/${courseUrl}`));
-    }
-
-    async loadAllCourseLessonsSummary(courseUrl: string) {
-        const res = await firstValueFrom(
-            this.http.get<{payload: LessonSummary[]}>('/api/lessons', {
-                params: {pageSize: '10000', courseUrl},
-            })
-        );
-        return res.payload;
-    }
-
-    async loadLessonDetail(courseUrl: string, lessonSeqNo: string) {
-        return firstValueFrom(this.http.get<LessonDetail>('/api/lesson-details', {
-            params: {courseUrl, lessonSeqNo},
-        }));
-    }
-
     async saveCourse(courseId: string, changes: Partial<Course>) {
         await firstValueFrom(this.http.put(`/api/courses/${courseId}`, changes));
     }
