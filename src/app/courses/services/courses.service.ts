@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Service, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Observable,of} from 'rxjs';
 import {map, shareReplay} from 'rxjs';
@@ -7,7 +7,7 @@ import {LessonDetail} from "../model/lesson-detail";
 import {LessonSummary} from "../model/lesson-summary";
 
 
-@Injectable({providedIn: 'root'})
+@Service()
 export class CoursesService {
     private http = inject(HttpClient);
 

@@ -1,5 +1,5 @@
 import {
-    Injectable,
+    Service,
     inject,
     createComponent,
     EnvironmentInjector,
@@ -19,7 +19,7 @@ export interface DialogHandle<R = any> {
     afterClosed(): Observable<R | undefined>;
 }
 
-@Injectable({providedIn: 'root'})
+@Service()
 export class DialogService {
     private readonly appRef = inject(ApplicationRef);
     private readonly envInjector = inject(EnvironmentInjector);

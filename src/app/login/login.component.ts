@@ -1,7 +1,7 @@
 import {Component, inject, signal} from '@angular/core';
 import {form, FormField, submit, required, email} from '@angular/forms/signals';
 import {Router} from '@angular/router';
-import {AuthStore} from '../services/auth.store';
+import {AuthService} from '../services/auth.store';
 import {firstValueFrom} from 'rxjs';
 
 @Component({
@@ -12,7 +12,7 @@ import {firstValueFrom} from 'rxjs';
 })
 export class LoginComponent {
     private router = inject(Router);
-    private auth = inject(AuthStore);
+    private auth = inject(AuthService);
 
     protected readonly model = signal({
         email: 'test@angular-university.io',

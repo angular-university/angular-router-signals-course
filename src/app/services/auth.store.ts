@@ -1,12 +1,12 @@
-import {Injectable, inject, signal, computed} from '@angular/core';
+import {Service, inject, signal, computed} from '@angular/core';
 import {User} from '../model/user';
 import {HttpClient} from '@angular/common/http';
 import {tap, shareReplay} from 'rxjs';
 
 const AUTH_DATA = 'auth_data';
 
-@Injectable({providedIn: 'root'})
-export class AuthStore {
+@Service()
+export class AuthService {
     private http = inject(HttpClient);
 
     private readonly _user = signal<User | null>(null);

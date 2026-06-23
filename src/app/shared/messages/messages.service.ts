@@ -1,6 +1,6 @@
-import {Injectable, signal, computed} from '@angular/core';
+import {Service, signal, computed} from '@angular/core';
 
-@Injectable({providedIn: 'root'})
+@Service()
 export class MessagesService {
     private readonly _errors = signal<string[]>([]);
     readonly errors = computed(() => this._errors().filter(e => e && e.length > 0));

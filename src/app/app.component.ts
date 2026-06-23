@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {AuthStore} from './services/auth.store';
+import {AuthService} from './services/auth.store';
 import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {MessagesComponent} from './shared/messages/messages.component';
 import {LoadingComponent} from './shared/loading/loading.component';
@@ -17,7 +17,7 @@ import {LoadingComponent} from './shared/loading/loading.component';
     ],
 })
 export class AppComponent {
-    readonly auth = inject(AuthStore);
+    readonly auth = inject(AuthService);
 
     logout() {
         this.auth.logout();

@@ -1,8 +1,8 @@
-import {Injectable, signal} from '@angular/core';
+import {Service, signal} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {concatMap, finalize, tap} from 'rxjs';
 
-@Injectable({providedIn: 'root'})
+@Service()
 export class LoadingService {
     private readonly _loading = signal(false);
     readonly loading = this._loading.asReadonly();
