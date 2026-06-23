@@ -7,8 +7,6 @@ import {ActivatedRoute, RouterLink} from '@angular/router';
     styleUrls: ['./chat.component.css'],
     imports: [RouterLink],
 })
-export class ChatComponent implements OnInit {
-    private route = inject(ActivatedRoute);
+export class ChatComponent  {
 
-    ngOnInit(): void {}
 }
