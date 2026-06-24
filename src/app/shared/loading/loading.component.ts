@@ -27,18 +27,13 @@ export class LoadingComponent {
 
     private readonly navStart = toSignal(
         this.router.events.pipe(
-            filter(e => e instanceof NavigationStart || e instanceof RouteConfigLoadStart)
+            filter(e => [NavigationStart, RouteConfigLoadStart].some(T => e instanceof T))
         )
     );
 
     private readonly navEnd = toSignal(
         this.router.events.pipe(
-            filter(e =>
-                e instanceof NavigationEnd ||
-                e instanceof NavigationError ||
-                e instanceof NavigationCancel ||
-                e instanceof RouteConfigLoadEnd
-            )
+            filter(e => [NavigationEnd, NavigationError, NavigationCancel, RouteConfigLoadEnd].some(T => e instanceof T))
         )
     );
 
