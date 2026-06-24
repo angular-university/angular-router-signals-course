@@ -1,5 +1,6 @@
 import {Component, inject, signal} from '@angular/core';
 import {form, FormField, submit, required, email} from '@angular/forms/signals';
+import {NgLogoComponent} from '../shared/ng-logo/ng-logo.component';
 import {Router} from '@angular/router';
 import {AuthService} from '../services/auth.service';
 
@@ -7,7 +8,7 @@ import {AuthService} from '../services/auth.service';
     selector: 'login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],
-    imports: [FormField],
+    imports: [FormField, NgLogoComponent],
 })
 export class LoginComponent {
     private router = inject(Router);

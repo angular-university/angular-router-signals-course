@@ -21,6 +21,10 @@
     text-decoration: none;
 }
 
+.back-link .material-icons {
+    font-size: 18px;
+}
+
 .lesson-card {
     background: var(--color-card);
     border: 1px solid var(--color-border);
@@ -58,6 +62,10 @@
     gap: 5px;
     font-size: 13px;
     color: var(--color-text-muted);
+}
+
+.lesson-duration .material-icons {
+    font-size: 15px;
 }
 
 .video-wrapper {
