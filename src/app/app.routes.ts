@@ -1,10 +1,4 @@
 import {Routes} from '@angular/router';
-import {authGuardChild} from './services/auth.guard';
-import {canMatchAuth} from './services/can-load-auth.guard';
-import {confirmExitGuard} from './services/confirm-exit.guard';
-import {courseResolver} from './courses/services/course.resolver';
-import {lessonsResolver} from './courses/services/lessons.resolver';
-import {lessonDetailResolver} from './courses/services/lesson-detail.resolver';
 
 export const routes: Routes = [
     {
@@ -14,33 +8,7 @@ export const routes: Routes = [
     },
     {
         path: 'courses',
-        children: [
-            {
-                path: '',
-                title: 'All Courses',
-                loadComponent: () => import('./courses/home/home.component').then(m => m.HomeComponent)
-            },
-            {
-                path: ':courseUrl',
-                loadComponent: () => import('./courses/course/course.component').then(m => m.CourseComponent),
-                canMatch: [canMatchAuth],
-                canActivateChild: [authGuardChild],
-                canDeactivate: [confirmExitGuard],
-                resolve: {course: courseResolver},
-                children: [
-                    {
-                        path: '',
-                        loadComponent: () => import('./courses/lessons-list/lessons-list.component').then(m => m.LessonsListComponent),
-                        resolve: {lessons: lessonsResolver}
-                    },
-                    {
-                        path: 'lessons/:lessonSeqNo',
-                        loadComponent: () => import('./courses/lesson/lesson-detail.component').then(m => m.LessonDetailComponent),
-                        resolve: {lesson: lessonDetailResolver}
-                    }
-                ]
-            }
-        ]
+        loadChildren: () => import('./courses/courses.routes').then(m => m.coursesRoutes)
     },
     {
         path: 'login',
