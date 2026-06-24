@@ -1,5 +1,5 @@
 import {Component, input, linkedSignal} from '@angular/core';
-import {RouterOutlet} from '@angular/router';
+import {RouterLink, RouterOutlet} from '@angular/router';
 import {form, FormField, required} from '@angular/forms/signals';
 import {Course} from '../model/course';
 import {ConfirmRouteExit} from '../../shared/confirm-dialog/confirm-route-exit';
@@ -8,7 +8,7 @@ import {ConfirmRouteExit} from '../../shared/confirm-dialog/confirm-route-exit';
     selector: 'course',
     templateUrl: './course.component.html',
     styleUrls: ['./course.component.css'],
-    imports: [RouterOutlet, FormField],
+    imports: [RouterOutlet, RouterLink, FormField],
 })
 export class CourseComponent implements ConfirmRouteExit {
     readonly course = input.required<Course>();
