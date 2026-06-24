@@ -6,7 +6,7 @@ import {courseResolver} from './courses/services/course.resolver';
 import {lessonsResolver} from './courses/services/lessons.resolver';
 import {lessonDetailResolver} from './courses/services/lesson-detail.resolver';
 
-export const APP_ROUTES: Routes = [
+export const routes: Routes = [
     {
         path: '',
         redirectTo: '/courses',
