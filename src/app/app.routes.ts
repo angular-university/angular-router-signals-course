@@ -22,7 +22,6 @@ export const routes: Routes = [
             },
             {
                 path: ':courseUrl',
-                title: 'Course Detail',
                 loadComponent: () => import('./courses/course/course.component').then(m => m.CourseComponent),
                 canMatch: [canMatchAuth],
                 canActivateChild: [authGuardChild],
@@ -36,7 +35,6 @@ export const routes: Routes = [
                     },
                     {
                         path: 'lessons/:lessonSeqNo',
-                        title: 'Lesson',
                         loadComponent: () => import('./courses/lesson/lesson-detail.component').then(m => m.LessonDetailComponent),
                         resolve: {lesson: lessonDetailResolver}
                     }

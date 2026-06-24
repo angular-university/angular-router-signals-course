@@ -1,5 +1,5 @@
 import {inject} from '@angular/core';
-import {ResolveFn, ActivatedRouteSnapshot} from '@angular/router';
+import {ResolveFn} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {Course} from '../model/course';
 

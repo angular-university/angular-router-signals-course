@@ -61,14 +61,14 @@
     gap: 6px;
     font-size: 14px;
     font-weight: 500;
-    color: var(--color-text-muted);
+    color: #60a5fa;
     text-decoration: none;
     transition: color var(--transition), gap var(--transition);
     margin-bottom: 20px;
 }
 
 .back-link:hover {
-    color: var(--color-text);
+    color: #93c5fd;
     gap: 10px;
     text-decoration: none;
 }

@@ -1,9 +1,7 @@
 import {ApplicationConfig, provideZonelessChangeDetection} from '@angular/core';
 import {
     provideRouter,
-    TitleStrategy,
     withComponentInputBinding,
-    withDebugTracing,
     withInMemoryScrolling,
     withPreloading,
     withRouterConfig,
@@ -12,7 +10,6 @@ import {
 import {provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
 import {routes} from './app.routes';
 import {CustomPreloadingStrategy} from './services/custom-preloading.strategy';
-import {AppTitleStrategy} from './services/app-title.strategy';
 
 export const appConfig: ApplicationConfig = {
     providers: [
@@ -24,9 +21,7 @@ export const appConfig: ApplicationConfig = {
             withRouterConfig({paramsInheritanceStrategy: 'always'}),
             withInMemoryScrolling({scrollPositionRestoration: 'enabled'}),
             withViewTransitions(),
-            // withDebugTracing(),
         ),
         provideHttpClient(withInterceptorsFromDi()),
-        {provide: TitleStrategy, useExisting: AppTitleStrategy},
     ]
 };
