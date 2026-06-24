@@ -1,6 +1,8 @@
-import {Component, input} from '@angular/core';
+import {Component, inject, input} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {Course} from '../model/course';
+import {ConfirmDialogService} from '../../shared/confirm-dialog/confirm-dialog.service';
+import {CanComponentDeactivate} from '../../shared/confirm-dialog/can-component-deactivate';
 
 @Component({
     selector: 'course',
@@ -8,11 +10,13 @@ import {Course} from '../model/course';
     styleUrls: ['./course.component.css'],
     imports: [RouterOutlet],
 })
-export class CourseComponent {
+export class CourseComponent implements CanComponentDeactivate {
+    private confirmDialog = inject(ConfirmDialogService);
+
     readonly course = input.required<Course>();
     readonly couponCode = input<string>();
 
-    confirmExit() {
-        return confirm(`Are you sure you want to exit ${this.course().description}?`);
+    async canDeactivate(): Promise<boolean> {
+        return this.confirmDialog.confirm(`Leave ${this.course().description}?`);
     }
 }

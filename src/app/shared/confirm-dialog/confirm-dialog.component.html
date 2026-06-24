@@ -1,0 +1,11 @@
+@if (confirmDialog.isOpen()) {
+    <div class="confirm-overlay" (click)="confirmDialog.answer(false)">
+        <div class="confirm-dialog" (click)="$event.stopPropagation()">
+            <p class="confirm-message">{{ confirmDialog.message() }}</p>
+            <div class="confirm-actions">
+                <button class="confirm-btn confirm-btn-ghost" (click)="confirmDialog.answer(false)">Stay</button>
+                <button class="confirm-btn confirm-btn-primary" (click)="confirmDialog.answer(true)">Leave</button>
+            </div>
+        </div>
+    </div>
+}
