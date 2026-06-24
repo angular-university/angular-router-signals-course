@@ -11,6 +11,19 @@
                     </div>
                 }
             </div>
+
+            <div class="edit-section">
+                <label class="edit-label" for="course-title">Edit Title</label>
+                <input id="course-title" type="text" class="form-control"
+                       [value]="titleModel()"
+                       (input)="onTitleInput($event)">
+                @if (hasUnsavedChanges()) {
+                    <p class="unsaved-hint">
+                        <span class="material-icons">edit</span>
+                        Unsaved changes
+                    </p>
+                }
+            </div>
         </aside>
 
         <div class="course-content">

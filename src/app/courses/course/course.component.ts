@@ -1,8 +1,7 @@
-import {Component, inject, input} from '@angular/core';
+import {Component, input, linkedSignal} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {Course} from '../model/course';
-import {ConfirmDialogService} from '../../shared/confirm-dialog/confirm-dialog.service';
-import {CanComponentDeactivate} from '../../shared/confirm-dialog/can-component-deactivate';
+import {ConfirmRouteExit} from '../../shared/confirm-dialog/confirm-route-exit';
 
 @Component({
     selector: 'course',
@@ -10,13 +9,17 @@ import {CanComponentDeactivate} from '../../shared/confirm-dialog/can-component-
     styleUrls: ['./course.component.css'],
     imports: [RouterOutlet],
 })
-export class CourseComponent implements CanComponentDeactivate {
-    private confirmDialog = inject(ConfirmDialogService);
-
+export class CourseComponent implements ConfirmRouteExit {
     readonly course = input.required<Course>();
     readonly couponCode = input<string>();
 
-    async canDeactivate(): Promise<boolean> {
-        return this.confirmDialog.confirm(`Leave ${this.course().description}?`);
+    protected readonly titleModel = linkedSignal(() => this.course().description);
+
+    hasUnsavedChanges(): boolean {
+        return this.titleModel() !== this.course().description;
+    }
+
+    protected onTitleInput(event: Event) {
+        this.titleModel.set((event.target as HTMLInputElement).value);
     }
 }
