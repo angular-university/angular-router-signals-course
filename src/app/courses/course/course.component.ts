@@ -1,5 +1,6 @@
 import {Component, input, linkedSignal} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
+import {form, FormField, required} from '@angular/forms/signals';
 import {Course} from '../model/course';
 import {ConfirmRouteExit} from '../../shared/confirm-dialog/confirm-route-exit';
 
@@ -7,19 +8,19 @@ import {ConfirmRouteExit} from '../../shared/confirm-dialog/confirm-route-exit';
     selector: 'course',
     templateUrl: './course.component.html',
     styleUrls: ['./course.component.css'],
-    imports: [RouterOutlet],
+    imports: [RouterOutlet, FormField],
 })
 export class CourseComponent implements ConfirmRouteExit {
     readonly course = input.required<Course>();
     readonly couponCode = input<string>();
 
-    protected readonly titleModel = linkedSignal(() => this.course().description);
+    protected readonly model = linkedSignal(() => ({title: this.course().description}));
 
-    hasUnsavedChanges(): boolean {
-        return this.titleModel() !== this.course().description;
-    }
+    protected readonly form = form(this.model, (s) => {
+        required(s.title, {message: 'Title is required'});
+    });
 
-    protected onTitleInput(event: Event) {
-        this.titleModel.set((event.target as HTMLInputElement).value);
+    hasUnsavedChanges() {
+        return this.form.title().dirty();
     }
 }

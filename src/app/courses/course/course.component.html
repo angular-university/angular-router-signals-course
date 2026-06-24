@@ -11,23 +11,27 @@
                     </div>
                 }
             </div>
-
-            <div class="edit-section">
-                <label class="edit-label" for="course-title">Edit Title</label>
-                <input id="course-title" type="text" class="form-control"
-                       [value]="titleModel()"
-                       (input)="onTitleInput($event)">
-                @if (hasUnsavedChanges()) {
-                    <p class="unsaved-hint">
-                        <span class="material-icons">edit</span>
-                        Unsaved changes
-                    </p>
-                }
-            </div>
         </aside>
 
         <div class="course-content">
+
+            <div class="title-edit-bar">
+                <label class="title-label" for="course-title">Course Title</label>
+                <div class="title-field-row">
+                    <input id="course-title" type="text" class="form-control"
+                           [formField]="form.title"
+                           placeholder="Course title">
+                    @if (form.title().dirty()) {
+                        <span class="unsaved-hint">
+                            <span class="material-icons">edit</span>
+                            Unsaved changes
+                        </span>
+                    }
+                </div>
+            </div>
+
             <router-outlet />
+
         </div>
 
     </div>
