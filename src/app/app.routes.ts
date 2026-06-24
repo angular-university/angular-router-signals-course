@@ -1,8 +1,10 @@
 import {Routes} from '@angular/router';
-import {LoginComponent} from './login/login.component';
-import {AboutComponent} from './about/about.component';
-import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
-import {ChatComponent} from './chat/chat.component';
+import {authGuardChild} from './services/auth.guard';
+import {canMatchAuth} from './services/can-load-auth.guard';
+import {confirmExitGuard} from './services/confirm-exit.guard';
+import {courseResolver} from './courses/services/course.resolver';
+import {lessonsResolver} from './courses/services/lessons.resolver';
+import {lessonDetailResolver} from './courses/services/lesson-detail.resolver';
 
 export const APP_ROUTES: Routes = [
     {
@@ -12,24 +14,48 @@ export const APP_ROUTES: Routes = [
     },
     {
         path: 'courses',
-        loadChildren: () => import('./courses/courses.routes').then(m => m.COURSES_ROUTES),
-        data: {preload: false}
+        children: [
+            {
+                path: '',
+                loadComponent: () => import('./courses/home/home.component').then(m => m.HomeComponent)
+            },
+            {
+                path: ':courseUrl',
+                loadComponent: () => import('./courses/course/course.component').then(m => m.CourseComponent),
+                canMatch: [canMatchAuth],
+                canActivateChild: [authGuardChild],
+                canDeactivate: [confirmExitGuard],
+                resolve: {course: courseResolver},
+                children: [
+                    {
+                        path: '',
+                        loadComponent: () => import('./courses/lessons-list/lessons-list.component').then(m => m.LessonsListComponent),
+                        resolve: {lessons: lessonsResolver}
+                    },
+                    {
+                        path: 'lessons/:lessonSeqNo',
+                        loadComponent: () => import('./courses/lesson/lesson-detail.component').then(m => m.LessonDetailComponent),
+                        resolve: {lesson: lessonDetailResolver}
+                    }
+                ]
+            }
+        ]
     },
     {
         path: 'login',
-        component: LoginComponent
+        loadComponent: () => import('./login/login.component').then(m => m.LoginComponent)
     },
     {
         path: 'about',
-        component: AboutComponent
+        loadComponent: () => import('./about/about.component').then(m => m.AboutComponent)
     },
     {
         path: 'helpdesk-chat',
-        component: ChatComponent,
+        loadComponent: () => import('./chat/chat.component').then(m => m.ChatComponent),
         outlet: 'chat'
     },
     {
         path: '**',
-        component: PageNotFoundComponent
+        loadComponent: () => import('./page-not-found/page-not-found.component').then(m => m.PageNotFoundComponent)
     }
 ];
