@@ -1,5 +1,6 @@
-import {Component, inject, input} from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {Component, effect, inject, input} from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
+import {filter} from 'rxjs';
 import {LoadingService} from './loading.service';
 import {
     NavigationCancel,
@@ -24,19 +25,36 @@ export class LoadingComponent {
     readonly detectRoutingOngoing = input(false);
     readonly loading = this.loadingService.loading;
 
+    private readonly navStart = toSignal(
+        this.router.events.pipe(
+            filter(e => e instanceof NavigationStart || e instanceof RouteConfigLoadStart)
+        )
+    );
+
+    private readonly navEnd = toSignal(
+        this.router.events.pipe(
+            filter(e =>
+                e instanceof NavigationEnd ||
+                e instanceof NavigationError ||
+                e instanceof NavigationCancel ||
+                e instanceof RouteConfigLoadEnd
+            )
+        )
+    );
+
     constructor() {
-        this.router.events.pipe(takeUntilDestroyed()).subscribe(event => {
-            if (!this.detectRoutingOngoing()) return;
-            if (event instanceof NavigationStart || event instanceof RouteConfigLoadStart) {
-                this.loadingService.loadingOn();
-            } else if (
-                event instanceof NavigationEnd ||
-                event instanceof NavigationError ||
-                event instanceof NavigationCancel ||
-                event instanceof RouteConfigLoadEnd
-            ) {
-                this.loadingService.loadingOff();
-            }
+        effect(() => {
+            const start = this.navStart();
+            const detect = this.detectRoutingOngoing();
+            if (!start || !detect) return;
+            this.loadingService.loadingOn();
+        });
+
+        effect(() => {
+            const end = this.navEnd();
+            const detect = this.detectRoutingOngoing();
+            if (!end || !detect) return;
+            this.loadingService.loadingOff();
         });
     }
 }

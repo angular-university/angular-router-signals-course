@@ -24,7 +24,7 @@ export const appConfig: ApplicationConfig = {
             withRouterConfig({paramsInheritanceStrategy: 'always'}),
             withInMemoryScrolling({scrollPositionRestoration: 'enabled'}),
             withViewTransitions(),
-            withDebugTracing(),
+            // withDebugTracing(),
         ),
         provideHttpClient(withInterceptorsFromDi()),
         {provide: TitleStrategy, useExisting: AppTitleStrategy},
