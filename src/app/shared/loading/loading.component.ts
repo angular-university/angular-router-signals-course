@@ -1,5 +1,5 @@
-import {Component, inject, input, effect} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
+import {Component, inject, input} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {LoadingService} from './loading.service';
 import {
     NavigationCancel,
@@ -24,12 +24,9 @@ export class LoadingComponent {
     readonly detectRoutingOngoing = input(false);
     readonly loading = this.loadingService.loading;
 
-    private routerEvent = toSignal(this.router.events);
-
     constructor() {
-        effect(() => {
+        this.router.events.pipe(takeUntilDestroyed()).subscribe(event => {
             if (!this.detectRoutingOngoing()) return;
-            const event = this.routerEvent();
             if (event instanceof NavigationStart || event instanceof RouteConfigLoadStart) {
                 this.loadingService.loadingOn();
             } else if (
