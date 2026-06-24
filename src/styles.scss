@@ -312,6 +312,29 @@ select.form-control option {
     to { transform: rotate(360deg); }
 }
 
+/* ─── View Transitions ───────────────────────────────────────── */
+
+@keyframes vt-slide-in {
+    from { opacity: 0; transform: translateY(10px); }
+}
+
+@keyframes vt-slide-out {
+    to { opacity: 0; transform: translateY(-6px); }
+}
+
+::view-transition-old(root) {
+    animation: 90ms ease-in both vt-slide-out;
+}
+
+::view-transition-new(root) {
+    animation: 150ms ease-out both vt-slide-in;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(root),
+    ::view-transition-new(root) { animation: none; }
+}
+
 /* ─── Utility ─────────────────────────────────────────────────── */
 
 .visually-hidden {

@@ -37,7 +37,7 @@ export function getCourseByUrl(req: Request, res: Response) {
 
         res.status(200).json(course);
 
-    }, 1000);
+    }, 1500);
 
 
 }
