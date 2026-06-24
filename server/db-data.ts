@@ -54,18 +54,6 @@ export const COURSES: any = {
 
   // ── Group 2: Signals Edition (coming soon) ─────────────────────────────────
 
-  22: {
-    id: 22,
-    description: 'Modern Angular With Signals',
-    longDescription: 'Learn Angular Signals from scratch — signal(), computed(), effect(), zoneless apps, and the NgRx Signal Store',
-    iconUrl: 'https://d3vigmphadbn9b.cloudfront.net/course-images/large-images/angular-signals-course.jpg',
-    category: 'BEGINNER',
-    lessonsCount: 10,
-    seqNo: 4,
-    url: 'angular-signals-course',
-    price: 50
-  },
-
   23: {
     id: 23,
     description: 'Angular For Beginners (Signals Edition)',
@@ -73,7 +61,7 @@ export const COURSES: any = {
     iconUrl: 'https://d3vigmphadbn9b.cloudfront.net/course-images/large-images/angular-for-beginners.jpg',
     category: 'BEGINNER',
     lessonsCount: 10,
-    seqNo: 5,
+    seqNo: 4,
     url: 'angular-beginners-signals-course',
     price: 50
   },
@@ -85,8 +73,20 @@ export const COURSES: any = {
     iconUrl: 'https://d3vigmphadbn9b.cloudfront.net/course-images/large-images/angular-in-depth-with-signals.jpg',
     category: 'BEGINNER',
     lessonsCount: 10,
-    seqNo: 6,
+    seqNo: 5,
     url: 'angular-in-depth-signals-course',
+    price: 50
+  },
+
+  22: {
+    id: 22,
+    description: 'Modern Angular With Signals',
+    longDescription: 'Learn Angular Signals from scratch — signal(), computed(), effect(), zoneless apps, and the NgRx Signal Store',
+    iconUrl: 'https://d3vigmphadbn9b.cloudfront.net/course-images/large-images/angular-signals-course.jpg',
+    category: 'BEGINNER',
+    lessonsCount: 10,
+    seqNo: 6,
+    url: 'angular-signals-course',
     price: 50
   },
 
