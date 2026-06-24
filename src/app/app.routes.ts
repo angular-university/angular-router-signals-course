@@ -17,10 +17,12 @@ export const routes: Routes = [
         children: [
             {
                 path: '',
+                title: 'All Courses',
                 loadComponent: () => import('./courses/home/home.component').then(m => m.HomeComponent)
             },
             {
                 path: ':courseUrl',
+                title: 'Course Detail',
                 loadComponent: () => import('./courses/course/course.component').then(m => m.CourseComponent),
                 canMatch: [canMatchAuth],
                 canActivateChild: [authGuardChild],
@@ -34,6 +36,7 @@ export const routes: Routes = [
                     },
                     {
                         path: 'lessons/:lessonSeqNo',
+                        title: 'Lesson',
                         loadComponent: () => import('./courses/lesson/lesson-detail.component').then(m => m.LessonDetailComponent),
                         resolve: {lesson: lessonDetailResolver}
                     }
@@ -43,10 +46,14 @@ export const routes: Routes = [
     },
     {
         path: 'login',
+        title: 'Login',
+        data: {preload: true},
         loadComponent: () => import('./login/login.component').then(m => m.LoginComponent)
     },
     {
         path: 'about',
+        title: 'About',
+        data: {preload: false},
         loadComponent: () => import('./about/about.component').then(m => m.AboutComponent)
     },
     {
@@ -56,6 +63,7 @@ export const routes: Routes = [
     },
     {
         path: '**',
+        title: 'Page Not Found',
         loadComponent: () => import('./page-not-found/page-not-found.component').then(m => m.PageNotFoundComponent)
     }
 ];

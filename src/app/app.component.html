@@ -26,6 +26,7 @@
             <li>
                 <a class="nav-link" routerLink="/courses"
                    routerLinkActive="active"
+                   ariaCurrentWhenActive="page"
                    [routerLinkActiveOptions]="{exact: true}">
                     <span class="material-icons">grid_view</span>
                     Courses
@@ -33,7 +34,8 @@
             </li>
             <li>
                 <a class="nav-link" routerLink="/about"
-                   routerLinkActive="active">
+                   routerLinkActive="active"
+                   ariaCurrentWhenActive="page">
                     <span class="material-icons">info</span>
                     About
                 </a>
@@ -41,7 +43,8 @@
             @if (auth.isLoggedOut()) {
                 <li>
                     <a class="nav-link" routerLink="/login"
-                       routerLinkActive="active">
+                       routerLinkActive="active"
+                       ariaCurrentWhenActive="page">
                         <span class="material-icons">person</span>
                         Login
                     </a>
