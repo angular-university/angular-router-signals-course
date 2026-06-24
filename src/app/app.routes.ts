@@ -7,6 +7,10 @@ export const routes: Routes = [
         pathMatch: 'full'
     },
     {
+        path: 'course-page/:courseUrl',
+        redirectTo: ({params}) => `/courses/${params['courseUrl']}`
+    },
+    {
         path: 'courses',
         loadChildren: () => import('./courses/courses.routes').then(m => m.coursesRoutes)
     },
