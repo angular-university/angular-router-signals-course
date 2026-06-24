@@ -9,7 +9,7 @@ export class AppTitleStrategy extends TitleStrategy {
     override updateTitle(snapshot: RouterStateSnapshot) {
         const title = this.buildTitle(snapshot);
         this.title.setTitle(
-            title ? `${title} — Angular Router In Depth` : 'Angular Router In Depth'
+            title ?? 'Angular Router In Depth'
         );
     }
 }

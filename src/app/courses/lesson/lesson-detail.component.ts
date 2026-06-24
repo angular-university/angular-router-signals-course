@@ -1,13 +1,11 @@
 import {Component, input, computed} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {LessonDetail} from '../model/lesson-detail';
-import {SafeUrlPipe} from '../../shared/pipes/safe-url.pipe';
-
 @Component({
     selector: 'lesson',
     templateUrl: './lesson-detail.component.html',
     styleUrls: ['./lesson-detail.component.css'],
-    imports: [RouterLink, SafeUrlPipe],
+    imports: [RouterLink],
 })
 export class LessonDetailComponent {
     readonly lesson = input<LessonDetail>();
