@@ -2,11 +2,13 @@ import {inject, Service} from '@angular/core';
 import {HttpClient, httpResource} from '@angular/common/http';
 import {firstValueFrom} from 'rxjs';
 
+type FeatureFlags = Record<string, boolean>;
+
 @Service()
 export class FeatureFlagService {
     private readonly http = inject(HttpClient);
 
-    private readonly flagsResource = httpResource<Record<string, boolean>>(
+    private readonly flagsResource = httpResource<FeatureFlags>(
         () => '/api/feature-flags'
     );
 
@@ -23,7 +25,7 @@ export class FeatureFlagService {
     async toggle(flag: string) {
         const current = this.flags() ?? {};
         const updated = {...current, [flag]: !current[flag]};
-        await firstValueFrom(this.http.put<Record<string, boolean>>('/api/feature-flags', updated));
+        await firstValueFrom(this.http.put<FeatureFlags>('/api/feature-flags', updated));
         this.flagsResource.reload();
     }
 }

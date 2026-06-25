@@ -1,7 +1,7 @@
 import {Service, inject, Signal} from '@angular/core';
 import {HttpClient, httpResource} from '@angular/common/http';
 import {firstValueFrom} from 'rxjs';
-import {Course} from '../model/course';
+import {Course, CoursesResponse} from '../model/course';
 import {LessonDetail} from '../model/lesson-detail';
 import {LessonsResponse, LessonSummary} from '../model/lesson-summary';
 
@@ -11,7 +11,7 @@ export class CoursesService {
 
     allCourses() {
         return httpResource<Course[]>(() => '/api/courses', {
-            parse: (res: {payload: Course[]}) => res.payload,
+            parse: (res) => (res as CoursesResponse).payload,
         });
     }
 
@@ -24,7 +24,7 @@ export class CoursesService {
             url: '/api/lessons',
             params: {pageSize: '10000', courseUrl: courseUrl()},
         }), {
-            parse: (res: LessonsResponse) => res.payload,
+            parse: (res) => (res as LessonsResponse).payload,
         });
     }
 
@@ -40,7 +40,7 @@ export class CoursesService {
             url: '/api/lessons',
             params: {filter: search(), pageSize: '100'},
         }), {
-            parse: (res: LessonsResponse) => res.payload,
+            parse: (res) => (res as LessonsResponse).payload,
         });
     }
 

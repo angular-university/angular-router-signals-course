@@ -1,3 +1,7 @@
+export type CoursesResponse = {
+    payload: Course[];
+}
+
 export type Course = {
     id: string;
     url: string;
