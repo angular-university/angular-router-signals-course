@@ -1,12 +1,14 @@
 import {inject} from '@angular/core';
 import {ResolveFn} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
-import {map} from 'rxjs';
+import {firstValueFrom} from 'rxjs';
 import {LessonSummary} from '../model/lesson-summary';
 
-export const lessonsResolver: ResolveFn<LessonSummary[]> = (route) => {
+export const lessonsResolver: ResolveFn<LessonSummary[]> = async (route) => {
+    const http = inject(HttpClient);
     const courseUrl = route.paramMap.get('courseUrl');
-    return inject(HttpClient)
-        .get<{payload: LessonSummary[]}>('/api/lessons', {params: {pageSize: '10000', courseUrl}})
-        .pipe(map(res => res.payload));
+    const res = await firstValueFrom(
+        http.get<{payload: LessonSummary[]}>('/api/lessons', {params: {pageSize: '10000', courseUrl}})
+    );
+    return res.payload;
 };
