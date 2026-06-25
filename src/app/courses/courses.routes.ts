@@ -20,6 +20,8 @@ export const coursesRoutes: Routes = [
         loadComponent: () => import('./home/home.component').then(m => m.HomeComponent)
     },
     {
+        // To match both /courses/18 and /courses/angular-router-course
+        //   matcher: courseMatcher
         path: ':courseUrl',
         loadComponent: () => import('./course/course.component').then(m => m.CourseComponent),
         canMatch: [canMatchAuth],

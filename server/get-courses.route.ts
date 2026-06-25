@@ -27,11 +27,13 @@ export function getAllCourses(req: Request, res: Response) {
 
 export function getCourseByUrl(req: Request, res: Response) {
 
-    const courseUrl = req.params["id"];
+    const ref = req.params["id"];
 
-    const courses:any = Object.values(COURSES);
+    const courses: any = Object.values(COURSES);
 
-    const course = courses.find(course => course.url == courseUrl);
+    const course = /^\d+$/.test(ref)
+        ? COURSES[Number(ref)]
+        : courses.find(c => c.url === ref);
 
     setTimeout(() => {
 
