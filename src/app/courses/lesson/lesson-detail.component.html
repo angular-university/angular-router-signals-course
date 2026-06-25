@@ -11,15 +11,21 @@
             <div class="lesson-header">
                 <span class="lesson-number">Lesson {{ lesson.seqNo }}</span>
                 <h2 class="lesson-title">{{ lesson.description }}</h2>
-                <span class="lesson-duration">
-                    <span class="material-icons" aria-hidden="true">schedule</span>
-                    {{ lesson.duration }}
-                </span>
+                <div class="lesson-header-row">
+                    <span class="lesson-duration">
+                        <span class="material-icons" aria-hidden="true">schedule</span>
+                        {{ lesson.duration }}
+                    </span>
+                    <button class="btn-reload" (click)="reloadLesson()" title="Reload lesson data">
+                        <span class="material-icons">refresh</span>
+                    </button>
+                </div>
             </div>
 
             <div class="video-wrapper">
-                @if (prevLessonLink(); as prevLink) {
-                    <a class="nav-btn prev" [routerLink]="prevLink" queryParamsHandling="preserve" title="Previous lesson">
+                @if (lesson.first === false) {
+                    <a class="nav-btn prev" [routerLink]="['..', lesson.seqNo - 1]" [relativeTo]="route"
+                       queryParamsHandling="preserve" title="Previous lesson">
                         <span class="material-icons" aria-hidden="true">chevron_left</span>
                     </a>
                 }
@@ -54,8 +60,9 @@
                     }
                 </div>
 
-                @if (nextLessonLink(); as nextLink) {
-                    <a class="nav-btn next" [routerLink]="nextLink" queryParamsHandling="preserve" title="Next lesson">
+                @if (lesson.last === false) {
+                    <a class="nav-btn next" [routerLink]="['..', lesson.seqNo + 1]" [relativeTo]="route"
+                       queryParamsHandling="preserve" title="Next lesson">
                         <span class="material-icons" aria-hidden="true">chevron_right</span>
                     </a>
                 }

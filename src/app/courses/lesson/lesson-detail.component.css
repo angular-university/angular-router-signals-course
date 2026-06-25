@@ -56,6 +56,12 @@
     line-height: 1.35;
 }
 
+.lesson-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .lesson-duration {
     display: inline-flex;
     align-items: center;
@@ -66,6 +72,27 @@
 
 .lesson-duration .material-icons {
     font-size: 15px;
+}
+
+.btn-reload {
+    display: inline-flex;
+    align-items: center;
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-muted);
+    padding: 3px 6px;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.btn-reload:hover {
+    color: var(--color-text);
+    border-color: var(--color-text-muted);
+}
+
+.btn-reload .material-icons {
+    font-size: 16px;
 }
 
 .video-wrapper {

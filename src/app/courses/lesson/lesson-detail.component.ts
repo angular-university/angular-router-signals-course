@@ -1,6 +1,5 @@
-import {Component, computed, effect, inject, input, OnDestroy, Signal} from '@angular/core';
-import {RouterLink} from '@angular/router';
-import {ROUTER_OUTLET_DATA} from '@angular/router';
+import {Component, effect, inject, input, OnDestroy, Signal} from '@angular/core';
+import {ActivatedRoute, Router, RouterLink, ROUTER_OUTLET_DATA} from '@angular/router';
 import {Title} from '@angular/platform-browser';
 import {LessonDetail} from '../model/lesson-detail';
 import {LessonProgressService} from '../services/lesson-progress.service';
@@ -15,6 +14,8 @@ import {CourseOutletData} from '../course/course.component';
 export class LessonDetailComponent implements OnDestroy {
     private readonly title = inject(Title);
     private readonly progress = inject(LessonProgressService);
+    protected readonly route = inject(ActivatedRoute);
+    private readonly router = inject(Router);
     protected readonly outletData = inject(ROUTER_OUTLET_DATA) as Signal<CourseOutletData>;
 
     readonly lesson = input<LessonDetail>();
@@ -31,19 +32,10 @@ export class LessonDetailComponent implements OnDestroy {
         });
     }
 
-    readonly prevLessonLink = computed(() => {
-        const lesson = this.lesson();
-        return lesson && !lesson.first
-            ? ['/courses', this.courseUrl(), 'lessons', lesson.seqNo - 1]
-            : null;
-    });
-
-    readonly nextLessonLink = computed(() => {
-        const lesson = this.lesson();
-        return lesson && !lesson.last
-            ? ['/courses', this.courseUrl(), 'lessons', lesson.seqNo + 1]
-            : null;
-    });
+    // onSameUrlNavigation per-navigation: re-runs guards and resolvers on same URL
+    reloadLesson() {
+        this.router.navigateByUrl(this.router.url, {onSameUrlNavigation: 'reload'});
+    }
 
     ngOnDestroy() {
         console.log('[LessonDetail] destroyed');
