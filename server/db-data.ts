@@ -593,6 +593,10 @@ export const LESSONS = {
 };
 
 
+export const FEATURE_FLAGS: Record<string, boolean> = {
+    'new-home': false
+};
+
 export const USERS = {
   1: {
     id: 1,

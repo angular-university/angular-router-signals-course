@@ -6,6 +6,7 @@ import {searchLessons} from "./search-lessons.route";
 import {saveCourse} from './save-course.route';
 import {loginUser} from './login.route';
 import {findLessonDetail} from "./get-lesson-detail.route";
+import {getFeatureFlags, saveFeatureFlags} from "./feature-flags.route";
 
 const bodyParser = require('body-parser');
 
@@ -28,6 +29,8 @@ app.route('/api/courses/:id').put(saveCourse);
 app.route('/api/login').post(loginUser);
 
 app.route('/api/lesson-details').get(findLessonDetail);
+
+app.route('/api/feature-flags').get(getFeatureFlags).put(saveFeatureFlags);
 
 const httpServer = app.listen(9000, () => {
     console.log("HTTP REST API Server running at http://localhost:" + httpServer.address()["port"]);

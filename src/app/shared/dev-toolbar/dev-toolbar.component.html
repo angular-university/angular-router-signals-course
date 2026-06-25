@@ -1,0 +1,11 @@
+<div class="dev-toolbar">
+    <span class="dev-toolbar-label">Feature Flags</span>
+    @for (flag of flags.keys(); track flag) {
+        <label class="flag-toggle">
+            <input type="checkbox"
+                   [checked]="flags.isEnabled(flag)"
+                   (change)="toggle(flag)" />
+            {{ flag }}
+        </label>
+    }
+</div>

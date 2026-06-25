@@ -5,6 +5,7 @@ import {MessagesComponent} from './shared/messages/messages.component';
 import {LoadingComponent} from './shared/loading/loading.component';
 import {ConfirmDialogComponent} from './shared/confirm-dialog/confirm-dialog.component';
 import {NgLogoComponent} from './shared/ng-logo/ng-logo.component';
+import {DevToolbarComponent} from './shared/dev-toolbar/dev-toolbar.component';
 
 @Component({
     selector: 'app-root',
@@ -18,6 +19,7 @@ import {NgLogoComponent} from './shared/ng-logo/ng-logo.component';
         LoadingComponent,
         ConfirmDialogComponent,
         NgLogoComponent,
+        DevToolbarComponent,
     ],
 })
 export class AppComponent {

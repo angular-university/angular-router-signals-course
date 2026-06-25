@@ -2,11 +2,17 @@ import {Routes} from '@angular/router';
 import {authGuardChild} from '../services/auth.guard';
 import {canMatchAuth} from '../services/can-load-auth.guard';
 import {confirmExitGuard} from '../services/confirm-exit.guard';
+import {featureFlagGuard} from '../services/feature-flag.guard';
 import {courseResolver} from './services/course.resolver';
 import {lessonsResolver} from './services/lessons.resolver';
 import {lessonDetailResolver} from './services/lesson-detail.resolver';
 
 export const coursesRoutes: Routes = [
+    {
+        path: '',
+        canMatch: [featureFlagGuard('new-home')],
+        loadComponent: () => import('./home-v2/home-v2.component').then(m => m.HomeV2Component)
+    },
     {
         path: '',
         title: 'All Courses',

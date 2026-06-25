@@ -1,0 +1,19 @@
+<div class="home-v2">
+    <div class="hero">
+        <h1 class="hero-title">Angular Router In Depth</h1>
+        <p class="hero-subtitle">Master modern Angular routing with signals, standalone components and zoneless change detection.</p>
+    </div>
+
+    <div class="course-list">
+        @for (course of courses(); track course.id) {
+            <a class="course-row" [routerLink]="['/courses', course.url]">
+                <img class="course-thumb" [src]="course.iconUrl" [alt]="course.description" />
+                <div class="course-info">
+                    <span class="course-title">{{ course.description }}</span>
+                    <span class="course-meta">{{ course.lessonsCount }} lessons</span>
+                </div>
+                <span class="material-icons arrow">chevron_right</span>
+            </a>
+        }
+    </div>
+</div>
