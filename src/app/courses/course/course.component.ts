@@ -37,6 +37,14 @@ export class CourseComponent implements OnDestroy {
         });
     }
 
+    onActivate(component: unknown) {
+        console.log('[Course outlet] activated:', (component as any)?.constructor?.name);
+    }
+
+    onDeactivate(component: unknown) {
+        console.log('[Course outlet] deactivated:', (component as any)?.constructor?.name);
+    }
+
     ngOnDestroy() {
         console.log('[Course] destroyed');
     }

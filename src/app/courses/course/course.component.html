@@ -38,7 +38,9 @@
                 All Courses
             </a>
 
-            <router-outlet [routerOutletData]="outletData()" />
+            <router-outlet [routerOutletData]="outletData()"
+                           (activate)="onActivate($event)"
+                           (deactivate)="onDeactivate($event)" />
 
         </div>
 
