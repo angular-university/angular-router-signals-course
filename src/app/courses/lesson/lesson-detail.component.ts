@@ -1,8 +1,10 @@
-import {Component, computed, effect, inject, input} from '@angular/core';
+import {Component, computed, effect, inject, input, Signal} from '@angular/core';
 import {RouterLink} from '@angular/router';
+import {ROUTER_OUTLET_DATA} from '@angular/router';
 import {Title} from '@angular/platform-browser';
 import {LessonDetail} from '../model/lesson-detail';
 import {LessonProgressService} from '../services/lesson-progress.service';
+import {CourseOutletData} from '../course/course.component';
 
 @Component({
     selector: 'lesson',
@@ -13,6 +15,7 @@ import {LessonProgressService} from '../services/lesson-progress.service';
 export class LessonDetailComponent {
     private readonly title = inject(Title);
     private readonly progress = inject(LessonProgressService);
+    protected readonly outletData = inject(ROUTER_OUTLET_DATA) as Signal<CourseOutletData>;
 
     readonly lesson = input<LessonDetail>();
     readonly courseUrl = input<string>();

@@ -11,6 +11,14 @@
                     </div>
                 }
 
+                <div class="course-settings">
+                    <button class="captions-toggle" [class.active]="captionsEnabled()"
+                            (click)="captionsEnabled.set(!captionsEnabled())">
+                        <span class="material-icons">closed_caption</span>
+                        Captions {{ captionsEnabled() ? 'On' : 'Off' }}
+                    </button>
+                </div>
+
                 <div class="course-progress">
                     <div class="course-progress-header">
                         <span class="course-progress-label">Your progress</span>
@@ -30,7 +38,7 @@
                 All Courses
             </a>
 
-            <router-outlet />
+            <router-outlet [routerOutletData]="outletData()" />
 
         </div>
 

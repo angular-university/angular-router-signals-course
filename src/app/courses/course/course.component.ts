@@ -1,8 +1,10 @@
-import {Component, computed, effect, inject, input} from '@angular/core';
+import {Component, computed, effect, inject, input, signal} from '@angular/core';
 import {RouterLink, RouterOutlet} from '@angular/router';
 import {Title} from '@angular/platform-browser';
 import {Course} from '../model/course';
 import {LessonProgressService} from '../services/lesson-progress.service';
+
+export type CourseOutletData = {captionsEnabled: boolean};
 
 @Component({
     selector: 'course',
@@ -16,6 +18,11 @@ export class CourseComponent {
 
     private readonly title = inject(Title);
     protected readonly progress = inject(LessonProgressService);
+
+    protected readonly captionsEnabled = signal(false);
+    protected readonly outletData = computed<CourseOutletData>(() => ({
+        captionsEnabled: this.captionsEnabled(),
+    }));
 
     protected readonly progressPercent = computed(() =>
         Math.round((this.progress.visitedCount() / this.course().lessonsCount) * 100)
