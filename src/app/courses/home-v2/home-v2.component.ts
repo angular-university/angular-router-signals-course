@@ -7,7 +7,7 @@ import {CoursesService} from '../services/courses.service';
     selector: 'home-v2',
     templateUrl: './home-v2.component.html',
     styleUrls: ['./home-v2.component.css'],
-    imports: [RouterLink],
+    imports: [],
 })
 export class HomeV2Component {
     private readonly coursesService = inject(CoursesService);

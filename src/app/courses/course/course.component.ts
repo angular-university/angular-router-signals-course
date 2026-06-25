@@ -10,7 +10,7 @@ export type CourseOutletData = {captionsEnabled: boolean};
     selector: 'course',
     templateUrl: './course.component.html',
     styleUrls: ['./course.component.css'],
-    imports: [RouterOutlet, RouterLink],
+    imports: [],
 })
 export class CourseComponent implements OnDestroy {
     readonly course = input.required<Course>();

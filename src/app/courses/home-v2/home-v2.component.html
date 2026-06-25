@@ -6,7 +6,7 @@
 
     <div class="course-list">
         @for (course of courses(); track course.id) {
-            <a class="course-row" [routerLink]="['/courses', course.url]">
+            <a class="course-row" href="">
                 <img class="course-thumb" [src]="course.iconUrl" [alt]="course.description" />
                 <div class="course-info">
                     <span class="course-title">{{ course.description }}</span>

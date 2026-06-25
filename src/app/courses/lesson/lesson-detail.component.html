@@ -1,8 +1,7 @@
 @if (lesson(); as lesson) {
     <div class="lesson-detail">
 
-        <a class="back-link" [routerLink]="['../..']"
-           queryParamsHandling="merge" [queryParams]="{lastLesson: lesson.seqNo}">
+        <a class="back-link" href="">
             <span class="material-icons" aria-hidden="true">arrow_back</span>
             Back to Lessons
         </a>
@@ -24,8 +23,7 @@
 
             <div class="video-wrapper">
                 @if (lesson.first === false) {
-                    <a class="nav-btn prev" [routerLink]="['..', lesson.seqNo - 1]" [relativeTo]="route"
-                       queryParamsHandling="preserve" title="Previous lesson">
+                    <a class="nav-btn prev" href="" title="Previous lesson">
                         <span class="material-icons" aria-hidden="true">chevron_left</span>
                     </a>
                 }
@@ -33,17 +31,10 @@
                 <div class="video-container">
                     <video-placeholder />
                     <p class="video-title">{{ lesson.description }}</p>
-                    @if (outletData()?.captionsEnabled) {
-                        <span class="cc-badge">
-                            <span class="material-icons">closed_caption</span>
-                            CC
-                        </span>
-                    }
                 </div>
 
                 @if (lesson.last === false) {
-                    <a class="nav-btn next" [routerLink]="['..', lesson.seqNo + 1]" [relativeTo]="route"
-                       queryParamsHandling="preserve" title="Next lesson">
+                    <a class="nav-btn next" href="" title="Next lesson">
                         <span class="material-icons" aria-hidden="true">chevron_right</span>
                     </a>
                 }

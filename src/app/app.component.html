@@ -1,33 +1,27 @@
 <header class="top-nav">
     <div class="nav-inner">
 
-        <a class="nav-brand" routerLink="/courses" [class.editing]="editingCourse()">
+        <a class="nav-brand" href="">
             <ng-logo [size]="28" class="brand-icon" />
             <span class="brand-text">Angular Router In Depth (Signals Edition)</span>
         </a>
 
         <ul class="nav-links">
             <li>
-                <a class="nav-link" routerLink="/courses"
-                   routerLinkActive="active"
-                   [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link" href="">
                     <span class="material-icons">grid_view</span>
                     Courses
                 </a>
             </li>
             <li>
-                <a class="nav-link" routerLink="/about"
-                   routerLinkActive="active"
-                   ariaCurrentWhenActive="page">
+                <a class="nav-link" href="">
                     <span class="material-icons">info</span>
                     About
                 </a>
             </li>
             @if (auth.isLoggedOut()) {
                 <li>
-                    <a class="nav-link" routerLink="/login"
-                       routerLinkActive="active"
-                       ariaCurrentWhenActive="page">
+                    <a class="nav-link" href="">
                         <span class="material-icons">person</span>
                         Login
                     </a>
@@ -37,8 +31,7 @@
 
         <div class="nav-actions">
             @if (auth.isLoggedIn()) {
-                <a class="btn-icon" title="Helpdesk Chat"
-                   [routerLink]="[{outlets: {chat: ['helpdesk-chat']}}]">
+                <a class="btn-icon" href="" title="Helpdesk Chat">
                     <span class="material-icons">chat_bubble</span>
                 </a>
             }
@@ -58,13 +51,11 @@
 </header>
 
 <messages />
-<loading [detectRoutingOngoing]="true" />
+<loading />
 <confirm-dialog />
 
 <main class="app-main">
-    <router-outlet (activate)="onActivate($event)" (deactivate)="onDeactivate($event)" />
+    <!-- router-outlet goes here -->
 </main>
-
-<router-outlet name="chat" />
 
 <dev-toolbar />

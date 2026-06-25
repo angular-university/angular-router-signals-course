@@ -33,14 +33,12 @@
 
         <div class="course-content">
 
-            <a class="back-link" routerLink="/courses">
+            <a class="back-link" href="">
                 <span class="material-icons" aria-hidden="true">arrow_back</span>
                 All Courses
             </a>
 
-            <router-outlet [routerOutletData]="outletData()"
-                           (activate)="onActivate($event)"
-                           (deactivate)="onDeactivate($event)" />
+            <!-- router-outlet goes here -->
 
         </div>
 

@@ -11,7 +11,6 @@ import {AuthService} from '../services/auth.service';
     imports: [FormField, NgLogoComponent],
 })
 export class LoginComponent {
-    private router = inject(Router);
     private auth = inject(AuthService);
 
     protected readonly model = signal({
@@ -28,9 +27,6 @@ export class LoginComponent {
     async login() {
         await submit(this.loginForm, async () => {
             await this.auth.login(this.model().email, this.model().password);
-            const state = this.router.lastSuccessfulNavigation()?.extras?.state ?? {};
-            const {returnUrl = '/courses'} = state;
-            await this.router.navigateByUrl(returnUrl, {replaceUrl: true});
         });
     }
 }

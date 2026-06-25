@@ -12,9 +12,6 @@ import {DevToolbarComponent} from './shared/dev-toolbar/dev-toolbar.component';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
     imports: [
-        RouterLink,
-        RouterLinkActive,
-        RouterOutlet,
         MessagesComponent,
         LoadingComponent,
         ConfirmDialogComponent,
@@ -24,8 +21,6 @@ import {DevToolbarComponent} from './shared/dev-toolbar/dev-toolbar.component';
 })
 export class AppComponent {
     readonly auth = inject(AuthService);
-
-    protected readonly editingCourse = isActive('/edit-course', inject(Router));
 
     onActivate(component: unknown) {
         console.log('[App outlet] activated:', component);

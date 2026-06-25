@@ -12,7 +12,6 @@ import {ConfirmRouteExit} from '../../shared/confirm-dialog/confirm-route-exit';
     imports: [FormField],
 })
 export class CourseEditComponent implements ConfirmRouteExit {
-    private readonly router = inject(Router);
     private readonly coursesService = inject(CoursesService);
 
     readonly course = input.required<Course>();
@@ -39,11 +38,8 @@ export class CourseEditComponent implements ConfirmRouteExit {
     save() {
         submit(this.courseForm, async () => {
             await this.coursesService.saveCourse(this.course().id, this.model());
-            this.router.navigate(['/courses', this.course().url], {info: {skipConfirm: true}});
         });
     }
 
-    cancel() {
-        this.router.navigate(['/courses']);
-    }
+    cancel() {}
 }

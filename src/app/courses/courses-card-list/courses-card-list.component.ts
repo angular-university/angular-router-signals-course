@@ -6,7 +6,7 @@ import {RouterLink} from '@angular/router';
     selector: 'courses-card-list',
     templateUrl: './courses-card-list.component.html',
     styleUrls: ['./courses-card-list.component.css'],
-    imports: [RouterLink],
+    imports: [],
 })
 export class CoursesCardListComponent {
     readonly courses = input<Course[]>([]);
