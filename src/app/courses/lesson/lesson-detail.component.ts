@@ -4,12 +4,13 @@ import {Title} from '@angular/platform-browser';
 import {LessonDetail} from '../model/lesson-detail';
 import {LessonProgressService} from '../services/lesson-progress.service';
 import {CourseOutletData} from '../course/course.component';
+import {VideoPlaceholderComponent} from '../../shared/video-placeholder/video-placeholder.component';
 
 @Component({
     selector: 'lesson',
     templateUrl: './lesson-detail.component.html',
     styleUrls: ['./lesson-detail.component.css'],
-    imports: [RouterLink],
+    imports: [RouterLink, VideoPlaceholderComponent],
 })
 export class LessonDetailComponent implements OnDestroy {
     private readonly title = inject(Title);
