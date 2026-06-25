@@ -22,7 +22,11 @@ export const appConfig: ApplicationConfig = {
             routes,
             withComponentInputBinding(),
             withPreloading(CustomPreloadingStrategy),
-            withRouterConfig({paramsInheritanceStrategy: 'always'}),
+            withRouterConfig({
+                paramsInheritanceStrategy: 'always',
+                onSameUrlNavigation: 'reload',
+                // defaultQueryParamsHandling: 'preserve' — sets a global default for all navigations
+            }),
             withInMemoryScrolling({scrollPositionRestoration: 'enabled'}),
             withViewTransitions(),
             withNavigationErrorHandler((error: NavigationError) => {
