@@ -25,10 +25,12 @@ export class LoginComponent {
         required(s.password, {message: 'Password is required'});
     });
 
-    login() {
-        submit(this.loginForm, async () => {
+    async login() {
+        await submit(this.loginForm, async () => {
             await this.auth.login(this.model().email, this.model().password);
-            this.router.navigateByUrl('/courses');
+            const state = this.router.lastSuccessfulNavigation()?.extras?.state ?? {};
+            const {returnUrl = '/courses'} = state;
+            await this.router.navigateByUrl(returnUrl);
         });
     }
 }
