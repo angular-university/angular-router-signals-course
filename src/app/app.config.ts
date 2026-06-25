@@ -1,15 +1,15 @@
 import {ApplicationConfig, inject, provideZonelessChangeDetection} from '@angular/core';
 import {
-    NavigationError,
-    provideRouter,
-    RedirectCommand,
-    Router,
-    withComponentInputBinding,
-    withInMemoryScrolling,
-    withNavigationErrorHandler,
-    withPreloading,
-    withRouterConfig,
-    withViewTransitions,
+  NavigationError,
+  provideRouter,
+  RedirectCommand,
+  Router,
+  withComponentInputBinding, withDebugTracing,
+  withInMemoryScrolling,
+  withNavigationErrorHandler,
+  withPreloading,
+  withRouterConfig,
+  withViewTransitions,
 } from '@angular/router';
 import {provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
 import {routes} from './app.routes';
@@ -34,6 +34,7 @@ export const appConfig: ApplicationConfig = {
                 const router = inject(Router);
                 return new RedirectCommand(router.parseUrl('/page-not-found'));
             }),
+          // withDebugTracing()
         ),
         provideHttpClient(withInterceptorsFromDi()),
     ]
