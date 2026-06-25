@@ -1,4 +1,4 @@
-import {Component, computed, effect, inject, input, signal} from '@angular/core';
+import {Component, computed, effect, inject, input, OnDestroy, signal} from '@angular/core';
 import {RouterLink, RouterOutlet} from '@angular/router';
 import {Title} from '@angular/platform-browser';
 import {Course} from '../model/course';
@@ -12,7 +12,7 @@ export type CourseOutletData = {captionsEnabled: boolean};
     styleUrls: ['./course.component.css'],
     imports: [RouterOutlet, RouterLink],
 })
-export class CourseComponent {
+export class CourseComponent implements OnDestroy {
     readonly course = input.required<Course>();
     readonly couponCode = input<string>();
 
@@ -29,10 +29,15 @@ export class CourseComponent {
     );
 
     constructor() {
+        console.log('[Course] created');
         effect(() => {
             const course = this.course();
             this.title.setTitle(course.description);
             this.progress.initialize(course.url);
         });
+    }
+
+    ngOnDestroy() {
+        console.log('[Course] destroyed');
     }
 }

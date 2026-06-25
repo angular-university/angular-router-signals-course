@@ -1,4 +1,4 @@
-import {Component, computed, effect, inject, input, Signal} from '@angular/core';
+import {Component, computed, effect, inject, input, OnDestroy, Signal} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {ROUTER_OUTLET_DATA} from '@angular/router';
 import {Title} from '@angular/platform-browser';
@@ -12,7 +12,7 @@ import {CourseOutletData} from '../course/course.component';
     styleUrls: ['./lesson-detail.component.css'],
     imports: [RouterLink],
 })
-export class LessonDetailComponent {
+export class LessonDetailComponent implements OnDestroy {
     private readonly title = inject(Title);
     private readonly progress = inject(LessonProgressService);
     protected readonly outletData = inject(ROUTER_OUTLET_DATA) as Signal<CourseOutletData>;
@@ -21,6 +21,7 @@ export class LessonDetailComponent {
     readonly courseUrl = input<string>();
 
     constructor() {
+        console.log('[LessonDetail] created');
         effect(() => {
             const lesson = this.lesson();
             if (lesson) {
@@ -43,4 +44,8 @@ export class LessonDetailComponent {
             ? ['/courses', this.courseUrl(), 'lessons', lesson.seqNo + 1]
             : null;
     });
+
+    ngOnDestroy() {
+        console.log('[LessonDetail] destroyed');
+    }
 }

@@ -1,4 +1,4 @@
-import {Component, inject, input} from '@angular/core';
+import {Component, inject, input, OnDestroy} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {LessonSummary} from '../model/lesson-summary';
 import {LessonProgressService} from '../services/lesson-progress.service';
@@ -9,7 +9,15 @@ import {LessonProgressService} from '../services/lesson-progress.service';
     styleUrls: ['./lessons-list.component.css'],
     imports: [RouterLink],
 })
-export class LessonsListComponent {
+export class LessonsListComponent implements OnDestroy {
     readonly lessons = input<LessonSummary[]>([]);
     protected readonly progress = inject(LessonProgressService);
+
+    constructor() {
+        console.log('[LessonsList] created');
+    }
+
+    ngOnDestroy() {
+        console.log('[LessonsList] destroyed');
+    }
 }
