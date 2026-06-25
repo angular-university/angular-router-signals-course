@@ -1,7 +1,8 @@
 @if (lesson(); as lesson) {
     <div class="lesson-detail">
 
-        <a class="back-link" [routerLink]="['../..']">
+        <a class="back-link" [routerLink]="['../..']"
+           queryParamsHandling="merge" [queryParams]="{lastLesson: lesson.seqNo}">
             <span class="material-icons" aria-hidden="true">arrow_back</span>
             Back to Lessons
         </a>
@@ -18,7 +19,7 @@
 
             <div class="video-wrapper">
                 @if (prevLessonLink(); as prevLink) {
-                    <a class="nav-btn prev" [routerLink]="prevLink" title="Previous lesson">
+                    <a class="nav-btn prev" [routerLink]="prevLink" queryParamsHandling="preserve" title="Previous lesson">
                         <span class="material-icons" aria-hidden="true">chevron_left</span>
                     </a>
                 }
@@ -54,7 +55,7 @@
                 </div>
 
                 @if (nextLessonLink(); as nextLink) {
-                    <a class="nav-btn next" [routerLink]="nextLink" title="Next lesson">
+                    <a class="nav-btn next" [routerLink]="nextLink" queryParamsHandling="preserve" title="Next lesson">
                         <span class="material-icons" aria-hidden="true">chevron_right</span>
                     </a>
                 }
