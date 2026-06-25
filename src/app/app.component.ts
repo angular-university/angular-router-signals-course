@@ -25,6 +25,14 @@ import {DevToolbarComponent} from './shared/dev-toolbar/dev-toolbar.component';
 export class AppComponent {
     readonly auth = inject(AuthService);
 
+    onActivate(component: unknown) {
+        console.log('[App outlet] activated:', component);
+    }
+
+    onDeactivate(component: unknown) {
+        console.log('[App outlet] deactivated:', component);
+    }
+
     logout() {
         this.auth.logout();
     }

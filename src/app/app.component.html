@@ -62,7 +62,7 @@
 <confirm-dialog />
 
 <main class="app-main">
-    <router-outlet />
+    <router-outlet (activate)="onActivate($event)" (deactivate)="onDeactivate($event)" />
 </main>
 
 <router-outlet name="chat" />
