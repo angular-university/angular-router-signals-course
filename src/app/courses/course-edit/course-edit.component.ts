@@ -1,0 +1,49 @@
+import {Component, inject, input, linkedSignal} from '@angular/core';
+import {Router} from '@angular/router';
+import {form, FormField, required, submit} from '@angular/forms/signals';
+import {Course} from '../model/course';
+import {CoursesService} from '../services/courses.service';
+import {ConfirmRouteExit} from '../../shared/confirm-dialog/confirm-route-exit';
+
+@Component({
+    selector: 'course-edit',
+    templateUrl: './course-edit.component.html',
+    styleUrls: ['./course-edit.component.css'],
+    imports: [FormField],
+})
+export class CourseEditComponent implements ConfirmRouteExit {
+    private readonly router = inject(Router);
+    private readonly coursesService = inject(CoursesService);
+
+    readonly course = input.required<Course>();
+
+    protected readonly model = linkedSignal(() => ({
+        description: this.course().description,
+        category: this.course().category,
+        releasedAt: new Date().toISOString().split('T')[0],
+        longDescription: this.course().longDescription,
+    }));
+
+    protected readonly courseForm = form(this.model, (s) => {
+        required(s.description, {message: 'Description is required'});
+        required(s.category, {message: 'Category is required'});
+        required(s.longDescription, {message: 'Long description is required'});
+    });
+
+    hasUnsavedChanges() {
+        return this.courseForm.description().dirty()
+            || this.courseForm.category().dirty()
+            || this.courseForm.longDescription().dirty();
+    }
+
+    save() {
+        submit(this.courseForm, async () => {
+            await this.coursesService.saveCourse(this.course().id, this.model());
+            this.router.navigate(['/courses', this.course().url], {info: {skipConfirm: true}});
+        });
+    }
+
+    cancel() {
+        this.router.navigate(['/courses']);
+    }
+}

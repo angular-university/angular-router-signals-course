@@ -30,21 +30,6 @@
                 All Courses
             </a>
 
-            <div class="title-edit-bar">
-                <label class="title-label" for="course-title">Course Title</label>
-                <div class="title-field-row">
-                    <input id="course-title" type="text" class="form-control"
-                           [formField]="form.title"
-                           placeholder="Course title">
-                    @if (form.title().dirty()) {
-                        <span class="unsaved-hint">
-                            <span class="material-icons">edit</span>
-                            Unsaved changes
-                        </span>
-                    }
-                </div>
-            </div>
-
             <router-outlet />
 
         </div>

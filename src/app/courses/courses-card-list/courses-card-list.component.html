@@ -19,20 +19,11 @@
                     <span class="material-icons">play_arrow</span>
                     View Course
                 </a>
-                <button class="btn btn-ghost btn-sm" (click)="editCourse(course)">
+                <a class="btn btn-ghost btn-sm" [routerLink]="['/edit-course', course.url]">
                     <span class="material-icons">edit</span>
                     Edit
-                </button>
+                </a>
             </div>
         </article>
     }
 </div>
-
-@if (editingCourse(); as course) {
-    <div class="au-dialog-overlay" (click)="onDialogClosed(false)">
-        <course-dialog
-            [course]="course"
-            (closed)="onDialogClosed($event)"
-            (click)="$event.stopPropagation()" />
-    </div>
-}

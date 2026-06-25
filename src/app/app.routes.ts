@@ -1,4 +1,6 @@
 import {Routes} from '@angular/router';
+import {courseResolver} from './courses/services/course.resolver';
+import {confirmExitGuard} from './services/confirm-exit.guard';
 
 export const routes: Routes = [
     {
@@ -13,6 +15,13 @@ export const routes: Routes = [
     {
         path: 'courses',
         loadChildren: () => import('./courses/courses.routes').then(m => m.coursesRoutes)
+    },
+    {
+        path: 'edit-course/:courseUrl',
+        title: 'Edit Course',
+        loadComponent: () => import('./courses/course-edit/course-edit.component').then(m => m.CourseEditComponent),
+        resolve: {course: courseResolver},
+        canDeactivate: [confirmExitGuard],
     },
     {
         path: 'login',

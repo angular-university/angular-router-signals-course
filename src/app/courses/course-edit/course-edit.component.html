@@ -1,0 +1,83 @@
+<div class="page-container">
+<div class="edit-container">
+
+    <div class="edit-header">
+        <div class="edit-icon">
+            <span class="material-icons">edit</span>
+        </div>
+        <div>
+            <h2 class="edit-title">Edit Course</h2>
+            <p class="edit-subtitle">{{ course().description }}</p>
+        </div>
+    </div>
+
+    <div class="edit-body">
+
+        <div class="form-group">
+            <label for="desc">Course Description</label>
+            <input
+                id="desc"
+                type="text"
+                class="form-control"
+                [class.error]="courseForm.description().touched() && courseForm.description().errors().length"
+                [formField]="courseForm.description">
+            @if (courseForm.description().touched() && courseForm.description().errors().length) {
+                <span class="field-error">{{ courseForm.description().errors()[0].message }}</span>
+            }
+        </div>
+
+        <div class="form-group">
+            <label for="category">Category</label>
+            <select
+                id="category"
+                class="form-control"
+                [class.error]="courseForm.category().touched() && courseForm.category().errors().length"
+                [formField]="courseForm.category">
+                <option value="">Select a category</option>
+                <option value="BEGINNER">Beginner</option>
+                <option value="INTERMEDIATE">Intermediate</option>
+                <option value="ADVANCED">Advanced</option>
+            </select>
+            @if (courseForm.category().touched() && courseForm.category().errors().length) {
+                <span class="field-error">{{ courseForm.category().errors()[0].message }}</span>
+            }
+        </div>
+
+        <div class="form-group">
+            <label for="released">Released At</label>
+            <input
+                id="released"
+                type="date"
+                class="form-control"
+                [formField]="courseForm.releasedAt">
+        </div>
+
+        <div class="form-group">
+            <label for="longDesc">Long Description</label>
+            <textarea
+                id="longDesc"
+                class="form-control"
+                rows="4"
+                [class.error]="courseForm.longDescription().touched() && courseForm.longDescription().errors().length"
+                [formField]="courseForm.longDescription"></textarea>
+            @if (courseForm.longDescription().touched() && courseForm.longDescription().errors().length) {
+                <span class="field-error">{{ courseForm.longDescription().errors()[0].message }}</span>
+            }
+        </div>
+
+    </div>
+
+    <div class="edit-footer">
+        <button type="button" class="btn btn-ghost" (click)="cancel()">
+            <span class="material-icons">close</span>
+            Cancel
+        </button>
+        <button type="button" class="btn btn-primary" (click)="save()"
+                [disabled]="courseForm().invalid()">
+            <span class="material-icons">save</span>
+            Save Changes
+        </button>
+    </div>
+
+</div>
+</div>
