@@ -30,7 +30,7 @@ export class LoginComponent {
             await this.auth.login(this.model().email, this.model().password);
             const state = this.router.lastSuccessfulNavigation()?.extras?.state ?? {};
             const {returnUrl = '/courses'} = state;
-            await this.router.navigateByUrl(returnUrl);
+            await this.router.navigateByUrl(returnUrl, {replaceUrl: true});
         });
     }
 }
