@@ -1,6 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {AuthService} from './services/auth.service';
-import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
+import {isActive, Router, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {MessagesComponent} from './shared/messages/messages.component';
 import {LoadingComponent} from './shared/loading/loading.component';
 import {ConfirmDialogComponent} from './shared/confirm-dialog/confirm-dialog.component';
@@ -24,6 +24,8 @@ import {DevToolbarComponent} from './shared/dev-toolbar/dev-toolbar.component';
 })
 export class AppComponent {
     readonly auth = inject(AuthService);
+
+    protected readonly editingCourse = isActive('/edit-course', inject(Router));
 
     onActivate(component: unknown) {
         console.log('[App outlet] activated:', component);

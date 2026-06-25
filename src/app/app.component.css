@@ -31,6 +31,12 @@
     text-decoration: none;
 }
 
+.nav-brand.editing .brand-text::after {
+    content: ' — Editing';
+    color: var(--color-accent);
+    font-weight: 400;
+}
+
 .brand-icon {
     flex-shrink: 0;
 }
