@@ -10,6 +10,16 @@
                         🎉 Use code <strong>{{ couponCode() }}</strong> for a discount!
                     </div>
                 }
+
+                <div class="course-progress">
+                    <div class="course-progress-header">
+                        <span class="course-progress-label">Your progress</span>
+                        <span class="course-progress-count">{{ progress.visitedCount() }} / {{ course().lessonsCount }}</span>
+                    </div>
+                    <div class="course-progress-track">
+                        <div class="course-progress-fill" [style.width.%]="progressPercent()"></div>
+                    </div>
+                </div>
             </div>
         </aside>
 

@@ -1,9 +1,10 @@
-import {Component, effect, inject, input, linkedSignal} from '@angular/core';
+import {Component, computed, effect, inject, input, linkedSignal} from '@angular/core';
 import {RouterLink, RouterOutlet} from '@angular/router';
 import {Title} from '@angular/platform-browser';
 import {form, FormField, required} from '@angular/forms/signals';
 import {Course} from '../model/course';
 import {ConfirmRouteExit} from '../../shared/confirm-dialog/confirm-route-exit';
+import {LessonProgressService} from '../services/lesson-progress.service';
 
 @Component({
     selector: 'course',
@@ -21,10 +22,19 @@ export class CourseComponent implements ConfirmRouteExit {
         required(s.title, {message: 'Title is required'});
     });
 
-  private readonly title = inject(Title);
+    private readonly title = inject(Title);
+    protected readonly progress = inject(LessonProgressService);
+
+    protected readonly progressPercent = computed(() =>
+        Math.round((this.progress.visitedCount() / this.course().lessonsCount) * 100)
+    );
 
     constructor() {
-        effect(() => this.title.setTitle(this.course().description));
+        effect(() => {
+            const course = this.course();
+            this.title.setTitle(course.description);
+            this.progress.initialize(course.url);
+        });
     }
 
     hasUnsavedChanges() {

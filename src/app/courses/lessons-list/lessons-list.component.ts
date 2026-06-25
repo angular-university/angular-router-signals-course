@@ -1,6 +1,7 @@
-import {Component, input} from '@angular/core';
+import {Component, inject, input} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {LessonSummary} from '../model/lesson-summary';
+import {LessonProgressService} from '../services/lesson-progress.service';
 
 @Component({
     selector: 'lessons-list',
@@ -10,4 +11,5 @@ import {LessonSummary} from '../model/lesson-summary';
 })
 export class LessonsListComponent {
     readonly lessons = input<LessonSummary[]>([]);
+    protected readonly progress = inject(LessonProgressService);
 }

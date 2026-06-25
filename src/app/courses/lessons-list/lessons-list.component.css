@@ -69,3 +69,30 @@
     font-size: 13px;
     white-space: nowrap;
 }
+
+.col-done {
+    width: 48px;
+    text-align: center;
+}
+
+.done-icon {
+    font-size: 20px;
+    color: var(--color-text-muted);
+    opacity: 0.35;
+    cursor: pointer;
+    transition: color var(--transition), opacity var(--transition);
+    display: block;
+}
+
+.done-icon.visited {
+    color: #4ade80;
+    opacity: 1;
+}
+
+.lesson-row.is-done .col-desc {
+    color: var(--color-text-muted);
+}
+
+.col-done:hover .done-icon:not(.visited) {
+    opacity: 0.7;
+}

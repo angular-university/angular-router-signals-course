@@ -2,6 +2,8 @@ import {Component, computed, effect, inject, input} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {Title} from '@angular/platform-browser';
 import {LessonDetail} from '../model/lesson-detail';
+import {LessonProgressService} from '../services/lesson-progress.service';
+
 @Component({
     selector: 'lesson',
     templateUrl: './lesson-detail.component.html',
@@ -10,6 +12,7 @@ import {LessonDetail} from '../model/lesson-detail';
 })
 export class LessonDetailComponent {
     private readonly title = inject(Title);
+    private readonly progress = inject(LessonProgressService);
 
     readonly lesson = input<LessonDetail>();
     readonly courseUrl = input<string>();
@@ -17,7 +20,10 @@ export class LessonDetailComponent {
     constructor() {
         effect(() => {
             const lesson = this.lesson();
-            if (lesson) this.title.setTitle(lesson.description);
+            if (lesson) {
+                this.title.setTitle(lesson.description);
+                this.progress.markVisited(lesson.seqNo);
+            }
         });
     }
 

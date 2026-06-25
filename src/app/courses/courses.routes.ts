@@ -6,6 +6,7 @@ import {featureFlagGuard} from '../services/feature-flag.guard';
 import {courseResolver} from './services/course.resolver';
 import {lessonsResolver} from './services/lessons.resolver';
 import {lessonDetailResolver} from './services/lesson-detail.resolver';
+import {LessonProgressService} from './services/lesson-progress.service';
 
 export const coursesRoutes: Routes = [
     {
@@ -24,6 +25,7 @@ export const coursesRoutes: Routes = [
         canMatch: [canMatchAuth],
         canActivateChild: [authGuardChild],
         canDeactivate: [confirmExitGuard],
+        providers: [LessonProgressService],
         resolve: {course: courseResolver},
         children: [
             {
