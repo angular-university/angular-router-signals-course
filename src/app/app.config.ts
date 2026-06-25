@@ -24,7 +24,7 @@ export const appConfig: ApplicationConfig = {
             withPreloading(CustomPreloadingStrategy),
             withRouterConfig({
                 paramsInheritanceStrategy: 'always',
-                onSameUrlNavigation: 'reload',
+                //onSameUrlNavigation: 'reload',
                 // defaultQueryParamsHandling: 'preserve' — sets a global default for all navigations
             }),
             withInMemoryScrolling({scrollPositionRestoration: 'enabled'}),
