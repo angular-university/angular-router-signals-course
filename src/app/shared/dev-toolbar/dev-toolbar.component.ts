@@ -9,10 +9,8 @@ import {FeatureFlagService} from '../../services/feature-flag.service';
 })
 export class DevToolbarComponent {
     protected readonly flags = inject(FeatureFlagService);
-    private readonly router = inject(Router);
 
     async toggle(flag: string) {
         await this.flags.toggle(flag);
-        this.router.navigateByUrl(this.router.url);
     }
 }

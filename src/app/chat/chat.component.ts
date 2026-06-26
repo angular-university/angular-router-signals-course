@@ -5,7 +5,7 @@ import {RouterLink} from '@angular/router';
     selector: 'chat',
     templateUrl: './chat.component.html',
     styleUrls: ['./chat.component.css'],
-    imports: [RouterLink],
+    imports: [],
 })
 export class ChatComponent  {
 
