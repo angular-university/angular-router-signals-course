@@ -17,7 +17,10 @@ import {CustomPreloadingStrategy} from './services/custom-preloading.strategy';
 
 export const appConfig: ApplicationConfig = {
     providers: [
-        provideZonelessChangeDetection(),
-        provideHttpClient(withInterceptorsFromDi()),
+      provideRouter(
+        routes
+      ),
+      provideZonelessChangeDetection(),
+      provideHttpClient(withInterceptorsFromDi()),
     ]
 };
