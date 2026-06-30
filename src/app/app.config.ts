@@ -18,7 +18,8 @@ import {CustomPreloadingStrategy} from './services/custom-preloading.strategy';
 export const appConfig: ApplicationConfig = {
     providers: [
       provideRouter(
-        routes
+        routes,
+        // withDebugTracing()
       ),
       provideZonelessChangeDetection(),
       provideHttpClient(withInterceptorsFromDi()),

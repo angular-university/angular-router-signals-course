@@ -18,6 +18,8 @@ import {DevToolbarComponent} from './shared/dev-toolbar/dev-toolbar.component';
     NgLogoComponent,
     DevToolbarComponent,
     RouterOutlet,
+    RouterLink,
+    RouterLinkActive,
   ],
 })
 export class AppComponent {
