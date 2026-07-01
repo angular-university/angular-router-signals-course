@@ -12,4 +12,9 @@ export const routes: Routes = [
     path: 'about',
     loadComponent: () => import('./about/about.component').then(m => m.AboutComponent)
   },
+  {
+    path: '**',
+    loadComponent: () => import('./page-not-found/page-not-found.component')
+      .then(m => m.PageNotFoundComponent)
+  }
 ];
