@@ -1,7 +1,7 @@
 @if (lesson(); as lesson) {
     <div class="lesson-detail">
 
-        <a class="back-link" href="">
+        <a class="back-link">
             <span class="material-icons" aria-hidden="true">arrow_back</span>
             Back to Lessons
         </a>
@@ -23,7 +23,7 @@
 
             <div class="video-wrapper">
                 @if (lesson.first === false) {
-                    <a class="nav-btn prev" href="" title="Previous lesson">
+                    <a class="nav-btn prev" title="Previous lesson">
                         <span class="material-icons" aria-hidden="true">chevron_left</span>
                     </a>
                 }
@@ -34,7 +34,7 @@
                 </div>
 
                 @if (lesson.last === false) {
-                    <a class="nav-btn next" href="" title="Next lesson">
+                    <a class="nav-btn next" title="Next lesson">
                         <span class="material-icons" aria-hidden="true">chevron_right</span>
                     </a>
                 }
