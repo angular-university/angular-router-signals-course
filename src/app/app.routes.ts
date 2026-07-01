@@ -5,6 +5,11 @@ import {confirmExitGuard} from './services/confirm-exit.guard';
 
 export const routes: Routes = [
   {
+    path: '',
+    redirectTo: '/courses',
+    pathMatch: "full"
+  },
+  {
     path: 'login',
     loadComponent: () => import('./login/login.component').then(m => m.LoginComponent)
   },
