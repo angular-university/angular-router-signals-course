@@ -1,27 +1,27 @@
 <header class="top-nav">
     <div class="nav-inner">
 
-        <a class="nav-brand" href="">
+        <a class="nav-brand">
             <ng-logo [size]="28" class="brand-icon" />
             <span class="brand-text">Angular Router In Depth (Signals Edition)</span>
         </a>
 
         <ul class="nav-links">
             <li>
-                <a class="nav-link" href="">
+                <a class="nav-link">
                     <span class="material-icons">grid_view</span>
                     Courses
                 </a>
             </li>
             <li>
-                <a class="nav-link" href="">
+                <a class="nav-link">
                     <span class="material-icons">info</span>
                     About
                 </a>
             </li>
             @if (auth.isLoggedOut()) {
                 <li>
-                    <a class="nav-link" href="">
+                    <a class="nav-link">
                         <span class="material-icons">person</span>
                         Login
                     </a>
@@ -31,7 +31,7 @@
 
         <div class="nav-actions">
             @if (auth.isLoggedIn()) {
-                <a class="btn-icon" href="" title="Helpdesk Chat">
+                <a class="btn-icon" title="Helpdesk Chat">
                     <span class="material-icons">chat_bubble</span>
                 </a>
             }
