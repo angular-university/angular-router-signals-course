@@ -13,6 +13,10 @@ export const routes: Routes = [
     loadComponent: () => import('./about/about.component').then(m => m.AboutComponent)
   },
   {
+    path: 'courses',
+    loadChildren: () => import('./courses/courses.routes').then(m => m.coursesRoutes)
+  },
+  {
     path: '**',
     loadComponent: () => import('./page-not-found/page-not-found.component')
       .then(m => m.PageNotFoundComponent)
