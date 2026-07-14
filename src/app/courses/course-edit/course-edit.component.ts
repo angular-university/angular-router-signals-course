@@ -11,7 +11,8 @@ import {ConfirmRouteExit} from '../../shared/confirm-dialog/confirm-route-exit';
     styleUrls: ['./course-edit.component.css'],
     imports: [FormField],
 })
-export class CourseEditComponent implements ConfirmRouteExit {
+export class CourseEditComponent {
+
     private readonly coursesService = inject(CoursesService);
 
     readonly course = input.required<Course>();
@@ -28,12 +29,6 @@ export class CourseEditComponent implements ConfirmRouteExit {
         required(s.category, {message: 'Category is required'});
         required(s.longDescription, {message: 'Long description is required'});
     });
-
-    hasUnsavedChanges() {
-        return this.courseForm.description().dirty()
-            || this.courseForm.category().dirty()
-            || this.courseForm.longDescription().dirty();
-    }
 
     save() {
         submit(this.courseForm, async () => {

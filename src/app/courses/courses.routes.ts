@@ -11,5 +11,12 @@ export const coursesRoutes: Routes = [
   {
     path: '',
     loadComponent: () => import('./home/home.component').then(m => m.HomeComponent),
-  }
+  },
+  {
+    path: 'edit-course/:courseUrl',
+    loadComponent: () => import('./course-edit/course-edit.component').then(m => m.CourseEditComponent),
+    resolve: {
+      course: courseResolver
+    },
+  },
 ];
