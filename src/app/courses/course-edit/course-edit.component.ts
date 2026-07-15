@@ -1,4 +1,4 @@
-import {Component, inject, input, linkedSignal} from '@angular/core';
+import {Component, effect, inject, input, linkedSignal} from '@angular/core';
 import {Router} from '@angular/router';
 import {form, FormField, required, submit} from '@angular/forms/signals';
 import {Course} from '../model/course';
@@ -16,6 +16,17 @@ export class CourseEditComponent {
     private readonly coursesService = inject(CoursesService);
 
     readonly course = input.required<Course>();
+
+    readonly courseUrl = input<string>();
+
+    readonly mode = input<'edit' | 'create'>();
+
+    constructor() {
+        effect(() => {
+            console.log('Course URL:', this.courseUrl());
+            console.log('Mode query param:', this.mode());
+        });
+    }
 
     protected readonly model = linkedSignal(() => ({
         description: this.course().description,
