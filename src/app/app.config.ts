@@ -20,7 +20,7 @@ export const appConfig: ApplicationConfig = {
       provideRouter(
         routes,
         withComponentInputBinding(),
-        withDebugTracing()
+        //withDebugTracing()
       ),
       provideZonelessChangeDetection(),
       provideHttpClient(withInterceptorsFromDi()),
