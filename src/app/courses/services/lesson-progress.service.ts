@@ -1,8 +1,8 @@
-import {computed, inject, Injectable, signal} from '@angular/core';
+import {computed, inject, Injectable, Service, signal} from '@angular/core';
 import {HttpClient, httpResource} from '@angular/common/http';
 import {firstValueFrom} from 'rxjs';
 
-@Injectable()
+@Service()
 export class LessonProgressService {
     private readonly http = inject(HttpClient);
     private readonly courseUrl = signal('');
