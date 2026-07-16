@@ -17,7 +17,8 @@
                 </thead>
                 <tbody>
                     @for (lesson of lessons(); track lesson.seqNo) {
-                        <tr class="lesson-row" [class.is-done]="progress.isVisited(lesson.seqNo)">
+                        <tr class="lesson-row" [class.is-done]="progress.isVisited(lesson.seqNo)"
+                            [routerLink]="['lessons', lesson.seqNo]">
                             <td class="col-seq">{{ lesson.seqNo }}</td>
                             <td class="col-desc">{{ lesson.description }}</td>
                             <td class="col-dur">{{ lesson.duration }}</td>
