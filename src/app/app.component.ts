@@ -33,7 +33,7 @@ export class AppComponent {
         console.log('[App outlet] deactivated:', component);
     }
 
-    logout() {
-        this.auth.logout();
+    async logout() {
+        await this.auth.logout();
     }
 }

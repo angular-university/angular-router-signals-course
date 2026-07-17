@@ -13,6 +13,8 @@ import {AuthService} from '../services/auth.service';
 export class LoginComponent {
     private auth = inject(AuthService);
 
+  private router = inject(Router);
+
     protected readonly model = signal({
         email: 'test@angular-university.io',
         password: 'test',
@@ -27,6 +29,7 @@ export class LoginComponent {
     async login() {
         await submit(this.loginForm, async () => {
             await this.auth.login(this.model().email, this.model().password);
+            await this.router.navigateByUrl("/courses");
         });
     }
 }

@@ -19,8 +19,7 @@ export const appConfig: ApplicationConfig = {
     providers: [
       provideRouter(
         routes,
-        withComponentInputBinding(),
-        //withDebugTracing()
+        withComponentInputBinding()
       ),
       provideZonelessChangeDetection(),
       provideHttpClient(withInterceptorsFromDi()),
