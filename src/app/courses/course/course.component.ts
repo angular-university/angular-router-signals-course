@@ -10,6 +10,7 @@ export type CourseOutletData = {captionsEnabled: boolean};
     selector: 'course',
     templateUrl: './course.component.html',
     styleUrls: ['./course.component.css'],
+  providers: [LessonProgressService],
   imports: [
     RouterOutlet,
     RouterLink

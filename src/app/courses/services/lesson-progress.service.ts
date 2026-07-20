@@ -2,10 +2,14 @@ import {computed, inject, Injectable, Service, signal} from '@angular/core';
 import {HttpClient, httpResource} from '@angular/common/http';
 import {firstValueFrom} from 'rxjs';
 
-@Service()
+@Injectable()
 export class LessonProgressService {
     private readonly http = inject(HttpClient);
     private readonly courseUrl = signal('');
+
+    constructor() {
+      console.log("[LessonProgressService] created.");
+    }
 
     private readonly progressResource = httpResource<number[]>(
         () => this.courseUrl() ? `/api/progress/${this.courseUrl()}` : undefined
