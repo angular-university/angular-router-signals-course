@@ -29,7 +29,8 @@ export class LoginComponent {
     async login() {
         await submit(this.loginForm, async () => {
             await this.auth.login(this.model().email, this.model().password);
-            await this.router.navigateByUrl("/courses");
+          const {returnUrl = '/courses'} = this.router.lastSuccessfulNavigation()?.extras?.state ?? {};
+          await this.router.navigateByUrl(returnUrl, {replaceUrl: true});
         });
     }
 }
