@@ -11,7 +11,7 @@ import {ConfirmRouteExit} from '../../shared/confirm-dialog/confirm-route-exit';
     styleUrls: ['./course-edit.component.css'],
     imports: [FormField],
 })
-export class CourseEditComponent {
+export class CourseEditComponent implements ConfirmRouteExit {
 
     private readonly coursesService = inject(CoursesService);
 
@@ -31,7 +31,6 @@ export class CourseEditComponent {
     protected readonly model = linkedSignal(() => ({
         description: this.course().description,
         category: this.course().category,
-        releasedAt: new Date().toISOString().split('T')[0],
         longDescription: this.course().longDescription,
     }));
 
@@ -47,5 +46,9 @@ export class CourseEditComponent {
         });
     }
 
-    cancel() {}
+    hasUnsavedChanges() {
+      return this.courseForm().dirty();
+    }
+
+  cancel() {}
 }

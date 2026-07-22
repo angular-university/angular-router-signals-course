@@ -4,6 +4,7 @@ import {lessonsResolver} from './services/lessons.resolver';
 import {lessonDetailResolver} from './services/lesson-detail.resolver';
 import {LessonProgressService} from "./services/lesson-progress.service";
 import {authGuard, authGuardChild} from "../services/auth.guard";
+import {confirmExitGuard} from "../services/confirm-exit.guard";
 
 export const coursesRoutes: Routes = [
   {
@@ -16,7 +17,8 @@ export const coursesRoutes: Routes = [
     resolve: {
       course: courseResolver
     },
-    canActivate: [authGuard]
+    canActivate: [authGuard],
+    canDeactivate: [confirmExitGuard]
   },
   {
     path: ':courseUrl',
