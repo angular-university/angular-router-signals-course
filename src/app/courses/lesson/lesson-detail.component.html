@@ -32,6 +32,12 @@
                 <div class="video-container">
                     <video-placeholder />
                     <p class="video-title">{{ lesson.description }}</p>
+                    @if (captionsConfig()?.captionsEnabled) {
+                      <span class="cc-badge">
+                        <span class="material-icons">closed_caption</span>
+                          CC
+                        </span>
+                    }
                 </div>
 
                 @if (lesson.last === false) {

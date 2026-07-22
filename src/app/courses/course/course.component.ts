@@ -4,7 +4,7 @@ import {Title} from '@angular/platform-browser';
 import {Course} from '../model/course';
 import {LessonProgressService} from '../services/lesson-progress.service';
 
-export type CourseOutletData = {captionsEnabled: boolean};
+export type CaptionsConfig = {captionsEnabled: boolean};
 
 @Component({
     selector: 'course',
@@ -17,6 +17,7 @@ export type CourseOutletData = {captionsEnabled: boolean};
   ],
 })
 export class CourseComponent implements OnDestroy {
+
     readonly course = input.required<Course>();
     readonly couponCode = input<string>();
 
@@ -24,9 +25,11 @@ export class CourseComponent implements OnDestroy {
     protected readonly progress = inject(LessonProgressService);
 
     protected readonly captionsEnabled = signal(false);
-    protected readonly outletData = computed<CourseOutletData>(() => ({
-        captionsEnabled: this.captionsEnabled(),
-    }));
+
+    protected readonly captionsConfig = computed<CaptionsConfig>(() => ({
+      captionsEnabled: this.captionsEnabled()
+    }))
+
 
     protected readonly progressPercent = computed(() =>
         Math.round((this.progress.visitedCount() / this.course().lessonsCount) * 100)
@@ -41,13 +44,9 @@ export class CourseComponent implements OnDestroy {
         });
     }
 
-    onActivate(component: unknown) {
-        console.log('[Course outlet] activated:', (component as any)?.constructor?.name);
-    }
 
-    onDeactivate(component: unknown) {
-        console.log('[Course outlet] deactivated:', (component as any)?.constructor?.name);
-    }
+
+
 
     ngOnDestroy() {
         console.log('[Course] destroyed');

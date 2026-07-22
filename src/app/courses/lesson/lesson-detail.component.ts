@@ -4,6 +4,7 @@ import {Title} from '@angular/platform-browser';
 import {LessonDetail} from '../model/lesson-detail';
 import {LessonProgressService} from '../services/lesson-progress.service';
 import {VideoPlaceholderComponent} from '../../shared/video-placeholder/video-placeholder.component';
+import {CaptionsConfig} from "../course/course.component";
 
 @Component({
     selector: 'lesson',
@@ -17,6 +18,8 @@ export class LessonDetailComponent implements OnDestroy {
 
     readonly lesson = input<LessonDetail>();
     readonly courseUrl = input<string>();
+
+  protected readonly captionsConfig = inject(ROUTER_OUTLET_DATA) as Signal<CaptionsConfig>;
 
     constructor() {
         console.log('[LessonDetail] created');
