@@ -8,7 +8,9 @@ const checkAuthenticated = (state: RouterStateSnapshot) => {
   if (auth.isLoggedIn()) return true;
   const returnUrl = state.url;
   console.log('[authGuard] not authenticated, redirecting to /login with returnUrl:', returnUrl);
-  return new RedirectCommand(router.parseUrl('/login'), {state: {returnUrl}});
+  return new RedirectCommand(router.parseUrl('/login'), {
+    state: {returnUrl}
+  });
 };
 
 export const authGuard: CanActivateFn = (route, state) => checkAuthenticated(state);

@@ -21,6 +21,8 @@ export class CourseEditComponent implements ConfirmRouteExit {
 
     readonly mode = input<'edit' | 'create'>();
 
+    readonly router = inject(Router);
+
     constructor() {
         effect(() => {
             console.log('Course URL:', this.courseUrl());
@@ -50,5 +52,9 @@ export class CourseEditComponent implements ConfirmRouteExit {
       return this.courseForm().dirty();
     }
 
-  cancel() {}
+  async cancel() {
+    await this.router.navigate(['/courses'], {
+      info: {skipConfirm: true}
+    });
+  }
 }
