@@ -38,7 +38,9 @@
                 All Courses
             </a>
 
-          <router-outlet  [routerOutletData]="captionsConfig()"/>
+          <router-outlet  [routerOutletData]="captionsConfig()"
+                          (activate)="onActivate($event)"
+                          (deactivate)="onDeactivate($event)" />
 
         </div>
 

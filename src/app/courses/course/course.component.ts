@@ -4,12 +4,12 @@ import {Title} from '@angular/platform-browser';
 import {Course} from '../model/course';
 import {LessonProgressService} from '../services/lesson-progress.service';
 
-export type CaptionsConfig = {captionsEnabled: boolean};
+export type CaptionsConfig = { captionsEnabled: boolean };
 
 @Component({
-    selector: 'course',
-    templateUrl: './course.component.html',
-    styleUrls: ['./course.component.css'],
+  selector: 'course',
+  templateUrl: './course.component.html',
+  styleUrls: ['./course.component.css'],
   providers: [LessonProgressService],
   imports: [
     RouterOutlet,
@@ -18,37 +18,41 @@ export type CaptionsConfig = {captionsEnabled: boolean};
 })
 export class CourseComponent implements OnDestroy {
 
-    readonly course = input.required<Course>();
-    readonly couponCode = input<string>();
+  readonly course = input.required<Course>();
+  readonly couponCode = input<string>();
 
-    private readonly title = inject(Title);
-    protected readonly progress = inject(LessonProgressService);
+  private readonly title = inject(Title);
+  protected readonly progress = inject(LessonProgressService);
 
-    protected readonly captionsEnabled = signal(false);
+  protected readonly captionsEnabled = signal(false);
 
-    protected readonly captionsConfig = computed<CaptionsConfig>(() => ({
-      captionsEnabled: this.captionsEnabled()
-    }))
-
-
-    protected readonly progressPercent = computed(() =>
-        Math.round((this.progress.visitedCount() / this.course().lessonsCount) * 100)
-    );
-
-    constructor() {
-        console.log('[Course] created');
-        effect(() => {
-            const course = this.course();
-            this.title.setTitle(course.description);
-            this.progress.initialize(course.url);
-        });
-    }
+  protected readonly captionsConfig = computed<CaptionsConfig>(() => ({
+    captionsEnabled: this.captionsEnabled()
+  }))
 
 
+  protected readonly progressPercent = computed(() =>
+    Math.round((this.progress.visitedCount() / this.course().lessonsCount) * 100)
+  );
 
+  constructor() {
+    console.log('[Course] created');
+    effect(() => {
+      const course = this.course();
+      this.title.setTitle(course.description);
+      this.progress.initialize(course.url);
+    });
+  }
 
+  onActivate(component) {
+    console.log('[Course outlet] activated:', component);
+  }
 
-    ngOnDestroy() {
-        console.log('[Course] destroyed');
-    }
+  onDeactivate(component) {
+    console.log('[Course outlet] deactivated:', component);
+  }
+
+  ngOnDestroy() {
+    console.log('[Course] destroyed');
+  }
 }
