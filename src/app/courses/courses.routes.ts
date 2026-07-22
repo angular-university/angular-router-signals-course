@@ -22,8 +22,7 @@ export const coursesRoutes: Routes = [
     canDeactivate: [confirmExitGuard]
   },
   {
-    //path: ':courseUrl',
-    matcher: coursePageMatcher,
+    path: ':courseUrl',
     loadComponent: () => import('./course/course.component').then(m => m.CourseComponent),
     resolve: {
       course: courseResolver
