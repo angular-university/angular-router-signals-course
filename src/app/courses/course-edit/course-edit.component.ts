@@ -19,7 +19,6 @@ export class CourseEditComponent implements ConfirmRouteExit {
     protected readonly model = linkedSignal(() => ({
         description: this.course().description,
         category: this.course().category,
-        releasedAt: new Date().toISOString().split('T')[0],
         longDescription: this.course().longDescription,
     }));
 
