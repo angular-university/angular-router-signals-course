@@ -5,6 +5,7 @@ import {lessonDetailResolver} from './services/lesson-detail.resolver';
 import {LessonProgressService} from "./services/lesson-progress.service";
 import {authGuard, authGuardChild} from "../services/auth.guard";
 import {confirmExitGuard} from "../services/confirm-exit.guard";
+import {coursePageMatcher} from "./services/coursePageMatcher";
 
 export const coursesRoutes: Routes = [
   {
@@ -21,7 +22,9 @@ export const coursesRoutes: Routes = [
     canDeactivate: [confirmExitGuard]
   },
   {
-    path: ':courseUrl',
+    //path: ':courseUrl',
+    // To match both /courses/18 and /courses/angular-router-course
+    matcher: coursePageMatcher,
     loadComponent: () => import('./course/course.component').then(m => m.CourseComponent),
     resolve: {
       course: courseResolver

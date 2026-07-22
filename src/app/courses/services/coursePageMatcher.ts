@@ -1,6 +1,6 @@
 import {UrlMatcher, UrlSegment} from '@angular/router';
 
-export const courseMatcher: UrlMatcher = (url: UrlSegment[]) => {
+export const coursePageMatcher: UrlMatcher = (url: UrlSegment[]) => {
     if (url.length !== 1) return null;
     const path = url[0].path;
     const isId = /^\d+$/.test(path);
