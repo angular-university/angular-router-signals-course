@@ -23,7 +23,6 @@ export const coursesRoutes: Routes = [
   },
   {
     //path: ':courseUrl',
-    // To match both /courses/18 and /courses/angular-router-course
     matcher: coursePageMatcher,
     loadComponent: () => import('./course/course.component').then(m => m.CourseComponent),
     resolve: {
