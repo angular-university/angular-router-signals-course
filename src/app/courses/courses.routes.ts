@@ -5,7 +5,7 @@ import {lessonDetailResolver} from './services/lesson-detail.resolver';
 import {LessonProgressService} from "./services/lesson-progress.service";
 import {authGuard, authGuardChild} from "../services/auth.guard";
 import {confirmExitGuard} from "../services/confirm-exit.guard";
-import {coursePageMatcher} from "./services/coursePageMatcher";
+
 
 export const coursesRoutes: Routes = [
   {
