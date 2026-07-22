@@ -18,6 +18,10 @@ export const routes: Routes = [
     loadComponent: () => import('./about/about.component').then(m => m.AboutComponent)
   },
   {
+    path: 'course-page/:courseUrl',
+    redirectTo: ({params}) => `/courses/${params['courseUrl']}`
+  },
+  {
     path: 'courses',
     loadChildren: () => import('./courses/courses.routes').then(m => m.coursesRoutes)
   },
