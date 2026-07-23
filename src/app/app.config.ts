@@ -1,6 +1,6 @@
 import {ApplicationConfig, inject, provideZonelessChangeDetection} from '@angular/core';
 import {
-  NavigationError,
+  NavigationError, NoPreloading, PreloadAllModules,
   provideRouter,
   RedirectCommand,
   Router,
@@ -19,7 +19,8 @@ export const appConfig: ApplicationConfig = {
     providers: [
       provideRouter(
         routes,
-        withComponentInputBinding()
+        withComponentInputBinding(),
+        withPreloading(CustomPreloadingStrategy),
       ),
       provideZonelessChangeDetection(),
       provideHttpClient(withInterceptorsFromDi()),

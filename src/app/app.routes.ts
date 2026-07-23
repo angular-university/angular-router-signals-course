@@ -12,11 +12,17 @@ export const routes: Routes = [
   },
   {
     matcher: loginMatcher,
-    loadComponent: () => import('./login/login.component').then(m => m.LoginComponent)
+    loadComponent: () => import('./login/login.component').then(m => m.LoginComponent),
+    data: {
+      preload:true
+    }
   },
   {
     path: 'about',
-    loadComponent: () => import('./about/about.component').then(m => m.AboutComponent)
+    loadComponent: () => import('./about/about.component').then(m => m.AboutComponent),
+    data: {
+      preload:true
+    }
   },
   {
     path: 'course-page/:courseUrl',

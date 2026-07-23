@@ -8,7 +8,8 @@ export class CustomPreloadingStrategy implements PreloadingStrategy {
     preload(route: Route, load: () => Observable<any>): Observable<any> {
         if (route.data?.["preload"]) {
             return load();
-        } else {
+        }
+        else {
             return of(null);
         }
     }
