@@ -12,7 +12,7 @@
                 <p class="card-description">{{ course.longDescription }}</p>
             </div>
             <div class="card-footer">
-                <a class="btn btn-primary btn-sm" [routerLink]="[course.url]">
+                <a class="btn btn-primary btn-sm" [routerLink]="[course.url]" [info]="{course}">
                     <span class="material-icons">play_arrow</span>
                     View Course
                 </a>
