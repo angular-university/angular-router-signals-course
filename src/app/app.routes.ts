@@ -2,6 +2,7 @@ import {Routes} from '@angular/router';
 import {authGuard, authGuardChild} from './services/auth.guard';
 import {courseResolver} from './courses/services/course.resolver';
 import {confirmExitGuard} from './services/confirm-exit.guard';
+import {loginMatcher} from "./services/login.matcher";
 
 export const routes: Routes = [
   {
@@ -10,7 +11,7 @@ export const routes: Routes = [
     pathMatch: "full"
   },
   {
-    path: 'login',
+    matcher: loginMatcher,
     loadComponent: () => import('./login/login.component').then(m => m.LoginComponent)
   },
   {
