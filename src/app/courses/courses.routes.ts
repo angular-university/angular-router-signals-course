@@ -5,9 +5,15 @@ import {lessonDetailResolver} from './services/lesson-detail.resolver';
 import {LessonProgressService} from "./services/lesson-progress.service";
 import {authGuard, authGuardChild} from "../services/auth.guard";
 import {confirmExitGuard} from "../services/confirm-exit.guard";
+import {featureFlagGuard} from "../services/feature-flag.guard";
 
 
 export const coursesRoutes: Routes = [
+  {
+    path: '',
+    canMatch: [featureFlagGuard('new-home')],
+    loadComponent: () => import('./home-v2/home-v2.component').then(m => m.HomeV2Component)
+  },
   {
     path: '',
     loadComponent: () => import('./home/home.component').then(m => m.HomeComponent),
