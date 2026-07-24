@@ -21,6 +21,8 @@ export class LessonDetailComponent implements OnDestroy {
 
   protected readonly captionsConfig = inject(ROUTER_OUTLET_DATA) as Signal<CaptionsConfig>;
 
+  protected readonly route = inject(ActivatedRoute);
+
     constructor() {
         console.log('[LessonDetail] created');
         effect(() => {
