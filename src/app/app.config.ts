@@ -23,6 +23,7 @@ export const appConfig: ApplicationConfig = {
           defaultQueryParamsHandling: 'merge'
         }),
         withComponentInputBinding(),
+        withViewTransitions(),
         withPreloading(CustomPreloadingStrategy),
       ),
       provideZonelessChangeDetection(),
