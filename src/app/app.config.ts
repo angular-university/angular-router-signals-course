@@ -19,6 +19,9 @@ export const appConfig: ApplicationConfig = {
     providers: [
       provideRouter(
         routes,
+        withRouterConfig({
+          defaultQueryParamsHandling: 'merge'
+        }),
         withComponentInputBinding(),
         withPreloading(CustomPreloadingStrategy),
       ),
