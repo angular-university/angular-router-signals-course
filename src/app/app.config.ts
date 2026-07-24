@@ -19,8 +19,10 @@ export const appConfig: ApplicationConfig = {
     providers: [
       provideRouter(
         routes,
+        withDebugTracing(),
         withRouterConfig({
           //defaultQueryParamsHandling: 'merge'
+          onSameUrlNavigation: 'reload'
         }),
         withComponentInputBinding(),
         // withViewTransitions(),

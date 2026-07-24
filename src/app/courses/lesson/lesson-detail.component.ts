@@ -22,6 +22,7 @@ export class LessonDetailComponent implements OnDestroy {
   protected readonly captionsConfig = inject(ROUTER_OUTLET_DATA) as Signal<CaptionsConfig>;
 
   protected readonly route = inject(ActivatedRoute);
+  private readonly router = inject(Router);
 
     constructor() {
         console.log('[LessonDetail] created');
@@ -34,7 +35,11 @@ export class LessonDetailComponent implements OnDestroy {
         });
     }
 
-    reloadLesson() {}
+    async reloadLesson() {
+        await this.router.navigate(["."], {
+          relativeTo: this.route
+        });
+    }
 
     ngOnDestroy() {
         console.log('[LessonDetail] destroyed');
