@@ -25,6 +25,8 @@ import {DevToolbarComponent} from './shared/dev-toolbar/dev-toolbar.component';
 export class AppComponent {
     readonly auth = inject(AuthService);
 
+    protected readonly editingCourse = isActive('/courses/edit-course', inject(Router));
+
     async logout() {
         await this.auth.logout();
     }
