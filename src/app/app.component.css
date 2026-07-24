@@ -81,6 +81,9 @@
 
 .nav-link.active {
     color: #fff;
+    background: #6d3bf5;
+    box-shadow: 0 0 0 2px #a17cff, 0 0 12px rgba(109, 59, 245, 0.6);
+    font-weight: 700;
 }
 
 .nav-context-label {
