@@ -29,6 +29,13 @@ export const appConfig: ApplicationConfig = {
           scrollPositionRestoration: 'enabled',
           anchorScrolling: 'enabled'
         }),
+        withNavigationErrorHandler((error: NavigationError) => {
+          console.error('Navigation error:', error);
+          const router = inject(Router);
+          return new RedirectCommand(
+            router.parseUrl('/page-not-found')
+          );
+        }),
       ),
       provideZonelessChangeDetection(),
       provideHttpClient(withInterceptorsFromDi()),
