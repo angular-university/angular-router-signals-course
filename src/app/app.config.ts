@@ -22,7 +22,8 @@ export const appConfig: ApplicationConfig = {
         withDebugTracing(),
         withRouterConfig({
           //defaultQueryParamsHandling: 'merge'
-          onSameUrlNavigation: 'reload'
+          onSameUrlNavigation: 'reload',
+          canceledNavigationResolution: 'computed'
         }),
         withComponentInputBinding(),
         // withViewTransitions(),
