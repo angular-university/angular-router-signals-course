@@ -20,11 +20,15 @@ export const appConfig: ApplicationConfig = {
       provideRouter(
         routes,
         withRouterConfig({
-          defaultQueryParamsHandling: 'merge'
+          //defaultQueryParamsHandling: 'merge'
         }),
         withComponentInputBinding(),
-        withViewTransitions(),
+        // withViewTransitions(),
         withPreloading(CustomPreloadingStrategy),
+        withInMemoryScrolling({
+          scrollPositionRestoration: 'enabled',
+          anchorScrolling: 'enabled'
+        }),
       ),
       provideZonelessChangeDetection(),
       provideHttpClient(withInterceptorsFromDi()),
