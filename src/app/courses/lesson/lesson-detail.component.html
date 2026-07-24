@@ -24,7 +24,7 @@
             <div class="video-wrapper">
                 @if (lesson.first === false) {
                     <a class="nav-btn prev" title="Previous lesson"
-                       [routerLink]="[lesson.seqNo - 1]" [relativeTo]="route.parent" >
+                       [routerLink]="['lessons', lesson.seqNo - 1]" [relativeTo]="route.parent" >
                         <span class="material-icons" aria-hidden="true">chevron_left</span>
                     </a>
                 }
@@ -42,7 +42,7 @@
 
                 @if (lesson.last === false) {
                     <a class="nav-btn next" title="Next lesson"
-                       [routerLink]="[lesson.seqNo + 1]" [relativeTo]="route.parent">
+                       [routerLink]="['lessons', lesson.seqNo + 1]" [relativeTo]="route.parent">
                         <span class="material-icons" aria-hidden="true">chevron_right</span>
                     </a>
                 }
