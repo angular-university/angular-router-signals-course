@@ -19,11 +19,12 @@ export const appConfig: ApplicationConfig = {
     providers: [
       provideRouter(
         routes,
-        withDebugTracing(),
+        //withDebugTracing(),
         withRouterConfig({
           //defaultQueryParamsHandling: 'merge'
           onSameUrlNavigation: 'reload',
-          canceledNavigationResolution: 'computed'
+          canceledNavigationResolution: 'computed',
+          resolveNavigationPromiseOnError: true
         }),
         withComponentInputBinding(),
         // withViewTransitions(),
@@ -32,13 +33,14 @@ export const appConfig: ApplicationConfig = {
           scrollPositionRestoration: 'enabled',
           anchorScrolling: 'enabled'
         }),
+        /*
         withNavigationErrorHandler((error: NavigationError) => {
           console.error('Navigation error:', error);
-          const router = inject(Router);
-          return new RedirectCommand(
-            router.parseUrl('/page-not-found')
-          );
+           const router = inject(Router);
+           return new RedirectCommand(router.parseUrl('/page-not-found'));
         }),
+
+         */
       ),
       provideZonelessChangeDetection(),
       provideHttpClient(withInterceptorsFromDi()),

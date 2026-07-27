@@ -33,6 +33,15 @@ export const routes: Routes = [
     loadChildren: () => import('./courses/courses.routes').then(m => m.coursesRoutes)
   },
   {
+    path: 'fail',
+    resolve: {
+      x: () => {
+        throw new Error('resolver failed!');
+      }
+    },
+    loadComponent: () => import('./about/about.component').then(m => m.AboutComponent)
+  },
+  {
     path: '**',
     loadComponent: () => import('./page-not-found/page-not-found.component')
       .then(m => m.PageNotFoundComponent)
