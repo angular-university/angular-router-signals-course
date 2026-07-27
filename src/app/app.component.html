@@ -34,7 +34,7 @@
 
         <div class="nav-actions">
             @if (auth.isLoggedIn()) {
-                <a class="btn-icon" title="Helpdesk Chat">
+                <a class="btn-icon" title="Helpdesk Chat" [routerLink]="[{outlets: {chat: ['helpdesk-chat']}}]">
                     <span class="material-icons">chat_bubble</span>
                 </a>
             }
@@ -60,5 +60,7 @@
 <main class="app-main">
     <router-outlet/>
 </main>
+
+<router-outlet name="chat" />
 
 <dev-toolbar />

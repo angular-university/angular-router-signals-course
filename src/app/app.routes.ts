@@ -42,6 +42,11 @@ export const routes: Routes = [
     loadComponent: () => import('./about/about.component').then(m => m.AboutComponent)
   },
   {
+    path: 'helpdesk-chat',
+    loadComponent: () => import('./chat/chat.component').then(m => m.ChatComponent),
+    outlet: 'chat'
+  },
+  {
     path: '**',
     loadComponent: () => import('./page-not-found/page-not-found.component')
       .then(m => m.PageNotFoundComponent)
