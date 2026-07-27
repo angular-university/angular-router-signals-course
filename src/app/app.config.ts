@@ -24,7 +24,8 @@ export const appConfig: ApplicationConfig = {
           //defaultQueryParamsHandling: 'merge'
           onSameUrlNavigation: 'reload',
           canceledNavigationResolution: 'computed',
-          resolveNavigationPromiseOnError: true
+          resolveNavigationPromiseOnError: true,
+          urlUpdateStrategy: 'eager'
         }),
         withComponentInputBinding(),
         // withViewTransitions(),
